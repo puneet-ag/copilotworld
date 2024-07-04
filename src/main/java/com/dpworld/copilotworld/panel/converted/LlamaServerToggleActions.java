@@ -7,7 +7,7 @@
 //import com.intellij.openapi.actionSystem.AnActionEvent;
 //import com.intellij.openapi.components.ServiceManager;
 //import com.intellij.openapi.project.DumbAwareAction;
-//import panel.converted.CodeGPTBundle;
+//import panel.converted.VisionBundle;
 //import panel.converted.GeneralSettings;
 //import panel.converted.OverlayUtil;
 //
@@ -65,7 +65,7 @@
 //
 //    private void start(String serverName, LlamaServerAgent llamaServerAgent) {
 //        notification = OverlayUtil.stickyNotification(formatMsg(STARTING, serverName),
-//                createSimpleExpiring(CodeGPTBundle.get(STOP), () -> stop(serverName, llamaServerAgent)));
+//                createSimpleExpiring(VisionBundle.get(STOP), () -> stop(serverName, llamaServerAgent)));
 //        ServerProgressPanel serverProgressPanel = new ServerProgressPanel();
 //        llamaServerAgent.setActiveServerProgressPanel(serverProgressPanel);
 //        LlamaSettings.State settings = LlamaSettings.getInstance().state;
@@ -103,7 +103,7 @@
 //
 //    private Notification notification(String id, boolean nextStart, String serverName, LlamaServerAgent llamaServerAgent) {
 //        return OverlayUtil.showNotification(formatMsg(id, serverName),
-//                createSimpleExpiring(CodeGPTBundle.get(nextStart ? START : STOP),
+//                createSimpleExpiring(VisionBundle.get(nextStart ? START : STOP),
 //                        () -> {
 //                            if (nextStart) {
 //                                start(serverName, llamaServerAgent);
@@ -114,7 +114,7 @@
 //    }
 //
 //    private String formatMsg(String id, String serverName) {
-//        String msg = CodeGPTBundle.get(id);
+//        String msg = VisionBundle.get(id);
 //        boolean points = msg.endsWith("...");
 //        return (points ? msg.substring(0, msg.length() - 3) : msg) + ": " + serverName + (points ? " ..." : "");
 //    }

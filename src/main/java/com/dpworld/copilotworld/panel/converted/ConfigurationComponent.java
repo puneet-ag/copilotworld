@@ -52,15 +52,15 @@ public class ConfigurationComponent {
     table = new JBTable(new DefaultTableModel(
         EditorActionsUtil.toArray(configuration.getTableData()),
         new String[]{
-            CodeGPTBundle.get("configurationConfigurable.table.header.actionColumnLabel"),
-            CodeGPTBundle.get("configurationConfigurable.table.header.promptColumnLabel")
+            VisionBundle.get("configurationConfigurable.table.header.actionColumnLabel"),
+            VisionBundle.get("configurationConfigurable.table.header.promptColumnLabel")
         }));
     table.getColumnModel().getColumn(0).setPreferredWidth(60);
     table.getColumnModel().getColumn(1).setPreferredWidth(240);
-    table.getEmptyText().setText(CodeGPTBundle.get("configurationConfigurable.table.emptyText"));
+    table.getEmptyText().setText(VisionBundle.get("configurationConfigurable.table.emptyText"));
     var tablePanel = createTablePanel();
     tablePanel.setBorder(BorderFactory.createTitledBorder(
-        CodeGPTBundle.get("configurationConfigurable.table.title")));
+        VisionBundle.get("configurationConfigurable.table.title")));
 
     temperatureField = new JBTextField(12);
     temperatureField.setText(String.valueOf(configuration.getTemperature()));
@@ -105,22 +105,22 @@ public class ConfigurationComponent {
     commitMessagePromptTextArea.setBorder(JBUI.Borders.empty(8, 4));
 
     checkForPluginUpdatesCheckBox = new JBCheckBox(
-        CodeGPTBundle.get("configurationConfigurable.checkForPluginUpdates.label"),
+        VisionBundle.get("configurationConfigurable.checkForPluginUpdates.label"),
         configuration.isCheckForPluginUpdates());
     checkForNewScreenshotsCheckBox = new JBCheckBox(
-        CodeGPTBundle.get("configurationConfigurable.checkForNewScreenshots.label"),
+        VisionBundle.get("configurationConfigurable.checkForNewScreenshots.label"),
         configuration.isCheckForNewScreenshots());
     openNewTabCheckBox = new JBCheckBox(
-        CodeGPTBundle.get("configurationConfigurable.openNewTabCheckBox.label"),
+        VisionBundle.get("configurationConfigurable.openNewTabCheckBox.label"),
         configuration.isCreateNewChatOnEachAction());
     methodNameGenerationCheckBox = new JBCheckBox(
-        CodeGPTBundle.get("configurationConfigurable.enableMethodNameGeneration.label"),
+        VisionBundle.get("configurationConfigurable.enableMethodNameGeneration.label"),
         configuration.isMethodNameGenerationEnabled());
     autoFormattingCheckBox = new JBCheckBox(
-        CodeGPTBundle.get("configurationConfigurable.autoFormatting.label"),
+        VisionBundle.get("configurationConfigurable.autoFormatting.label"),
         configuration.isAutoFormattingEnabled());
     autocompletionPostProcessingCheckBox = new JBCheckBox(
-        CodeGPTBundle.get("configurationConfigurable.autocompletionPostProcessing.label"),
+        VisionBundle.get("configurationConfigurable.autocompletionPostProcessing.label"),
         configuration.isAutocompletionPostProcessingEnabled()
     );
 
@@ -135,10 +135,10 @@ public class ConfigurationComponent {
         .addComponent(autocompletionPostProcessingCheckBox)
         .addVerticalGap(4)
         .addComponent(new TitledSeparator(
-            CodeGPTBundle.get("configurationConfigurable.section.assistant.title")))
+            VisionBundle.get("configurationConfigurable.section.assistant.title")))
         .addComponent(createAssistantConfigurationForm())
         .addComponent(new TitledSeparator(
-            CodeGPTBundle.get("configurationConfigurable.section.commitMessage.title")))
+            VisionBundle.get("configurationConfigurable.section.commitMessage.title")))
         //.addComponent(createCommitMessageConfigurationForm())
         .addComponentFillVertically(new JPanel(), 0)
         .getPanel();
@@ -215,11 +215,11 @@ public class ConfigurationComponent {
       String commentKey,
       JComponent component) {
     formBuilder.addLabeledComponent(
-        new JBLabel(CodeGPTBundle.get(labelKey))
+        new JBLabel(VisionBundle.get(labelKey))
             .withBorder(JBUI.Borders.emptyLeft(2)),
         UI.PanelFactory.panel(component)
             .resizeX(false)
-            .withComment(CodeGPTBundle.get(commentKey))
+            .withComment(VisionBundle.get(commentKey))
             .withCommentHyperlinkListener(UIUtil::handleHyperlinkClicked)
             .createPanel(),
         true
@@ -257,7 +257,7 @@ public class ConfigurationComponent {
 //    return FormBuilder.createFormBuilder()
 //        .setFormLeftIndent(16)
 //        .addLabeledComponent(
-//            new JBLabel(CodeGPTBundle.get(
+//            new JBLabel(VisionBundle.get(
 //                "configurationConfigurable.section.commitMessage.systemPromptField.label"))
 //                .withBorder(JBUI.Borders.emptyLeft(2)),
 //            UI.PanelFactory.panel(commitMessagePromptTextArea)
@@ -279,12 +279,12 @@ public class ConfigurationComponent {
             var value = Double.parseDouble(valueText);
             if (value > 1.0 || value < 0.0) {
               return new ValidationInfo(
-                  CodeGPTBundle.get("validation.error.mustBeBetweenZeroAndOne"),
+                  VisionBundle.get("validation.error.mustBeBetweenZeroAndOne"),
                   component);
             }
           } catch (NumberFormatException e) {
             return new ValidationInfo(
-                CodeGPTBundle.get("validation.error.mustBeNumber"),
+                VisionBundle.get("validation.error.mustBeNumber"),
                 component);
           }
 
@@ -310,7 +310,7 @@ public class ConfigurationComponent {
 
     RevertToDefaultsActionButton() {
       super(
-          CodeGPTBundle.get("configurationConfigurable.table.action.revertToDefaults.text"),
+          VisionBundle.get("configurationConfigurable.table.action.revertToDefaults.text"),
           AllIcons.Actions.Rollback);
     }
 
@@ -332,13 +332,13 @@ public class ConfigurationComponent {
 
     KeymapActionButton() {
       super(
-          CodeGPTBundle.get("configurationConfigurable.table.action.addKeymap.text"),
+          VisionBundle.get("configurationConfigurable.table.action.addKeymap.text"),
           Nodes.KeymapEditor);
     }
 
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {
-      var actionId = "codegpt.AskChatgpt";
+      var actionId = "vision.AskChatgpt";
       var selectedRow = table.getSelectedRow();
       if (selectedRow != -1) {
         var label = getModel()

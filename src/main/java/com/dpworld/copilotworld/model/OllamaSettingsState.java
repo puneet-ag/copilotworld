@@ -9,7 +9,7 @@ public class OllamaSettingsState extends BaseState {
     private String host = "http://localhost:11434";
     private String model;
     private boolean codeCompletionsEnabled = false;
-    private InfillPromptTemplate fimTemplate = InfillPromptTemplate.CODE_LLAMA;
+    private InfillPromptTemplate fimTemplate = InfillPromptTemplate.DEEPSEEK_CODER;
     private List<String> availableModels = new ArrayList<>();
 
     public String getHost() {

@@ -7,13 +7,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CodeGPTUserDetails {
+public class VisionUserDetails {
 
     private final String fullName;
     private final List<AvailableModel> availableModels;
 
     @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
-    public CodeGPTUserDetails(
+    public VisionUserDetails(
             @JsonProperty("fullName") String fullName,
             @JsonProperty("availableModels") List<AvailableModel> availableModels) {
         this.fullName = fullName;

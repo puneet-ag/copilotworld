@@ -4,7 +4,7 @@ package com.dpworld.copilotworld.panel.converted;
 public class GeneralSettingsState {
 
   private String displayName = "";
-  private ServiceType selectedService = ServiceType.CODEGPT;
+  private ServiceType selectedService = ServiceType.VISION;
 
   public String getDisplayName() {
     if (displayName == null || displayName.isEmpty()) {

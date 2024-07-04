@@ -11,8 +11,8 @@ public final class CodeCompletionService {
 
     public boolean isCodeCompletionsEnabled(ServiceType selectedService) {
         switch (selectedService) {
-            case CODEGPT:
-                return ServiceManager.getService(CodeGPTServiceSettings.class)
+            case VISION:
+                return ServiceManager.getService(VisionServiceSettings.class)
                         .getState().getCodeCompletionSettings().isCodeCompletionsEnabled();
             case OLLAMA:
                 return ServiceManager.getService(OllamaSettings.class).getState().isCodeCompletionsEnabled();

@@ -17,7 +17,7 @@ public class ShowEditorActionGroupAction extends AnAction {
         ActionManager actionManager = ActionManager.getInstance();
         ActionGroup actionGroup = (ActionGroup) actionManager.getAction("action.editor.group.EditorActionGroup");
         JBPopupFactory.getInstance().createActionGroupPopup(
-                CodeGPTBundle.get("project.label"), actionGroup, e.getDataContext(),
+                VisionBundle.get("project.label"), actionGroup, e.getDataContext(),
                 ActionSelectionAid.ALPHA_NUMBERING, true
         ).show(RelativePoint.fromScreen(MouseInfo.getPointerInfo().getLocation()));
     }

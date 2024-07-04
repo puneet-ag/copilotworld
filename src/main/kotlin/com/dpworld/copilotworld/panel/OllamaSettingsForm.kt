@@ -2,7 +2,7 @@ package com.dpworld.copilotworld.panel
 
 import com.dpworld.copilotworld.model.OllamaSettings
 import com.dpworld.copilotworld.ollama.OllamaClient
-import com.dpworld.copilotworld.panel.converted.CodeGPTBundle
+import com.dpworld.copilotworld.panel.converted.VisionBundle
 import com.dpworld.copilotworld.panel.converted.OverlayUtil
 import com.dpworld.copilotworld.panel.converted.UIUtil
 import com.intellij.notification.NotificationType
@@ -29,7 +29,7 @@ import javax.swing.JPanel
 class OllamaSettingsForm {
 
     private val refreshModelsButton =
-        JButton(CodeGPTBundle.get("settingsConfigurable.service.ollama.models.refresh"))
+        JButton(VisionBundle.get("settingsConfigurable.service.ollama.models.refresh"))
     private val hostField: JBTextField
     private val modelComboBox: ComboBox<String>
     private val codeCompletionConfigurationForm: CodeCompletionConfigurationForm
@@ -62,28 +62,28 @@ class OllamaSettingsForm {
     }
 
     fun getForm(): JPanel = FormBuilder.createFormBuilder()
-        .addComponent(TitledSeparator(CodeGPTBundle.get("shared.configuration")))
+        .addComponent(TitledSeparator(VisionBundle.get("shared.configuration")))
         .addComponent(
             FormBuilder.createFormBuilder()
                 .setFormLeftIndent(16)
                 .addLabeledComponent(
-                    CodeGPTBundle.get("settingsConfigurable.shared.baseHost.label"),
+                    VisionBundle.get("settingsConfigurable.shared.baseHost.label"),
                     hostField
                 )
                 .addLabeledComponent(
-                    CodeGPTBundle.get("settingsConfigurable.shared.model.label"),
+                    VisionBundle.get("settingsConfigurable.shared.model.label"),
                     JPanel(BorderLayout(8, 0)).apply {
                         add(modelComboBox, BorderLayout.CENTER)
                         add(refreshModelsButton, BorderLayout.EAST)
                     }
                 )
-                .addComponent(TitledSeparator(CodeGPTBundle.get("settingsConfigurable.shared.authentication.title")))
+                //.addComponent(TitledSeparator(VisionBundle.get("settingsConfigurable.shared.authentication.title")))
                 .setFormLeftIndent(32)
 
-                .addComponentToRightColumn(UIUtil.createComment("settingsConfigurable.shared.apiKey.comment"))
+                //.addComponentToRightColumn(UIUtil.createComment("settingsConfigurable.shared.apiKey.comment"))
                 .panel
         )
-        .addComponent(TitledSeparator(CodeGPTBundle.get("shared.codeCompletions")))
+        .addComponent(TitledSeparator(VisionBundle.get("shared.codeCompletions")))
         .addComponent(UIUtil.withEmptyLeftBorder(codeCompletionConfigurationForm.getForm()))
         .addComponentFillVertically(JPanel(), 0)
         .panel
@@ -144,7 +144,7 @@ class OllamaSettingsForm {
                             } else {
                                 OverlayUtil.showBalloon(
                                     format(
-                                        CodeGPTBundle.get("validation.error.model.notExists"),
+                                        VisionBundle.get("validation.error.model.notExists"),
                                         currentModel
                                     ),
                                     MessageType.ERROR,

@@ -13,7 +13,7 @@ public class OllamaSettingsConfigurable implements Configurable {
 
     @Override
     public String getDisplayName() {
-        return "CodeGPT: Ollama Service";
+        return "Vision: Ollama Service";
     }
 
     @Override

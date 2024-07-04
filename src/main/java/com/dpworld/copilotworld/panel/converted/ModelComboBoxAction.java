@@ -40,10 +40,10 @@ public class ModelComboBoxAction extends ComboBoxAction {
     return button;
   }
 
-  private AnAction[] getCodeGPTModelActions(Project project, Presentation presentation) {
-    var userDetails = CodeGPTKeys.CODEGPT_USER_DETAILS.get(project);
-    return CodeGPTAvailableModels.getToolWindowModels().stream()
-            .map(model -> createCodeGPTModelAction(model, presentation))
+  private AnAction[] getVisionModelActions(Project project, Presentation presentation) {
+    var userDetails = VisionKeys.VISION_USER_DETAILS.get(project);
+    return VisionAvailableModels.getToolWindowModels().stream()
+            .map(model -> createVisionModelAction(model, presentation))
             .toArray(AnAction[]::new);
   }
 
@@ -51,8 +51,8 @@ public class ModelComboBoxAction extends ComboBoxAction {
   protected @NotNull DefaultActionGroup createPopupActionGroup(JComponent button) {
     var presentation = ((ComboBoxButton) button).getPresentation();
     var actionGroup = new DefaultActionGroup();
-    actionGroup.addSeparator("CodeGPT");
-    actionGroup.addAll(getCodeGPTModelActions(project, presentation));
+    actionGroup.addSeparator("Vision");
+    actionGroup.addAll(getVisionModelActions(project, presentation));
     actionGroup.addSeparator("OpenAI");
     actionGroup.addSeparator("Custom OpenAI");
 
@@ -143,7 +143,7 @@ public class ModelComboBoxAction extends ComboBoxAction {
     onModelChange.run();
   }
 
-  private AnAction createCodeGPTModelAction(CodeGPTModel model, Presentation comboBoxPresentation) {
+  private AnAction createVisionModelAction(VisionModel model, Presentation comboBoxPresentation) {
     return new DumbAwareAction(model.getName(), "", model.getIcon()) {
       @Override
       public void update(@NotNull AnActionEvent event) {
@@ -153,12 +153,12 @@ public class ModelComboBoxAction extends ComboBoxAction {
 
       @Override
       public void actionPerformed(@NotNull AnActionEvent e) {
-        ApplicationManager.getApplication().getService(CodeGPTServiceSettings.class)
+        ApplicationManager.getApplication().getService(VisionServiceSettings.class)
             .getState()
             .getChatCompletionSettings()
             .setModel(model.getCode());
         handleModelChange(
-            ServiceType.CODEGPT,
+            ServiceType.VISION,
             model.getName(),
             model.getIcon(),
             comboBoxPresentation);

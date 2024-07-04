@@ -2,12 +2,12 @@ package com.dpworld.copilotworld.panel.converted
 
 import com.intellij.util.messages.Topic
 
-interface CodeGPTUserDetailsNotifier {
-    fun userDetailsObtained(userDetails: CodeGPTUserDetails?)
+interface VisionUserDetailsNotifier {
+    fun userDetailsObtained(userDetails: VisionUserDetails?)
 
     companion object {
         @JvmStatic
-        val CODEGPT_USER_DETAILS_TOPIC =
-            Topic.create("codegptUserDetails", CodeGPTUserDetailsNotifier::class.java)
+        val VISION_USER_DETAILS_TOPIC =
+            Topic.create("visionUserDetails", VisionUserDetailsNotifier::class.java)
     }
 }

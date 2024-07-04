@@ -15,15 +15,15 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class CodeGPTStatusBarWidget extends EditorBasedStatusBarPopup {
+public class VisionStatusBarWidget extends EditorBasedStatusBarPopup {
 
-  public CodeGPTStatusBarWidget(Project project) {
+  public VisionStatusBarWidget(Project project) {
     super(project, false);
   }
 
   @Override
   protected @NotNull WidgetState getWidgetState(@Nullable VirtualFile file) {
-    var state = new WidgetState(CodeGPTBundle.get("statusBar.widget.tooltip"), "", true);
+    var state = new WidgetState(VisionBundle.get("statusBar.widget.tooltip"), "", true);
     state.setIcon(Icons.DefaultSmall);
     return state;
   }
@@ -32,8 +32,8 @@ public class CodeGPTStatusBarWidget extends EditorBasedStatusBarPopup {
   protected @Nullable ListPopup createPopup(@NotNull DataContext context) {
     return JBPopupFactory.getInstance()
         .createActionGroupPopup(
-            CodeGPTBundle.get("project.label"),
-            (ActionGroup) ActionManager.getInstance().getAction("codegpt.statusBarPopup"),
+            VisionBundle.get("project.label"),
+            (ActionGroup) ActionManager.getInstance().getAction("vision.statusBarPopup"),
             context,
             ActionSelectionAid.SPEEDSEARCH,
             true);
@@ -41,7 +41,7 @@ public class CodeGPTStatusBarWidget extends EditorBasedStatusBarPopup {
 
   @Override
   protected @NotNull StatusBarWidget createInstance(@NotNull Project project) {
-    return new CodeGPTStatusBarWidget(project);
+    return new VisionStatusBarWidget(project);
   }
 
   @Override

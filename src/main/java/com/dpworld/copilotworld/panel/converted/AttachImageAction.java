@@ -11,8 +11,8 @@ public class AttachImageAction extends AnAction {
 
     public AttachImageAction() {
         super(
-                CodeGPTBundle.get("action.attachImage"),
-                CodeGPTBundle.get("action.attachImageDescription"),
+                VisionBundle.get("action.attachImage"),
+                VisionBundle.get("action.attachImageDescription"),
                 Icons.Upload
         );
     }
@@ -26,7 +26,7 @@ public class AttachImageAction extends AnAction {
                 }
                 VirtualFile file = files.get(0);
                 if (e.getProject() != null) {
-                    CodeGPTKeys.IMAGE_ATTACHMENT_FILE_PATH.set(e.getProject(), file.getPath());
+                    VisionKeys.IMAGE_ATTACHMENT_FILE_PATH.set(e.getProject(), file.getPath());
                     e.getProject().getMessageBus()
                             .syncPublisher(AttachImageNotifier.IMAGE_ATTACHMENT_FILE_PATH_TOPIC)
                             .imageAttached(file.getPath());
@@ -43,6 +43,6 @@ public class AttachImageAction extends AnAction {
             return "jpg".equalsIgnoreCase(extension) ||
                     "jpeg".equalsIgnoreCase(extension) ||
                     "png".equalsIgnoreCase(extension);
-        }).withTitle(CodeGPTBundle.get("imageFileChooser.title"));
+        }).withTitle(VisionBundle.get("imageFileChooser.title"));
     }
 }

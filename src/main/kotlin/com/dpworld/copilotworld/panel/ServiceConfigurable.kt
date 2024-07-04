@@ -13,7 +13,7 @@ class ServiceConfigurable : Configurable {
     private lateinit var component: ServiceConfigurableComponent
 
     override fun getDisplayName(): String {
-        return "CodeGPT: Services"
+        return "Vision: Services"
     }
 
     override fun createComponent(): JComponent {

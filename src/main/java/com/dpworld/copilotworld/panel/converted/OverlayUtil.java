@@ -29,8 +29,8 @@ import static java.util.Objects.requireNonNull;
 
 public class OverlayUtil {
 
-  public static final String NOTIFICATION_GROUP_ID = "CodeGPT Notification Group";
-  public static final String NOTIFICATION_GROUP_STICKY_ID = "CodeGPT Notification Group Sticky";
+  public static final String NOTIFICATION_GROUP_ID = "Vision Notification Group";
+  public static final String NOTIFICATION_GROUP_STICKY_ID = "Vision Notification Group Sticky";
 
   private OverlayUtil() {
   }
@@ -42,7 +42,7 @@ public class OverlayUtil {
 
   public static Notification getDefaultNotification(
       @NotNull String content, @NotNull NotificationType type, @NotNull AnAction... actions) {
-    var notification = new Notification(NOTIFICATION_GROUP_ID, "CodeGPT", content, type);
+    var notification = new Notification(NOTIFICATION_GROUP_ID, "Vision", content, type);
     Arrays.asList(actions).forEach(notification::addAction);
     return notification;
   }
@@ -54,7 +54,7 @@ public class OverlayUtil {
 
   public static Notification getStickyNotification(
       @NotNull String content, @NotNull NotificationType type, @NotNull AnAction... actions) {
-    var notification = new Notification(NOTIFICATION_GROUP_STICKY_ID, "CodeGPT", content, type);
+    var notification = new Notification(NOTIFICATION_GROUP_STICKY_ID, "Vision", content, type);
     Arrays.asList(actions).forEach(notification::addAction);
     return notification;
   }
@@ -88,17 +88,17 @@ public class OverlayUtil {
 
   public static int showDeleteConversationDialog() {
     return Messages.showYesNoDialog(
-        CodeGPTBundle.get("dialog.deleteConversation.description"),
-        CodeGPTBundle.get("dialog.deleteConversation.title"),
+        VisionBundle.get("dialog.deleteConversation.description"),
+        VisionBundle.get("dialog.deleteConversation.title"),
         Icons.Default);
   }
 
   public static int showTokenLimitExceededDialog() {
     return MessageDialogBuilder.okCancel(
-            CodeGPTBundle.get("dialog.tokenLimitExceeded.title"),
-            CodeGPTBundle.get("dialog.tokenLimitExceeded.description"))
-        .yesText(CodeGPTBundle.get("dialog.continue"))
-        .noText(CodeGPTBundle.get("dialog.cancel"))
+            VisionBundle.get("dialog.tokenLimitExceeded.title"),
+            VisionBundle.get("dialog.tokenLimitExceeded.description"))
+        .yesText(VisionBundle.get("dialog.continue"))
+        .noText(VisionBundle.get("dialog.cancel"))
         .icon(Icons.Default)
         .doNotAsk(new DoNotAskOption.Adapter() {
           @Override
@@ -124,10 +124,10 @@ public class OverlayUtil {
 
   public static int showTokenSoftLimitWarningDialog(int tokenCount) {
     return MessageDialogBuilder.okCancel(
-            CodeGPTBundle.get("dialog.tokenSoftLimitExceeded.title"),
-            format(CodeGPTBundle.get("dialog.tokenSoftLimitExceeded.description"), tokenCount))
-        .yesText(CodeGPTBundle.get("dialog.continue"))
-        .noText(CodeGPTBundle.get("dialog.cancel"))
+            VisionBundle.get("dialog.tokenSoftLimitExceeded.title"),
+            format(VisionBundle.get("dialog.tokenSoftLimitExceeded.description"), tokenCount))
+        .yesText(VisionBundle.get("dialog.continue"))
+        .noText(VisionBundle.get("dialog.cancel"))
         .icon(Icons.Default)
         .doNotAsk(new DoNotAskOption.Adapter() {
           @Override

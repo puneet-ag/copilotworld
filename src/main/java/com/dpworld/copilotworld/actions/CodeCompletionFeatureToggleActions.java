@@ -7,7 +7,7 @@ import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.project.Project;
 import com.dpworld.copilotworld.model.OllamaSettings;
 import com.dpworld.copilotworld.panel.converted.CodeCompletionService;
-import com.dpworld.copilotworld.panel.converted.CodeGPTServiceSettings;
+import com.dpworld.copilotworld.panel.converted.VisionServiceSettings;
 import com.dpworld.copilotworld.panel.converted.GeneralSettings;
 import com.dpworld.copilotworld.panel.converted.ServiceType;
 
@@ -25,8 +25,8 @@ public abstract class CodeCompletionFeatureToggleActions extends AnAction {
         ServiceType selectedService = GeneralSettings.getSelectedService();
 
         switch (selectedService) {
-            case CODEGPT:
-                ServiceManager.getService(CodeGPTServiceSettings.class).getState().getCodeCompletionSettings().setCodeCompletionsEnabled(enableFeatureAction);
+            case VISION:
+                ServiceManager.getService(VisionServiceSettings.class).getState().getCodeCompletionSettings().setCodeCompletionsEnabled(enableFeatureAction);
                 break;
 
             case OLLAMA:
@@ -51,7 +51,7 @@ public abstract class CodeCompletionFeatureToggleActions extends AnAction {
 
         e.getPresentation().setVisible(codeCompletionEnabled != enableFeatureAction);
         e.getPresentation().setEnabled(
-                selectedService == ServiceType.CODEGPT ||
+                selectedService == ServiceType.VISION ||
                         selectedService == ServiceType.OLLAMA
         );
     }

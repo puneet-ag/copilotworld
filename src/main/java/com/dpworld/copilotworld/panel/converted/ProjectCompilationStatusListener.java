@@ -42,14 +42,14 @@ public class ProjectCompilationStatusListener implements CompilationStatusListen
     }
     if (errors > 0) {
       OverlayUtil.getDefaultNotification(
-              CodeGPTBundle.get("notification.compilationError.description"),
+              VisionBundle.get("notification.compilationError.description"),
               NotificationType.INFORMATION)
           .addAction(NotificationAction.createSimpleExpiring(
-              CodeGPTBundle.get("notification.compilationError.okLabel"),
+              VisionBundle.get("notification.compilationError.okLabel"),
               () -> project.getService(ChatToolWindowContentManager.class)
                   .sendMessage(getMultiFileMessage(compileContext), FIX_COMPILE_ERRORS)))
           .addAction(NotificationAction.createSimpleExpiring(
-              CodeGPTBundle.get("shared.notification.doNotShowAgain"),
+              VisionBundle.get("shared.notification.doNotShowAgain"),
               () -> ConfigurationSettings.getCurrentState().setCaptureCompileErrors(false)))
           .notify(project);
     }

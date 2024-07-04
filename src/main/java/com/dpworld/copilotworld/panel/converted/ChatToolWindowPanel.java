@@ -38,9 +38,9 @@ public class ChatToolWindowPanel extends SimpleToolWindowPanel {
     selectedFilesNotification = new ToolWindowFooterNotification(
         () -> clearSelectedFilesNotification(project));
     imageFileAttachmentNotification = new ToolWindowFooterNotification(() ->
-        project.putUserData(CodeGPTKeys.IMAGE_ATTACHMENT_FILE_PATH, ""));
+        project.putUserData(VisionKeys.IMAGE_ATTACHMENT_FILE_PATH, ""));
     upgradePlanLink = new ActionLink("Upgrade your plan", event -> {
-      BrowserUtil.browse("https://codegpt.ee/#pricing");
+      BrowserUtil.browse("https://vision.ee/#pricing");
     });
     upgradePlanLink.setFont(JBUI.Fonts.smallFont());
     upgradePlanLink.setExternalLinkIcon();
@@ -57,15 +57,15 @@ public class ChatToolWindowPanel extends SimpleToolWindowPanel {
             "File path: " + filePath));
     messageBusConnection.subscribe(ProviderChangeNotifier.PROVIDER_CHANGE_TOPIC,
         (ProviderChangeNotifier) provider -> {
-          if (provider == ServiceType.CODEGPT) {
-            var userDetails = CodeGPTKeys.CODEGPT_USER_DETAILS.get(project);
+          if (provider == ServiceType.VISION) {
+            var userDetails = VisionKeys.VISION_USER_DETAILS.get(project);
 
           } else {
             upgradePlanLink.setVisible(false);
           }
         });
-    messageBusConnection.subscribe(CodeGPTUserDetailsNotifier.getCODEGPT_USER_DETAILS_TOPIC(),
-        (CodeGPTUserDetailsNotifier) userDetails -> {
+    messageBusConnection.subscribe(VisionUserDetailsNotifier.getVISION_USER_DETAILS_TOPIC(),
+        (VisionUserDetailsNotifier) userDetails -> {
           if (userDetails != null) {
             var provider = ApplicationManager.getApplication().getService(GeneralSettings.class)
                 .getState()
@@ -102,8 +102,8 @@ public class ChatToolWindowPanel extends SimpleToolWindowPanel {
     selectedFilesNotification.hideNotification();
     imageFileAttachmentNotification.hideNotification();
 
-    project.putUserData(CodeGPTKeys.IMAGE_ATTACHMENT_FILE_PATH, "");
-    project.putUserData(CodeGPTKeys.SELECTED_FILES, emptyList());
+    project.putUserData(VisionKeys.IMAGE_ATTACHMENT_FILE_PATH, "");
+    project.putUserData(VisionKeys.SELECTED_FILES, emptyList());
   }
 
   private void init(Project project, Disposable parentDisposable) {
@@ -163,7 +163,7 @@ public class ChatToolWindowPanel extends SimpleToolWindowPanel {
   }
 
   public void clearSelectedFilesNotification(Project project) {
-    project.putUserData(CodeGPTKeys.SELECTED_FILES, emptyList());
+    project.putUserData(VisionKeys.SELECTED_FILES, emptyList());
     project.getMessageBus()
         .syncPublisher(IncludeFilesInContextNotifier.FILES_INCLUDED_IN_CONTEXT_TOPIC)
         .filesIncluded(emptyList());

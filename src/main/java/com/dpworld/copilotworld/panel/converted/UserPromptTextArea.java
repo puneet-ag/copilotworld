@@ -47,7 +47,7 @@ public class UserPromptTextArea extends JPanel {
     textArea.setBackground(BACKGROUND_COLOR);
     textArea.setLineWrap(true);
     textArea.setWrapStyleWord(true);
-    textArea.getEmptyText().setText(CodeGPTBundle.get("toolwindow.chat.textArea.emptyText"));
+    textArea.getEmptyText().setText(VisionBundle.get("toolwindow.chat.textArea.emptyText"));
     textArea.setBorder(JBUI.Borders.empty(8, 4));
     UIUtil.addShiftEnterInputMap(textArea, new AbstractAction() {
       @Override

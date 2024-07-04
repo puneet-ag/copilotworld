@@ -6,7 +6,7 @@ import com.intellij.openapi.editor.Editor;
 
 import org.jetbrains.annotations.NotNull;
 import com.dpworld.copilotworld.panel.converted.OverlayUtil;
-import com.dpworld.copilotworld.panel.converted.CodeGPTBundle;
+import com.dpworld.copilotworld.panel.converted.VisionBundle;
 
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
@@ -18,8 +18,8 @@ public class CopyAction extends TrackableAction {
   public CopyAction(@NotNull Editor editor) {
     super(
         editor,
-        CodeGPTBundle.get("toolwindow.chat.editor.action.copy.title"),
-        CodeGPTBundle.get("toolwindow.chat.editor.action.copy.description"),
+        VisionBundle.get("toolwindow.chat.editor.action.copy.title"),
+        VisionBundle.get("toolwindow.chat.editor.action.copy.description"),
         Actions.Copy,
         ActionType.COPY_CODE);
   }
@@ -36,7 +36,7 @@ public class CopyAction extends TrackableAction {
       locationOnScreen.y = locationOnScreen.y - 16;
 
       OverlayUtil.showInfoBalloon(
-              CodeGPTBundle.get("toolwindow.chat.editor.action.copy.success"),
+              VisionBundle.get("toolwindow.chat.editor.action.copy.success"),
               locationOnScreen);
     }
   }

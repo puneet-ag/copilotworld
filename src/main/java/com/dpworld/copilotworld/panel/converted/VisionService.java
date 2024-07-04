@@ -6,12 +6,12 @@ import com.intellij.openapi.project.Project;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class CodeGPTService {
+public class VisionService {
 
     private final Project project;
     private final ExecutorService serviceScope = Executors.newCachedThreadPool();
 
-    public CodeGPTService(Project project) {
+    public VisionService(Project project) {
         this.project = project;
     }
 

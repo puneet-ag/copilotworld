@@ -122,7 +122,7 @@ public class UIUtil {
 
   public static JLabel createComment(String messageKey) {
     var comment = ComponentPanelBuilder.createCommentComponent(
-        CodeGPTBundle.get(messageKey), true);
+        VisionBundle.get(messageKey), true);
     comment.setBorder(JBUI.Borders.empty(0, 4));
     return comment;
   }

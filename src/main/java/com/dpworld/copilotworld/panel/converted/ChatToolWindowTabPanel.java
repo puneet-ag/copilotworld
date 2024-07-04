@@ -86,7 +86,7 @@ public class ChatToolWindowTabPanel implements Disposable {
 
   public void sendMessage(Message message, ConversationType conversationType) {
     SwingUtilities.invokeLater(() -> {
-      var referencedFiles = project.getUserData(CodeGPTKeys.SELECTED_FILES);
+      var referencedFiles = project.getUserData(VisionKeys.SELECTED_FILES);
       var chatToolWindowPanel = project.getService(ChatToolWindowContentManager.class)
           .tryFindChatToolWindowPanel();
       if (referencedFiles != null && !referencedFiles.isEmpty()) {
@@ -103,7 +103,7 @@ public class ChatToolWindowTabPanel implements Disposable {
       }
 
       var userMessagePanel = new UserMessagePanel(project, message, this);
-      var attachedFilePath = CodeGPTKeys.IMAGE_ATTACHMENT_FILE_PATH.get(project);
+      var attachedFilePath = VisionKeys.IMAGE_ATTACHMENT_FILE_PATH.get(project);
       var callParameters = getCallParameters(conversationType, message, attachedFilePath);
       if (callParameters.getImageData() != null) {
         message.setImageFilePath(attachedFilePath);

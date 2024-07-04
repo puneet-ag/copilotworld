@@ -9,9 +9,8 @@ import com.intellij.openapi.project.Project
 import com.intellij.openapi.startup.ProjectActivity
 import io.ktor.util.*
 import java.nio.file.Paths
-import kotlin.io.path.absolutePathString
 
-class CodeGPTProjectActivity : ProjectActivity {
+class VisionProjectActivity : ProjectActivity {
 
     private val watchExtensions = setOf("jpg", "jpeg", "png")
 
@@ -19,8 +18,8 @@ class CodeGPTProjectActivity : ProjectActivity {
         EditorActionsUtil.refreshActions()
 
         val settings = service<GeneralSettings>().state
-        if (settings.selectedService == ServiceType.CODEGPT) {
-            //project.service<CodeGPTService>().syncUserDetailsAsync()
+        if (settings.selectedService == ServiceType.VISION) {
+            //project.service<VisionService>().syncUserDetailsAsync()
         }
 
         if (!ApplicationManager.getApplication().isUnitTestMode
@@ -40,13 +39,13 @@ class CodeGPTProjectActivity : ProjectActivity {
 
     private fun showImageAttachmentNotification(project: Project, filePath: String) {
         OverlayUtil.getDefaultNotification(
-            CodeGPTBundle.get("imageAttachmentNotification.content"),
+            VisionBundle.get("imageAttachmentNotification.content"),
             NotificationType.INFORMATION
         )
             .addAction(NotificationAction.createSimpleExpiring(
-                CodeGPTBundle.get("imageAttachmentNotification.action")
+                VisionBundle.get("imageAttachmentNotification.action")
             ) {
-                CodeGPTKeys.IMAGE_ATTACHMENT_FILE_PATH.set(project, filePath)
+                VisionKeys.IMAGE_ATTACHMENT_FILE_PATH.set(project, filePath)
                 project.messageBus
                     .syncPublisher<AttachImageNotifier>(
                         AttachImageNotifier.IMAGE_ATTACHMENT_FILE_PATH_TOPIC
@@ -54,7 +53,7 @@ class CodeGPTProjectActivity : ProjectActivity {
                     .imageAttached(filePath)
             })
             .addAction(NotificationAction.createSimpleExpiring(
-                CodeGPTBundle.get("shared.notification.doNotShowAgain")
+                VisionBundle.get("shared.notification.doNotShowAgain")
             ) {
                 ConfigurationSettings.getCurrentState().isCheckForNewScreenshots = false
             })

@@ -27,13 +27,13 @@ public class ChatToolWindowLandingPanel extends ResponsePanel {
         JPanel listPanel = new JPanel();
         listPanel.setLayout(new BoxLayout(listPanel, BoxLayout.PAGE_AXIS));
         listPanel.setBorder(JBUI.Borders.emptyLeft(4));
-        listPanel.add(Box.createVerticalStrut(4));
-        listPanel.add(createEditorActionLink(LandingPanelAction.EXPLAIN, onAction));
-        listPanel.add(Box.createVerticalStrut(4));
-        listPanel.add(createEditorActionLink(LandingPanelAction.WRITE_TESTS, onAction));
-        listPanel.add(Box.createVerticalStrut(4));
-        listPanel.add(createEditorActionLink(LandingPanelAction.FIND_BUGS, onAction));
-        listPanel.add(Box.createVerticalStrut(4));
+//        listPanel.add(Box.createVerticalStrut(4));
+//        listPanel.add(createEditorActionLink(LandingPanelAction.EXPLAIN, onAction));
+//        listPanel.add(Box.createVerticalStrut(4));
+//        listPanel.add(createEditorActionLink(LandingPanelAction.WRITE_TESTS, onAction));
+//        listPanel.add(Box.createVerticalStrut(4));
+//        listPanel.add(createEditorActionLink(LandingPanelAction.FIND_BUGS, onAction));
+//        listPanel.add(Box.createVerticalStrut(4));
         return listPanel;
     }
 
@@ -52,8 +52,8 @@ public class ChatToolWindowLandingPanel extends ResponsePanel {
     private String getWelcomeMessage() {
         return "<html>" +
                 "<p style=\"margin-top: 4px; margin-bottom: 4px;\">" +
-                "Hi <strong>" + GeneralSettings.getCurrentState().getDisplayName() + "</strong>, I'm CodeGPT! " +
-                "You can ask me anything, but most people request help with their code. Here are a few examples of what you can ask me:" +
+                "Hi <strong>" + GeneralSettings.getCurrentState().getDisplayName() + "</strong>, I'm Vision! " +
+                "Here to assist with coding. Feel free to ask me anything, though I recommend verifying critical details." +
                 "</p>" +
                 "</html>";
     }
@@ -61,7 +61,6 @@ public class ChatToolWindowLandingPanel extends ResponsePanel {
     private String getCautionMessage() {
         return "<html>" +
                 "<p style=\"margin-top: 4px; margin-bottom: 4px;\">" +
-                "I can sometimes make mistakes, so please double-check anything critical." +
                 "</p>" +
                 "</html>";
     }

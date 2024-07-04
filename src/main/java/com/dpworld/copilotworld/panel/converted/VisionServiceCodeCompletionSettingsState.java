@@ -2,7 +2,7 @@ package com.dpworld.copilotworld.panel.converted;
 
 import com.intellij.openapi.components.BaseState;
 
-public class CodeGPTServiceCodeCompletionSettingsState extends BaseState {
+public class VisionServiceCodeCompletionSettingsState extends BaseState {
     private boolean codeCompletionsEnabled = false;
     private String model = "starcoder-7b";
 

@@ -5,7 +5,7 @@ import java.util.Map;
 
 public enum ServiceType {
   OLLAMA("OLLAMA", "service.ollama.title", "ollama.chat.completion"),
-  CODEGPT("CODEGPT", "service.codegpt.title", "codegpt.chat.completion");
+  VISION("VISION", "service.vision.title", "vision.chat.completion");
 
 
   private final String code;
@@ -22,7 +22,7 @@ public enum ServiceType {
 
   ServiceType(String code, String messageKey, String completionCode) {
     this.code = code;
-    this.label = CodeGPTBundle.get(messageKey);
+    this.label = VisionBundle.get(messageKey);
     this.completionCode = completionCode;
   }
 

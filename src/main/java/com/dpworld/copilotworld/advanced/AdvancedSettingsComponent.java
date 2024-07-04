@@ -6,7 +6,7 @@ import com.intellij.ui.components.JBPasswordField;
 import com.intellij.ui.components.JBTextField;
 import com.intellij.util.ui.FormBuilder;
 import com.intellij.util.ui.JBUI;
-import com.dpworld.copilotworld.panel.converted.CodeGPTBundle;
+import com.dpworld.copilotworld.panel.converted.VisionBundle;
 import com.dpworld.copilotworld.panel.converted.UIUtil;
 
 
@@ -69,15 +69,15 @@ public class AdvancedSettingsComponent {
 
     var proxyTypePanel = UIUtil.createPanel(
         proxyTypeComboBox,
-        CodeGPTBundle.get("advancedSettingsConfigurable.proxy.typeComboBoxField.label"),
+        VisionBundle.get("advancedSettingsConfigurable.proxy.typeComboBoxField.label"),
         false);
     var proxyHostPanel = UIUtil.createPanel(
         proxyHostField,
-        CodeGPTBundle.get("advancedSettingsConfigurable.proxy.hostField.label"),
+        VisionBundle.get("advancedSettingsConfigurable.proxy.hostField.label"),
         false);
     var proxyPortPanel = UIUtil.createPanel(
         proxyPortField,
-        CodeGPTBundle.get("shared.port"),
+        VisionBundle.get("shared.port"),
         false);
     UIUtil.setEqualLabelWidths(proxyTypePanel, proxyHostPanel);
     UIUtil.setEqualLabelWidths(proxyPortPanel, proxyHostPanel);
@@ -88,10 +88,10 @@ public class AdvancedSettingsComponent {
 
 
     var proxyUsernamePanel = UIUtil.createPanel(proxyAuthUsername,
-        CodeGPTBundle.get("advancedSettingsConfigurable.proxy.usernameField.label"),
+        VisionBundle.get("advancedSettingsConfigurable.proxy.usernameField.label"),
         false);
     var proxyPasswordPanel = UIUtil.createPanel(proxyAuthPassword,
-        CodeGPTBundle.get("advancedSettingsConfigurable.proxy.passwordField.label"),
+        VisionBundle.get("advancedSettingsConfigurable.proxy.passwordField.label"),
         false);
     UIUtil.setEqualLabelWidths(proxyPasswordPanel, proxyUsernamePanel);
 

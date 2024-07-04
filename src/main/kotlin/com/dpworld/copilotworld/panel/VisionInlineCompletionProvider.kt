@@ -19,7 +19,7 @@ import kotlinx.coroutines.withContext
 import okhttp3.sse.EventSource
 import java.util.concurrent.atomic.AtomicReference
 
-class CodeGPTInlineCompletionProvider : InlineCompletionProvider {
+class VisionInlineCompletionProvider : InlineCompletionProvider {
     companion object {
         private val logger = thisLogger()
     }
@@ -27,7 +27,7 @@ class CodeGPTInlineCompletionProvider : InlineCompletionProvider {
     private val currentCall = AtomicReference<EventSource>(null)
 
     override val id: InlineCompletionProviderID
-        get() = InlineCompletionProviderID("CodeGPTInlineCompletionProvider")
+        get() = InlineCompletionProviderID("VisionInlineCompletionProvider")
 
     override suspend fun getSuggestion(request: InlineCompletionRequest): InlineCompletionSuggestion {
         val project = request.editor.project
@@ -71,7 +71,7 @@ class CodeGPTInlineCompletionProvider : InlineCompletionProvider {
                                     )
                             }
 
-                            request.editor.putUserData(CodeGPTKeys.PREVIOUS_INLAY_TEXT, inlineText)
+                            request.editor.putUserData(VisionKeys.PREVIOUS_INLAY_TEXT, inlineText)
                             launch {
                                 try {
                                     trySend(InlineCompletionGrayTextElement(inlineText))
@@ -93,7 +93,7 @@ class CodeGPTInlineCompletionProvider : InlineCompletionProvider {
     override fun isEnabled(event: InlineCompletionEvent): Boolean {
         val selectedService = GeneralSettings.getSelectedService()
         val codeCompletionsEnabled = when (selectedService) {
-            ServiceType.CODEGPT -> service<CodeGPTServiceSettings>().state.codeCompletionSettings.isCodeCompletionsEnabled
+            ServiceType.VISION -> service<VisionServiceSettings>().state.codeCompletionSettings.isCodeCompletionsEnabled
             ServiceType.OLLAMA -> service<OllamaSettings>().state.isCodeCompletionsEnabled
             null -> false
         }

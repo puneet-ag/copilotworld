@@ -15,7 +15,7 @@
 //
 //    @Override
 //    public String getDisplayName() {
-//        return "CodeGPT: Services";
+//        return "Vision: Services";
 //    }
 //
 //    @Override

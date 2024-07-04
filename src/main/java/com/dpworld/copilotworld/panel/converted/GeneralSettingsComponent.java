@@ -16,7 +16,7 @@ public class GeneralSettingsComponent {
   public JPanel getPanel() {
     return FormBuilder.createFormBuilder()
         .addLabeledComponent(
-            CodeGPTBundle.get("settingsConfigurable.displayName.label"),
+            VisionBundle.get("settingsConfigurable.displayName.label"),
             displayNameField)
         .addComponentFillVertically(new JPanel(), 0)
         .getPanel();

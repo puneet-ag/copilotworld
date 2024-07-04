@@ -7,7 +7,7 @@ import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
-public class CodeGPTStatusBarWidgetFactory extends StatusBarEditorBasedWidgetFactory {
+public class VisionStatusBarWidgetFactory extends StatusBarEditorBasedWidgetFactory {
 
   @Override
   public @NonNls @NotNull String getId() {
@@ -16,12 +16,12 @@ public class CodeGPTStatusBarWidgetFactory extends StatusBarEditorBasedWidgetFac
 
   @Override
   public @Nls @NotNull String getDisplayName() {
-    return CodeGPTBundle.get("project.label");
+    return VisionBundle.get("project.label");
   }
 
   @Override
   public @NotNull StatusBarWidget createWidget(@NotNull Project project) {
-    return new CodeGPTStatusBarWidget(project);
+    return new VisionStatusBarWidget(project);
   }
 
 }

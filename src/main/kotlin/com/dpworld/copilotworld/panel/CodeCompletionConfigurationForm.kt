@@ -1,7 +1,7 @@
 package com.dpworld.copilotworld.panel
 
 import com.dpworld.copilotworld.model.InfillPromptTemplate
-import com.dpworld.copilotworld.panel.converted.CodeGPTBundle
+import com.dpworld.copilotworld.panel.converted.VisionBundle
 import com.intellij.icons.AllIcons.General
 import com.intellij.ide.HelpTooltip
 import com.intellij.openapi.ui.ComboBox
@@ -20,7 +20,7 @@ class CodeCompletionConfigurationForm(
 ) {
 
     private val codeCompletionsEnabledCheckBox = JBCheckBox(
-        CodeGPTBundle.get("codeCompletionsForm.enableFeatureText"),
+        VisionBundle.get("codeCompletionsForm.enableFeatureText"),
         codeCompletionsEnabled
     )
     private val promptTemplateComboBox =

@@ -39,7 +39,7 @@ public class TotalTokensPanel extends JPanel {
     super(new FlowLayout(FlowLayout.LEADING, 0, 0));
     this.totalTokensDetails = createTokenDetails(
         conversation,
-        project.getUserData(CodeGPTKeys.SELECTED_FILES),
+        project.getUserData(VisionKeys.SELECTED_FILES),
         highlightedText);
     this.label = getLabel(totalTokensDetails);
 

@@ -45,7 +45,7 @@ public class IncludeFilesInContextAction extends AnAction {
   }
 
   public IncludeFilesInContextAction(String customTitleKey) {
-    super(CodeGPTBundle.get(customTitleKey));
+    super(VisionBundle.get(customTitleKey));
   }
 
   @Override
@@ -79,7 +79,7 @@ public class IncludeFilesInContextAction extends AnAction {
         totalTokensLabel,
         checkboxTree);
     if (show == OK_EXIT_CODE) {
-      project.putUserData(CodeGPTKeys.SELECTED_FILES, checkboxTree.getReferencedFiles());
+      project.putUserData(VisionKeys.SELECTED_FILES, checkboxTree.getReferencedFiles());
       project.getMessageBus()
           .syncPublisher(IncludeFilesInContextNotifier.FILES_INCLUDED_IN_CONTEXT_TOPIC)
           .filesIncluded(checkboxTree.getReferencedFiles());
@@ -174,14 +174,14 @@ public class IncludeFilesInContextAction extends AnAction {
       JBLabel totalTokensLabel,
       JComponent component) {
     var dialogBuilder = new DialogBuilder(project);
-    dialogBuilder.setTitle(CodeGPTBundle.get("action.includeFilesInContext.dialog.title"));
+    dialogBuilder.setTitle(VisionBundle.get("action.includeFilesInContext.dialog.title"));
     dialogBuilder.setActionDescriptors();
     var fileTreeScrollPane = ScrollPaneFactory.createScrollPane(component);
     fileTreeScrollPane.setPreferredSize(
         new Dimension(480, component.getPreferredSize().height + 48));
     dialogBuilder.setNorthPanel(FormBuilder.createFormBuilder()
         .addLabeledComponent(
-            CodeGPTBundle.get("shared.promptTemplate"),
+            VisionBundle.get("shared.promptTemplate"),
             PanelFactory.panel(promptTemplateTextArea).withComment(
                     "<html><p>The template that will be used to create the final prompt. "
                         + "The <strong>{REPEATABLE_CONTEXT}</strong> placeholder must be included "
@@ -190,7 +190,7 @@ public class IncludeFilesInContextAction extends AnAction {
             true)
         .addVerticalGap(4)
         .addLabeledComponent(
-            CodeGPTBundle.get("action.includeFilesInContext.dialog.repeatableContext.label"),
+            VisionBundle.get("action.includeFilesInContext.dialog.repeatableContext.label"),
             PanelFactory.panel(repeatableContextTextArea).withComment(
                     "<html><p>The context that will be repeated for each included file. "
                         + "Acceptable placeholders include <strong>{FILE_PATH}</strong> and "
@@ -201,14 +201,14 @@ public class IncludeFilesInContextAction extends AnAction {
             .addToRight(getRestoreButton(promptTemplateTextArea, repeatableContextTextArea)))
         .addVerticalGap(16)
         .addComponent(
-            new JBLabel(CodeGPTBundle.get("action.includeFilesInContext.dialog.description"))
+            new JBLabel(VisionBundle.get("action.includeFilesInContext.dialog.description"))
                 .setCopyable(false)
                 .setAllowAutoWrapping(true))
         .addVerticalGap(4)
         .addLabeledComponent(totalTokensLabel, fileTreeScrollPane, true)
         .addVerticalGap(16)
         .getPanel());
-    dialogBuilder.addOkAction().setText(CodeGPTBundle.get("dialog.continue"));
+    dialogBuilder.addOkAction().setText(VisionBundle.get("dialog.continue"));
     dialogBuilder.addCancelAction();
     return dialogBuilder.show();
   }
@@ -216,7 +216,7 @@ public class IncludeFilesInContextAction extends AnAction {
   private static JButton getRestoreButton(JBTextArea promptTemplateTextArea,
       JBTextArea repeatableContextTextArea) {
     var restoreButton = new JButton(
-        CodeGPTBundle.get("action.includeFilesInContext.dialog.restoreToDefaults.label"));
+        VisionBundle.get("action.includeFilesInContext.dialog.restoreToDefaults.label"));
     restoreButton.addActionListener(e -> {
       var includedFilesSettings = IncludedFilesSettings.getCurrentState();
       includedFilesSettings.setPromptTemplate(DEFAULT_PROMPT_TEMPLATE);

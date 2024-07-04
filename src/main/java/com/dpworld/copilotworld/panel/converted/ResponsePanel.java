@@ -75,8 +75,8 @@ public class ResponsePanel extends JPanel {
     public void addReloadAction(Runnable onReload) {
       addIconActionButton(new IconActionButton(
           new AnAction(
-              CodeGPTBundle.get("toolwindow.chat.response.action.reloadResponse.text"),
-              CodeGPTBundle.get("toolwindow.chat.response.action.reloadResponse.description"),
+              VisionBundle.get("toolwindow.chat.response.action.reloadResponse.text"),
+              VisionBundle.get("toolwindow.chat.response.action.reloadResponse.description"),
               Actions.Refresh) {
             @Override
             public void actionPerformed(@NotNull AnActionEvent e) {
@@ -89,8 +89,8 @@ public class ResponsePanel extends JPanel {
     public void addDeleteAction(Runnable onDelete) {
       addIconActionButton(new IconActionButton(
           new AnAction(
-              CodeGPTBundle.get("toolwindow.chat.response.action.deleteResponse.text"),
-              CodeGPTBundle.get("toolwindow.chat.response.action.deleteResponse.description"),
+              VisionBundle.get("toolwindow.chat.response.action.deleteResponse.text"),
+              VisionBundle.get("toolwindow.chat.response.action.deleteResponse.description"),
               Actions.GC) {
             @Override
             public void actionPerformed(@NotNull AnActionEvent e) {
@@ -108,7 +108,7 @@ public class ResponsePanel extends JPanel {
 
     private JBLabel getIconLabel() {
       return new JBLabel(
-          CodeGPTBundle.get("project.label"),
+          VisionBundle.get("project.label"),
           Icons.Default,
           SwingConstants.LEADING)
           .setAllowAutoWrapping(true)

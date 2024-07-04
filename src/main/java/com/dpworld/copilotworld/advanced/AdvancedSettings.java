@@ -7,8 +7,8 @@ import com.intellij.openapi.components.Storage;
 import org.jetbrains.annotations.NotNull;
 
 @State(
-    name = "CodeGPT_AdvancedSettings_210",
-    storages = @Storage("CodeGPT_AdvancedSettings_210.xml"))
+    name = "Vision_AdvancedSettings_210",
+    storages = @Storage("Vision_AdvancedSettings_210.xml"))
 public class AdvancedSettings implements PersistentStateComponent<AdvancedSettingsState> {
 
   private AdvancedSettingsState state = new AdvancedSettingsState();

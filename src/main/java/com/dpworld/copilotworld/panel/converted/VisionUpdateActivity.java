@@ -18,7 +18,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.TimeUnit;
 
-public class CodeGPTUpdateActivity implements ProjectActivity {
+public class VisionUpdateActivity implements ProjectActivity {
 
     @Nullable
     @Override
@@ -27,24 +27,25 @@ public class CodeGPTUpdateActivity implements ProjectActivity {
             return null;
         }
 
-        schedulePluginUpdateChecks(project);
+        //schedulePluginUpdateChecks(project);
         return null;
     }
 
-    private void schedulePluginUpdateChecks(Project project) {
-        Runnable command = () -> {
-            if (ConfigurationSettings.getCurrentState().isCheckForPluginUpdates()) {
-                new CheckForUpdatesTask(project).queue();
-            }
-        };
-        AppExecutorUtil.getAppScheduledExecutorService()
-                .scheduleWithFixedDelay(command, 0, 4L, TimeUnit.HOURS);
-    }
+//    private void schedulePluginUpdateChecks(Project project) {
+//        Runnable command = () -> {
+//            if (ConfigurationSettings.getCurrentState().isCheckForPluginUpdates()) {
+//                new CheckForUpdatesTask(project).queue();
+//            }
+//        };
+//        AppExecutorUtil.getAppScheduledExecutorService()
+//                .scheduleWithFixedDelay(command, 0, 4L, TimeUnit.HOURS);
+//    }
 
     private static class CheckForUpdatesTask extends Task.Backgroundable {
 
         protected CheckForUpdatesTask(Project project) {
-            super(project, CodeGPTBundle.get("checkForUpdatesTask.title"), true);
+            super(project, "test", true);
+            //super(project, VisionBundle.get("checkForUpdatesTask.title"), true);
         }
 
         @Override
@@ -55,22 +56,22 @@ public class CodeGPTUpdateActivity implements ProjectActivity {
 //                return;
 //            }
 
-            OverlayUtil.getDefaultNotification(
-                            CodeGPTBundle.get("checkForUpdatesTask.notification.message"),
-                            NotificationType.IDE_UPDATE
-                    )
-                    .addAction(NotificationAction.createSimpleExpiring(
-                            CodeGPTBundle.get("checkForUpdatesTask.notification.installButton"),
-                            () -> ApplicationManager.getApplication().executeOnPooledThread(() -> installCodeGPTUpdate(getProject()))
-                    ))
-                    .addAction(NotificationAction.createSimpleExpiring(
-                            CodeGPTBundle.get("shared.notification.doNotShowAgain"),
-                            () -> ConfigurationSettings.getCurrentState().setCheckForPluginUpdates(false)
-                    ))
-                    .notify(getProject());
+//            OverlayUtil.getDefaultNotification(
+//                            VisionBundle.get("checkForUpdatesTask.notification.message"),
+//                            NotificationType.IDE_UPDATE
+//                    )
+//                    .addAction(NotificationAction.createSimpleExpiring(
+//                            VisionBundle.get("checkForUpdatesTask.notification.installButton"),
+//                            () -> ApplicationManager.getApplication().executeOnPooledThread(() -> installVisionUpdate(getProject()))
+//                    ))
+//                    .addAction(NotificationAction.createSimpleExpiring(
+//                            VisionBundle.get("shared.notification.doNotShowAgain"),
+//                            () -> ConfigurationSettings.getCurrentState().setCheckForPluginUpdates(false)
+//                    ))
+//                    .notify(getProject());
         }
 
-        private void installCodeGPTUpdate(Project project) {
+        private void installVisionUpdate(Project project) {
             UpdateSettings settingsCopy = new UpdateSettings();
             var settingsState = settingsCopy.getState();
             settingsState.copyFrom(UpdateSettings.getInstance().getState());

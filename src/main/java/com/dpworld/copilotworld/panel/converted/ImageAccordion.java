@@ -51,7 +51,7 @@ public class ImageAccordion extends JPanel {
 
   private JToggleButton createToggleButton(JPanel contentPane) {
     var accordionToggle = new JToggleButton(
-        CodeGPTBundle.get("imageAccordion.title"),
+        VisionBundle.get("imageAccordion.title"),
         General.ArrowDown);
     accordionToggle.setFocusPainted(false);
     accordionToggle.setContentAreaFilled(false);

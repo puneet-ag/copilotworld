@@ -8,7 +8,7 @@ import com.intellij.openapi.components.Storage;
 import com.dpworld.copilotworld.model.OllamaSettings;
 import org.jetbrains.annotations.NotNull;
 
-@State(name = "CodeGPT_GeneralSettings_270", storages = @Storage("CodeGPT_GeneralSettings_270.xml"))
+@State(name = "Vision_GeneralSettings_270", storages = @Storage("Vision_GeneralSettings_270.xml"))
 public class GeneralSettings implements PersistentStateComponent<GeneralSettingsState> {
 
   private GeneralSettingsState state = new GeneralSettingsState();

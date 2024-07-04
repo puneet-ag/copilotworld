@@ -6,36 +6,34 @@ import com.intellij.openapi.ui.ComboBox
 import com.intellij.ui.components.JBCheckBox
 import com.intellij.ui.components.JBPasswordField
 import com.intellij.util.ui.FormBuilder
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.runBlocking
 import org.jdesktop.swingx.combobox.ListComboBoxModel
 import java.awt.Component
 import javax.swing.DefaultListCellRenderer
 import javax.swing.JList
 import javax.swing.JPanel
 
-class CodeGPTServiceForm {
+class VisionServiceForm {
 
     private val apiKeyField = JBPasswordField().apply {
         columns = 30
     }
 
     private val chatCompletionModelComboBox =
-        ComboBox(ListComboBoxModel(CodeGPTAvailableModels.ALL_CHAT_MODELS)).apply {
+        ComboBox(ListComboBoxModel(VisionAvailableModels.ALL_CHAT_MODELS)).apply {
             selectedItem =
-                CodeGPTAvailableModels.findByCode(service<CodeGPTServiceSettings>().state.chatCompletionSettings.model)
+                VisionAvailableModels.findByCode(service<VisionServiceSettings>().state.chatCompletionSettings.model)
             renderer = CustomComboBoxRenderer()
         }
 
     private val codeCompletionsEnabledCheckBox = JBCheckBox(
-        CodeGPTBundle.get("codeCompletionsForm.enableFeatureText"),
-        service<CodeGPTServiceSettings>().state.codeCompletionSettings.isCodeCompletionsEnabled
+        VisionBundle.get("codeCompletionsForm.enableFeatureText"),
+        service<VisionServiceSettings>().state.codeCompletionSettings.isCodeCompletionsEnabled
     )
 
     private val codeCompletionModelComboBox =
-        ComboBox(ListComboBoxModel(CodeGPTAvailableModels.CODE_MODELS)).apply {
+        ComboBox(ListComboBoxModel(VisionAvailableModels.CODE_MODELS)).apply {
             selectedItem =
-                CodeGPTAvailableModels.findByCode(service<CodeGPTServiceSettings>().state.codeCompletionSettings.model)
+                VisionAvailableModels.findByCode(service<VisionServiceSettings>().state.codeCompletionSettings.model)
             renderer = CustomComboBoxRenderer()
         }
 
@@ -45,19 +43,19 @@ class CodeGPTServiceForm {
 
     fun getForm(): JPanel = FormBuilder.createFormBuilder()
         .addLabeledComponent(
-            CodeGPTBundle.get("settingsConfigurable.shared.apiKey.label"),
+            VisionBundle.get("settingsConfigurable.shared.apiKey.label"),
             apiKeyField
         )
         .addComponentToRightColumn(
-            UIUtil.createComment("settingsConfigurable.service.codegpt.apiKey.comment")
+            UIUtil.createComment("settingsConfigurable.service.vision.apiKey.comment")
         )
         .addLabeledComponent("Chat model:", chatCompletionModelComboBox)
         .addComponentToRightColumn(
-            UIUtil.createComment("settingsConfigurable.service.codegpt.chatCompletionModel.comment")
+            UIUtil.createComment("settingsConfigurable.service.vision.chatCompletionModel.comment")
         )
         .addLabeledComponent("Code model:", codeCompletionModelComboBox)
         .addComponentToRightColumn(
-            UIUtil.createComment("settingsConfigurable.service.codegpt.codeCompletionModel.comment")
+            UIUtil.createComment("settingsConfigurable.service.vision.codeCompletionModel.comment")
         )
         .addVerticalGap(4)
         .addComponent(codeCompletionsEnabledCheckBox)
@@ -66,26 +64,26 @@ class CodeGPTServiceForm {
 
     fun getApiKey() = String(apiKeyField.password).ifEmpty { null }
 
-    fun isModified() = service<CodeGPTServiceSettings>().state.run {
-        (chatCompletionModelComboBox.selectedItem as CodeGPTModel).code != chatCompletionSettings.model
-                || (codeCompletionModelComboBox.selectedItem as CodeGPTModel).code != codeCompletionSettings.model
+    fun isModified() = service<VisionServiceSettings>().state.run {
+        (chatCompletionModelComboBox.selectedItem as VisionModel).code != chatCompletionSettings.model
+                || (codeCompletionModelComboBox.selectedItem as VisionModel).code != codeCompletionSettings.model
                 || codeCompletionsEnabledCheckBox.isSelected != codeCompletionSettings.isCodeCompletionsEnabled
 
     }
 
     fun applyChanges() {
-        service<CodeGPTServiceSettings>().state.run {
+        service<VisionServiceSettings>().state.run {
             chatCompletionSettings.model =
-                (chatCompletionModelComboBox.selectedItem as CodeGPTModel).code
+                (chatCompletionModelComboBox.selectedItem as VisionModel).code
             codeCompletionSettings.isCodeCompletionsEnabled =
                 codeCompletionsEnabledCheckBox.isSelected
             codeCompletionSettings.model =
-                (codeCompletionModelComboBox.selectedItem as CodeGPTModel).code
+                (codeCompletionModelComboBox.selectedItem as VisionModel).code
         }
     }
 
     fun resetForm() {
-        service<CodeGPTServiceSettings>().state.run {
+        service<VisionServiceSettings>().state.run {
             chatCompletionModelComboBox.selectedItem = chatCompletionSettings.model
             codeCompletionModelComboBox.selectedItem = codeCompletionSettings.model
             codeCompletionsEnabledCheckBox.isSelected =
@@ -103,7 +101,7 @@ class CodeGPTServiceForm {
         ): Component {
             val component =
                 super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus)
-            if (value is CodeGPTModel) {
+            if (value is VisionModel) {
                 text = value.name
             }
             return component

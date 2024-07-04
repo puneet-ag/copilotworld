@@ -8,7 +8,7 @@ public class ChatToolWindowListener implements ToolWindowManagerListener {
 
     @Override
     public void toolWindowShown(ToolWindow toolWindow) {
-        if ("CodeGPT".equals(toolWindow.getId())) {
+        if ("Vision".equals(toolWindow.getId())) {
             requestFocusForTextArea(toolWindow.getProject());
         }
     }

@@ -36,8 +36,8 @@
 //
 //  public GenerateGitCommitMessageAction() {
 //    super(
-//        CodeGPTBundle.get("action.generateCommitMessage.title"),
-//        CodeGPTBundle.get("action.generateCommitMessage.description"),
+//        VisionBundle.get("action.generateCommitMessage.title"),
+//        VisionBundle.get("action.generateCommitMessage.description"),
 //        Icons.Sparkle);
 //    encodingManager = EncodingManager.getInstance();
 //  }
@@ -53,7 +53,7 @@
 //    var callAllowed = CompletionRequestService.isRequestAllowed();
 //    event.getPresentation().setEnabled(callAllowed
 //        && new CommitWorkflowChanges(commitWorkflowUi).isFilesSelected());
-//    event.getPresentation().setText(CodeGPTBundle.get(callAllowed
+//    event.getPresentation().setText(VisionBundle.get(callAllowed
 //        ? "action.generateCommitMessage.title"
 //        : "action.generateCommitMessage.missingCredentials"));
 //  }
@@ -106,8 +106,8 @@
 //      @Override
 //      public void onError(ErrorDetails error, Throwable ex) {
 //        Notifications.Bus.notify(new Notification(
-//            "CodeGPT Notification Group",
-//            "CodeGPT",
+//            "Vision Notification Group",
+//            "Vision",
 //            error.getMessage(),
 //            NotificationType.ERROR));
 //      }

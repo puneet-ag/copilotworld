@@ -121,9 +121,9 @@ public class ResponseEditorPanel extends JPanel implements Disposable {
   private String getLinkText(boolean expanded) {
     return expanded
         ? format(
-        CodeGPTBundle.get("toolwindow.chat.editor.action.expand"),
+        VisionBundle.get("toolwindow.chat.editor.action.expand"),
         ((EditorEx) editor).getDocument().getLineCount() - 1)
-        : CodeGPTBundle.get("toolwindow.chat.editor.action.collapse");
+        : VisionBundle.get("toolwindow.chat.editor.action.collapse");
   }
 
   private ActionLink createExpandLink(EditorEx editorEx) {

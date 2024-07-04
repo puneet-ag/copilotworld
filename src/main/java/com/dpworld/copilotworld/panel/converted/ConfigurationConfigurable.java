@@ -18,7 +18,7 @@ public class ConfigurationConfigurable implements Configurable {
   @Nls(capitalization = Nls.Capitalization.Title)
   @Override
   public String getDisplayName() {
-    return CodeGPTBundle.get("configurationConfigurable.displayName");
+    return VisionBundle.get("configurationConfigurable.displayName");
   }
 
   @Nullable

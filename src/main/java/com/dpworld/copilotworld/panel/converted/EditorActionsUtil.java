@@ -48,7 +48,7 @@ public class EditorActionsUtil {
       var configuredActions = ConfigurationSettings.getCurrentState().getTableData();
       configuredActions.forEach((label, prompt) -> {
         // using label as action description to prevent com.intellij.diagnostic.PluginException
-        // https://github.com/carlrobertoh/CodeGPT/issues/95
+        // https://github.com/carlrobertoh/Vision/issues/95
         var action = new BaseEditorAction(label, label) {
           @Override
           protected void actionPerformed(Project project, Editor editor, String selectedText) {
@@ -62,7 +62,7 @@ public class EditorActionsUtil {
             toolWindowContentManager.getToolWindow().show();
 
             message.setReferencedFilePaths(
-                Stream.ofNullable(project.getUserData(CodeGPTKeys.SELECTED_FILES))
+                Stream.ofNullable(project.getUserData(VisionKeys.SELECTED_FILES))
                     .flatMap(Collection::stream)
                     .map(ReferencedFile::getFilePath)
                     .toList());
@@ -85,6 +85,6 @@ public class EditorActionsUtil {
   }
 
   public static String convertToId(String label) {
-    return "codegpt." + CaseUtils.toCamelCase(label, true);
+    return "vision." + CaseUtils.toCamelCase(label, true);
   }
 }

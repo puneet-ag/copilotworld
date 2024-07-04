@@ -1,6 +1,6 @@
 <idea-plugin>
     <id>com.dpworld.chatgpt</id>
-    <name>CodeGPT</name>
+    <name>VISION</name>
     <vendor email="test@gmail.com" url="">Puneet Agarwal</vendor>
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.lang</depends>
@@ -14,17 +14,17 @@
     </projectListeners>
 
     <extensions defaultExtensionNs="com.intellij">
-        <postStartupActivity implementation="com.dpworld.copilotworld.panel.CodeGPTProjectActivity"/>
-        <postStartupActivity implementation="com.dpworld.copilotworld.panel.converted.CodeGPTUpdateActivity"/>
-        <applicationConfigurable id="settings.codegpt" parentId="tools" displayName="CodeGPT"
+        <postStartupActivity implementation="com.dpworld.copilotworld.panel.VisionProjectActivity"/>
+        <postStartupActivity implementation="com.dpworld.copilotworld.panel.converted.VisionUpdateActivity"/>
+        <applicationConfigurable id="settings.vision" parentId="tools" displayName="Vision"
                                  instance="com.dpworld.copilotworld.panel.converted.GeneralSettingsConfigurable"/>
-        <applicationConfigurable id="settings.codegpt.services" parentId="settings.codegpt" displayName="Providers"
+        <applicationConfigurable id="settings.vision.services" parentId="settings.vision" displayName="Providers"
                                  instance="com.dpworld.copilotworld.panel.ServiceConfigurable"/>
-        <applicationConfigurable id="settings.codegpt.services.ollama" parentId="settings.codegpt.services" displayName="Ollama (Local)"
+        <applicationConfigurable id="settings.vision.services.ollama" parentId="settings.vision.services" displayName="Ollama (Local)"
                                  instance="com.dpworld.copilotworld.panel.converted.OllamaSettingsConfigurable"/>
-        <applicationConfigurable id="settings.codegpt.configuration" parentId="settings.codegpt" displayName="Configuration"
+        <applicationConfigurable id="settings.vision.configuration" parentId="settings.vision" displayName="Configuration"
                                  instance="com.dpworld.copilotworld.panel.converted.ConfigurationConfigurable"/>
-        <applicationConfigurable id="settings.codegpt.advanced" parentId="settings.codegpt" displayName="Advanced Settings"
+        <applicationConfigurable id="settings.vision.advanced" parentId="settings.vision" displayName="Advanced Settings"
                                  instance="com.dpworld.copilotworld.advanced.AdvancedSettingsConfigurable"/>
 
         <applicationService serviceImplementation="com.dpworld.copilotworld.panel.converted.GeneralSettings"/>
@@ -35,22 +35,22 @@
         <applicationService serviceImplementation="com.dpworld.copilotworld.panel.converted.IncludedFilesSettings"/>
 
         <inline.completion.provider
-                id="CodeGPTInlineCompletionProvider"
-                implementation="com.dpworld.copilotworld.panel.CodeGPTInlineCompletionProvider"/>
-        <toolWindow id="CodeGPT" icon="com.dpworld.copilotworld.panel.converted.Icons.DefaultSmall" anchor="right"
+                id="VisionInlineCompletionProvider"
+                implementation="com.dpworld.copilotworld.panel.VisionInlineCompletionProvider"/>
+        <toolWindow id="Vision" icon="com.dpworld.copilotworld.panel.converted.Icons.DefaultSmall" anchor="right"
                     factoryClass="com.dpworld.copilotworld.panel.converted.ProjectToolWindowFactory"/>
-        <notificationGroup id="CodeGPT Notification Group" displayType="BALLOON" key="notification.group.name"/>
-        <notificationGroup id="CodeGPT Notification Group Sticky" displayType="STICKY_BALLOON" key="notification.group.sticky.name"/>
+        <notificationGroup id="Vision Notification Group" displayType="BALLOON" key="notification.group.name"/>
+        <notificationGroup id="Vision Notification Group Sticky" displayType="STICKY_BALLOON" key="notification.group.sticky.name"/>
         <statusBarWidgetFactory order="first" id="com.dpworld.copilotworld.panel.converted.statusbar.widget"
-                                implementation="com.dpworld.copilotworld.panel.converted.CodeGPTStatusBarWidgetFactory"/>
+                                implementation="com.dpworld.copilotworld.panel.converted.VisionStatusBarWidgetFactory"/>
     </extensions>
 
-    <resource-bundle>messages.codegpt</resource-bundle>
+    <resource-bundle>messages.vision</resource-bundle>
 
     <actions>
-        <group id="CodeGPTEditorPopup">
+        <group id="VisionEditorPopup">
             <group id="action.editor.group.EditorActionGroup"
-                   text="CodeGPT"
+                   text="Vision"
                    class="com.intellij.openapi.actionSystem.DefaultActionGroup"
                    popup="true"
                    icon="com.dpworld.copilotworld.panel.converted.Icons.DefaultSmall">
@@ -58,19 +58,19 @@
             <add-to-group group-id="EditorPopupMenu1" anchor="first"/>
             <separator/>
         </group>
-        <action id="CodeGPT.TriggerEditorPopup"
+        <action id="Vision.TriggerEditorPopup"
                 class="com.dpworld.copilotworld.panel.converted.ShowEditorActionGroupAction"
-                text="Show CodeGPT Actions">
+                text="Show Vision Actions">
             <keyboard-shortcut first-keystroke="ctrl shift alt m" keymap="$default"/>
         </action>
-        <group id="CodeGPT.ProjectViewPopupMenuRootGroup">
-            <group id="CodeGPT.ProjectViewPopupMenuGroup"
-                   text="CodeGPT"
+        <group id="Vision.ProjectViewPopupMenuRootGroup">
+            <group id="Vision.ProjectViewPopupMenuGroup"
+                   text="Vision"
                    class="com.intellij.openapi.actionSystem.DefaultActionGroup"
                    popup="true"
                    icon="com.dpworld.copilotworld.panel.converted.Icons.DefaultSmall">
                 <action
-                        id="CodeGPT.IncludeFilesInContextAction"
+                        id="Vision.IncludeFilesInContextAction"
                         class="com.dpworld.copilotworld.panel.converted.IncludeFilesInContextAction" />
             </group>
             <add-to-group
@@ -81,7 +81,7 @@
         </group>
 
         <action
-                id="codegpt.openSettings"
+                id="vision.openSettings"
                 text="Open Settings"
                 class="com.dpworld.copilotworld.panel.converted.OpenSettingsAction">
             <override-text place="MainMenu" text="Open Settings"/>
@@ -120,8 +120,8 @@
 <!--            <override-text place="popup" use-text-of-place="MainMenu"/>-->
 <!--        </action>-->
 
-        <group id="codegpt.statusBarPopup">
-            <reference id="codegpt.openSettings" />
+        <group id="vision.statusBarPopup">
+            <reference id="vision.openSettings" />
             <separator/>
 <!--            <reference id="statusbar.stopServer" />-->
 <!--            <reference id="statusbar.startServer" />-->
@@ -129,11 +129,11 @@
             <reference id="statusbar.enableCompletions" />
         </group>
 
-<!--        <group id="CodeGPT.GenerateGitCommitMessageGroup">-->
+<!--        <group id="Vision.GenerateGitCommitMessageGroup">-->
 <!--            <add-to-group group-id="Vcs.MessageActionGroup" anchor="first"/>-->
 <!--            <action-->
-<!--                    id="CodeGPT.GenerateGitCommitMessage"-->
-<!--                    class="ee.carlrobert.codegpt.actions.GenerateGitCommitMessageAction" />-->
+<!--                    id="Vision.GenerateGitCommitMessage"-->
+<!--                    class="ee.carlrobert.vision.actions.GenerateGitCommitMessageAction" />-->
 <!--        </group>-->
     </actions>
 </idea-plugin>
