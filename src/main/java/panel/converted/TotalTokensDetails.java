@@ -1,9 +1,6 @@
 package panel.converted;
 
 
-import panel.EncodingManager;
-import panel.converted.ConfigurationSettings;
-
 public class TotalTokensDetails {
 
   private final int systemPromptTokens;

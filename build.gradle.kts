@@ -60,8 +60,13 @@ dependencies {
         // vulnerable transitive dependency
         exclude(group = "org.jsoup", module = "jsoup")
     }
+
+//    implementation("com.squareup.okhttp3:okhttp")
+    implementation("com.squareup.okhttp3:okhttp:4.9.0")
+    implementation("com.squareup.okhttp3:okhttp-sse:4.9.0")
     implementation(libs.jsoup)
     implementation(libs.commons.text)
     implementation(libs.jtokkit)
+
     testImplementation(kotlin("test"))
 }

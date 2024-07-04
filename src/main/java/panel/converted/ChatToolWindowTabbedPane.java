@@ -9,9 +9,6 @@ import com.intellij.openapi.util.Disposer;
 import com.intellij.ui.components.JBLabel;
 import com.intellij.ui.components.JBTabbedPane;
 import com.intellij.util.ui.JBUI;
-import panel.ChatToolWindowTabPanel;
-import panel.ConversationService;
-import panel.GeneralSettings;
 
 import javax.swing.*;
 import java.awt.*;

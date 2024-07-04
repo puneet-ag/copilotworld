@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 @State(
-    name = "ee.carlrobert.codegpt.state.conversations.ConversationsState",
+    name = "panel.converted.ConversationsState",
     storages = @Storage("ChatGPTConversations_170.xml"))
 public class ConversationsState implements PersistentStateComponent<ConversationsState> {
 

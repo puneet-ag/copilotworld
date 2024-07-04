@@ -13,9 +13,6 @@ import com.intellij.ui.components.JBLabel;
 import com.intellij.util.ui.JBUI;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import panel.EncodingManager;
-import panel.GeneralSettings;
-import panel.converted.*;
 
 import javax.swing.*;
 import java.awt.*;

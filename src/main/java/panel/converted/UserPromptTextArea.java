@@ -11,8 +11,6 @@ import com.intellij.ui.JBColor;
 import com.intellij.ui.components.JBTextArea;
 import com.intellij.util.ui.JBUI;
 import org.jetbrains.annotations.NotNull;
-import panel.AttachImageAction;
-import panel.CompletionRequestHandler;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;

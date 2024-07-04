@@ -1,13 +1,19 @@
 package panel.converted;
 
+import static javax.swing.event.HyperlinkEvent.EventType.ACTIVATED;
+
+import com.intellij.openapi.options.ShowSettingsUtil;
 import com.intellij.openapi.roots.ui.componentsList.components.ScrollablePanel;
 import com.intellij.openapi.roots.ui.componentsList.layout.VerticalStackLayout;
-
-import javax.swing.*;
+import com.intellij.ui.JBColor;
+import com.intellij.util.ui.JBUI;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import javax.swing.BoxLayout;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
 
 public class ChatToolWindowScrollablePanel extends ScrollablePanel {
 
@@ -17,11 +23,15 @@ public class ChatToolWindowScrollablePanel extends ScrollablePanel {
     super(new VerticalStackLayout());
   }
 
+  public void displayLandingView(JComponent landingView) {
+    clearAll();
+    add(landingView);
+  }
 
   public ResponsePanel getMessageResponsePanel(UUID messageId) {
     return (ResponsePanel) Arrays.stream(visibleMessagePanels.get(messageId).getComponents())
-        .filter(ResponsePanel.class::isInstance)
-        .findFirst().orElseThrow();
+            .filter(ResponsePanel.class::isInstance)
+            .findFirst().orElseThrow();
   }
 
   public JPanel addMessage(UUID messageId) {

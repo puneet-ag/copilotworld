@@ -5,7 +5,6 @@ import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import org.jetbrains.annotations.NotNull;
-import panel.ConfigurationState;
 
 @State(
     name = "CodeGPT_ConfigurationSettings_210",
