@@ -1,48 +1,48 @@
 <idea-plugin>
     <id>com.dpworld.chatgpt</id>
     <name>CodeGPT</name>
-    <vendor email="carlrobertoh@gmail.com" url="https://carlrobert.ee">Carl-Robert Linnupuu</vendor>
+    <vendor email="test@gmail.com" url="">Puneet Agarwal</vendor>
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.lang</depends>
     <depends optional="true" config-file="plugin-java.xml">com.intellij.modules.java</depends>
 
     <projectListeners>
         <listener topic="com.intellij.codeInsight.lookup.LookupManagerListener"
-                  class="panel.converted.MethodNameLookupListener"/>
+                  class="com.dpworld.copilotworld.panel.converted.MethodNameLookupListener"/>
         <listener topic="com.intellij.openapi.wm.ex.ToolWindowManagerListener"
-                  class="panel.converted.ChatToolWindowListener"/>
+                  class="com.dpworld.copilotworld.panel.converted.ChatToolWindowListener"/>
     </projectListeners>
 
     <extensions defaultExtensionNs="com.intellij">
-        <postStartupActivity implementation="panel.converted.CodeGPTProjectActivity"/>
-        <postStartupActivity implementation="panel.converted.CodeGPTUpdateActivity"/>
+        <postStartupActivity implementation="com.dpworld.copilotworld.panel.converted.CodeGPTProjectActivity"/>
+        <postStartupActivity implementation="com.dpworld.copilotworld.panel.converted.CodeGPTUpdateActivity"/>
         <applicationConfigurable id="settings.codegpt" parentId="tools" displayName="CodeGPT"
-                                 instance="panel.converted.GeneralSettingsConfigurable"/>
+                                 instance="com.dpworld.copilotworld.panel.converted.GeneralSettingsConfigurable"/>
         <applicationConfigurable id="settings.codegpt.services" parentId="settings.codegpt" displayName="Providers"
-                                 instance="panel.ServiceConfigurable"/>
+                                 instance="com.dpworld.copilotworld.panel.ServiceConfigurable"/>
         <applicationConfigurable id="settings.codegpt.services.ollama" parentId="settings.codegpt.services" displayName="Ollama (Local)"
-                                 instance="panel.converted.OllamaSettingsConfigurable"/>
+                                 instance="com.dpworld.copilotworld.panel.converted.OllamaSettingsConfigurable"/>
         <applicationConfigurable id="settings.codegpt.configuration" parentId="settings.codegpt" displayName="Configuration"
-                                 instance="panel.converted.ConfigurationConfigurable"/>
+                                 instance="com.dpworld.copilotworld.panel.converted.ConfigurationConfigurable"/>
         <applicationConfigurable id="settings.codegpt.advanced" parentId="settings.codegpt" displayName="Advanced Settings"
-                                 instance="advanced.AdvancedSettingsConfigurable"/>
+                                 instance="com.dpworld.copilotworld.advanced.AdvancedSettingsConfigurable"/>
 
-        <applicationService serviceImplementation="panel.converted.GeneralSettings"/>
-        <applicationService serviceImplementation="model.OllamaSettings"/>
-        <applicationService serviceImplementation="panel.converted.ConfigurationSettings"/>
-        <applicationService serviceImplementation="advanced.AdvancedSettings"/>
-        <applicationService serviceImplementation="panel.converted.ConversationsState"/>
-        <applicationService serviceImplementation="panel.converted.IncludedFilesSettings"/>
+        <applicationService serviceImplementation="com.dpworld.copilotworld.panel.converted.GeneralSettings"/>
+        <applicationService serviceImplementation="com.dpworld.copilotworld.model.OllamaSettings"/>
+        <applicationService serviceImplementation="com.dpworld.copilotworld.panel.converted.ConfigurationSettings"/>
+        <applicationService serviceImplementation="com.dpworld.copilotworld.advanced.AdvancedSettings"/>
+        <applicationService serviceImplementation="com.dpworld.copilotworld.panel.converted.ConversationsState"/>
+        <applicationService serviceImplementation="com.dpworld.copilotworld.panel.converted.IncludedFilesSettings"/>
 
         <inline.completion.provider
                 id="CodeGPTInlineCompletionProvider"
-                implementation="panel.CodeGPTInlineCompletionProvider"/>
-        <toolWindow id="CodeGPT" icon="panel.converted.Icons.DefaultSmall" anchor="right"
-                    factoryClass="panel.converted.ProjectToolWindowFactory"/>
+                implementation="com.dpworld.copilotworld.panel.CodeGPTInlineCompletionProvider"/>
+        <toolWindow id="CodeGPT" icon="com.dpworld.copilotworld.panel.converted.Icons.DefaultSmall" anchor="right"
+                    factoryClass="com.dpworld.copilotworld.panel.converted.ProjectToolWindowFactory"/>
         <notificationGroup id="CodeGPT Notification Group" displayType="BALLOON" key="notification.group.name"/>
         <notificationGroup id="CodeGPT Notification Group Sticky" displayType="STICKY_BALLOON" key="notification.group.sticky.name"/>
-        <statusBarWidgetFactory order="first" id="ee.carlrobert.codegpt.statusbar.widget"
-                                implementation="panel.converted.CodeGPTStatusBarWidgetFactory"/>
+        <statusBarWidgetFactory order="first" id="com.dpworld.copilotworld.panel.converted.statusbar.widget"
+                                implementation="com.dpworld.copilotworld.panel.converted.CodeGPTStatusBarWidgetFactory"/>
     </extensions>
 
     <resource-bundle>messages.codegpt</resource-bundle>
@@ -53,13 +53,13 @@
                    text="CodeGPT"
                    class="com.intellij.openapi.actionSystem.DefaultActionGroup"
                    popup="true"
-                   icon="panel.converted.Icons.DefaultSmall">
+                   icon="com.dpworld.copilotworld.panel.converted.Icons.DefaultSmall">
             </group>
             <add-to-group group-id="EditorPopupMenu1" anchor="first"/>
             <separator/>
         </group>
         <action id="CodeGPT.TriggerEditorPopup"
-                class="panel.converted.ShowEditorActionGroupAction"
+                class="com.dpworld.copilotworld.panel.converted.ShowEditorActionGroupAction"
                 text="Show CodeGPT Actions">
             <keyboard-shortcut first-keystroke="ctrl shift alt m" keymap="$default"/>
         </action>
@@ -68,10 +68,10 @@
                    text="CodeGPT"
                    class="com.intellij.openapi.actionSystem.DefaultActionGroup"
                    popup="true"
-                   icon="panel.converted.Icons.DefaultSmall">
+                   icon="com.dpworld.copilotworld.panel.converted.Icons.DefaultSmall">
                 <action
                         id="CodeGPT.IncludeFilesInContextAction"
-                        class="panel.converted.IncludeFilesInContextAction" />
+                        class="com.dpworld.copilotworld.panel.converted.IncludeFilesInContextAction" />
             </group>
             <add-to-group
                     group-id="ProjectViewPopupMenu"
@@ -83,13 +83,13 @@
         <action
                 id="codegpt.openSettings"
                 text="Open Settings"
-                class="panel.converted.OpenSettingsAction">
+                class="com.dpworld.copilotworld.panel.converted.OpenSettingsAction">
             <override-text place="MainMenu" text="Open Settings"/>
             <override-text place="popup" use-text-of-place="MainMenu"/>
         </action>
         <action
                 id="statusbar.enableCompletions"
-                class="actions.EnableCompletionsAction">
+                class="com.dpworld.copilotworld.actions.EnableCompletionsAction">
             <keyboard-shortcut first-keystroke="ctrl shift alt c" keymap="$default"/>
 
             <override-text place="MainMenu"/>
@@ -97,7 +97,7 @@
         </action>
         <action
                 id="statusbar.disableCompletions"
-                class="actions.DisableCompletionsAction">
+                class="com.dpworld.copilotworld.actions.DisableCompletionsAction">
             <keyboard-shortcut first-keystroke="ctrl shift alt c" keymap="$default"/>
 
             <override-text place="MainMenu"/>

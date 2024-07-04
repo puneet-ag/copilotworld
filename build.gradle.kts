@@ -1,10 +1,7 @@
-import java.io.FileInputStream
-import java.util.*
-
 plugins {
     id("java")
-    id("org.jetbrains.kotlin.jvm") version "1.9.21"
-    id("org.jetbrains.intellij") version "1.16.1"
+    id("org.jetbrains.kotlin.jvm")
+    id("org.jetbrains.intellij")
 }
 
 group = "com.dpworld"
@@ -20,7 +17,7 @@ repositories {
 // Configure Gradle IntelliJ Plugin
 // Read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
 intellij {
-    version.set("2023.1.5")
+    version.set("2023.3.6")
     type.set("IC") // Target IDE Platform
 
     plugins.set(listOf("java"))
@@ -37,7 +34,7 @@ tasks {
     }
 
     patchPluginXml {
-        sinceBuild.set("231")
+        sinceBuild.set("233")
         untilBuild.set("241.*")
     }
 
@@ -66,7 +63,12 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp-sse:4.9.0")
     implementation(libs.jsoup)
     implementation(libs.commons.text)
+    implementation(libs.tree.sitter)
     implementation(libs.jtokkit)
+    implementation("io.github.bonede:tree-sitter-java:0.21.0")
+
+
+
 
     testImplementation(kotlin("test"))
 }

@@ -1,6 +1,6 @@
 <idea-plugin>
   <projectListeners>
     <listener topic="com.intellij.openapi.compiler.CompilationStatusListener"
-      class="panel.converted.ProjectCompilationStatusListener" />
+      class="com.dpworld.copilotworld.panel.converted.ProjectCompilationStatusListener" />
   </projectListeners>
 </idea-plugin>
