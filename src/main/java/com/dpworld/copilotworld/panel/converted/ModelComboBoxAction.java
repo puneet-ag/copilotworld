@@ -11,6 +11,8 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class ModelComboBoxAction extends ComboBoxAction {
@@ -40,8 +42,8 @@ public class ModelComboBoxAction extends ComboBoxAction {
 
   private AnAction[] getCodeGPTModelActions(Project project, Presentation presentation) {
     var userDetails = CodeGPTKeys.CODEGPT_USER_DETAILS.get(project);
-    return CodeGPTAvailableModels.getToolWindowModels()
-            .stream()
+    return CodeGPTAvailableModels.getToolWindowModels().stream()
+            .map(model -> createCodeGPTModelAction(model, presentation))
             .toArray(AnAction[]::new);
   }
 

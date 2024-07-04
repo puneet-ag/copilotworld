@@ -14,7 +14,7 @@
     </projectListeners>
 
     <extensions defaultExtensionNs="com.intellij">
-        <postStartupActivity implementation="com.dpworld.copilotworld.panel.converted.CodeGPTProjectActivity"/>
+        <postStartupActivity implementation="com.dpworld.copilotworld.panel.CodeGPTProjectActivity"/>
         <postStartupActivity implementation="com.dpworld.copilotworld.panel.converted.CodeGPTUpdateActivity"/>
         <applicationConfigurable id="settings.codegpt" parentId="tools" displayName="CodeGPT"
                                  instance="com.dpworld.copilotworld.panel.converted.GeneralSettingsConfigurable"/>
