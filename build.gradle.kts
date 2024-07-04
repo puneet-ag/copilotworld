@@ -66,6 +66,8 @@ dependencies {
     implementation(libs.tree.sitter)
     implementation(libs.jtokkit)
     implementation("io.github.bonede:tree-sitter-java:0.21.0")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jdk8")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
 
 
 

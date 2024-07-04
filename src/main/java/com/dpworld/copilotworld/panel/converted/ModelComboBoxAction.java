@@ -10,6 +10,7 @@ import com.dpworld.copilotworld.model.OllamaSettings;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
+import java.util.ArrayList;
 
 
 public class ModelComboBoxAction extends ComboBoxAction {
@@ -40,7 +41,8 @@ public class ModelComboBoxAction extends ComboBoxAction {
   private AnAction[] getCodeGPTModelActions(Project project, Presentation presentation) {
     var userDetails = CodeGPTKeys.CODEGPT_USER_DETAILS.get(project);
     return CodeGPTAvailableModels.getToolWindowModels()
-        .toArray(AnAction[]::new);
+            .stream()
+            .toArray(AnAction[]::new);
   }
 
   @Override
