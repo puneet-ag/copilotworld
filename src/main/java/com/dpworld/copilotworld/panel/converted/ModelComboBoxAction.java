@@ -1,5 +1,6 @@
 package com.dpworld.copilotworld.panel.converted;
 
+import com.dpworld.copilotworld.panel.OllamaSettingsForm;
 import com.intellij.openapi.actionSystem.*;
 import com.intellij.openapi.actionSystem.ex.ComboBoxAction;
 import com.intellij.openapi.application.ApplicationManager;
@@ -35,9 +36,16 @@ public class ModelComboBoxAction extends ComboBoxAction {
   public JComponent createCustomComponent(
       @NotNull Presentation presentation,
       @NotNull String place) {
+    presentation.setText("Reload Models");
     ComboBoxButton button = createComboBoxButton(presentation);
     button.setBorder(null);
+    //button.addActionListener(e -> refreshModels());
     return button;
+  }
+
+  private void refreshModels() {
+    OllamaSettingsForm settingsForm = new OllamaSettingsForm();
+    settingsForm.refreshModels(settingsForm.getModel());
   }
 
   private AnAction[] getVisionModelActions(Project project, Presentation presentation) {
@@ -53,16 +61,17 @@ public class ModelComboBoxAction extends ComboBoxAction {
     var actionGroup = new DefaultActionGroup();
     actionGroup.addSeparator("Vision");
     actionGroup.addAll(getVisionModelActions(project, presentation));
-    actionGroup.addSeparator("OpenAI");
-    actionGroup.addSeparator("Custom OpenAI");
+    actionGroup.addSeparator("Available Models");
+    //actionGroup.addSeparator("Custom OpenAI");
 
-    actionGroup.addSeparator();
+    //actionGroup.addSeparator();
 
-    actionGroup.addSeparator();
+    //actionGroup.addSeparator();
 
     actionGroup.addSeparator();
 
     actionGroup.addSeparator("Ollama");
+    refreshModels();
     ApplicationManager.getApplication()
         .getService(OllamaSettings.class)
         .getState()
