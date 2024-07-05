@@ -8,25 +8,25 @@
 
     <projectListeners>
         <listener topic="com.intellij.codeInsight.lookup.LookupManagerListener"
-                  class="com.dpworld.copilotworld.panel.MethodNameLookupListener"/>
+                  class="com.dpworld.copilotworld.listener.MethodNameLookupListener"/>
         <listener topic="com.intellij.openapi.wm.ex.ToolWindowManagerListener"
-                  class="com.dpworld.copilotworld.panel.ChatToolWindowListener"/>
+                  class="com.dpworld.copilotworld.listener.ChatToolWindowListener"/>
     </projectListeners>
 
     <extensions defaultExtensionNs="com.intellij">
         <postStartupActivity implementation="com.dpworld.copilotworld.panel.AvatarProjectActivity"/>
-        <postStartupActivity implementation="com.dpworld.copilotworld.panel.AvatarUpdateActivity"/>
+        <postStartupActivity implementation="com.dpworld.copilotworld.avatar.AvatarUpdateActivity"/>
         <applicationConfigurable id="settings.avatar" parentId="tools" displayName="Avatar"
-                                 instance="com.dpworld.copilotworld.panel.GeneralSettingsConfigurable"/>
+                                 instance="com.dpworld.copilotworld.configurations.GeneralSettingsConfigurable"/>
         <applicationConfigurable id="settings.avatar.services.ollama" parentId="settings.avatar" displayName="Model Server"
-                                 instance="com.dpworld.copilotworld.panel.OllamaSettingsConfigurable"/>
+                                 instance="com.dpworld.copilotworld.ollama.OllamaSettingsConfigurable"/>
 
-        <applicationService serviceImplementation="com.dpworld.copilotworld.panel.GeneralSettings"/>
-        <applicationService serviceImplementation="com.dpworld.copilotworld.model.OllamaSettings"/>
-        <applicationService serviceImplementation="com.dpworld.copilotworld.panel.ConfigurationSettings"/>
+        <applicationService serviceImplementation="com.dpworld.copilotworld.configurations.GeneralSettings"/>
+        <applicationService serviceImplementation="com.dpworld.copilotworld.ollama.OllamaSettings"/>
+        <applicationService serviceImplementation="com.dpworld.copilotworld.configuration.ConfigurationSettings"/>
         <applicationService serviceImplementation="com.dpworld.copilotworld.advanced.AdvancedSettings"/>
-        <applicationService serviceImplementation="com.dpworld.copilotworld.panel.ConversationsState"/>
-        <applicationService serviceImplementation="com.dpworld.copilotworld.panel.IncludedFilesSettings"/>
+        <applicationService serviceImplementation="com.dpworld.copilotworld.conversation.ConversationsState"/>
+        <applicationService serviceImplementation="com.dpworld.copilotworld.configurations.IncludedFilesSettings"/>
 
         <inline.completion.provider
                 id="AvatarInlineCompletionProvider"
@@ -36,10 +36,10 @@
         <notificationGroup id="Avatar Notification Group" displayType="BALLOON" key="notification.group.name"/>
         <notificationGroup id="Avatar Notification Group Sticky" displayType="STICKY_BALLOON" key="notification.group.sticky.name"/>
         <statusBarWidgetFactory order="first" id="com.dpworld.copilotworld.panel.converted.statusbar.widget"
-                                implementation="com.dpworld.copilotworld.panel.AvatarStatusBarWidgetFactory"/>
+                                implementation="com.dpworld.copilotworld.avatar.AvatarStatusBarWidgetFactory"/>
     </extensions>
 
-    <resource-bundle>messages.avatar</resource-bundle>
+    <resource-bundle>messages.copilot</resource-bundle>
 
     <actions>
         <group id="AvatarEditorPopup">
@@ -53,7 +53,7 @@
             <separator/>
         </group>
         <action id="Avatar.TriggerEditorPopup"
-                class="com.dpworld.copilotworld.panel.ShowEditorActionGroupAction"
+                class="com.dpworld.copilotworld.actions.ShowEditorActionGroupAction"
                 text="Show Avatar Actions">
             <keyboard-shortcut first-keystroke="ctrl shift alt m" keymap="$default"/>
         </action>
@@ -65,7 +65,7 @@
                    icon="com.dpworld.copilotworld.panel.Icons.DefaultSmall">
                 <action
                         id="Avatar.IncludeFilesInContextAction"
-                        class="com.dpworld.copilotworld.panel.IncludeFilesInContextAction" />
+                        class="com.dpworld.copilotworld.actions.IncludeFilesInContextAction" />
             </group>
             <add-to-group
                     group-id="ProjectViewPopupMenu"
@@ -77,7 +77,7 @@
         <action
                 id="avatar.openSettings"
                 text="Open Settings"
-                class="com.dpworld.copilotworld.panel.OpenSettingsAction">
+                class="com.dpworld.copilotworld.actions.OpenSettingsAction">
             <override-text place="MainMenu" text="Open Settings"/>
             <override-text place="popup" use-text-of-place="MainMenu"/>
         </action>

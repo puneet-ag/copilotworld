@@ -1,7 +1,10 @@
 package com.dpworld.copilotworld.panel
 
-import com.dpworld.copilotworld.model.OllamaSettings
+import com.dpworld.copilotworld.avatar.AvatarBundle
+import com.dpworld.copilotworld.ollama.OllamaSettings
 import com.dpworld.copilotworld.ollama.OllamaClient
+import com.dpworld.copilotworld.util.OverlayUtil
+import com.dpworld.copilotworld.util.UIUtil
 import com.intellij.notification.NotificationType
 import com.intellij.openapi.application.invokeLater
 import com.intellij.openapi.components.service

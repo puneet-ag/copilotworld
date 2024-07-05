@@ -1,5 +1,6 @@
 package com.dpworld.copilotworld.panel;
 
+import com.dpworld.copilotworld.avatar.AvatarBundle;
 import com.intellij.icons.AllIcons.Actions;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;

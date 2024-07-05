@@ -5,9 +5,9 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.editor.Editor;
 
 import org.jetbrains.annotations.NotNull;
-import com.dpworld.copilotworld.panel.OverlayUtil;
-import com.dpworld.copilotworld.panel.AvatarBundle;
-import com.dpworld.copilotworld.panel.EditorUtil;
+import com.dpworld.copilotworld.util.OverlayUtil;
+import com.dpworld.copilotworld.avatar.AvatarBundle;
+import com.dpworld.copilotworld.util.EditorUtil;
 
 import static java.util.Objects.requireNonNull;
 

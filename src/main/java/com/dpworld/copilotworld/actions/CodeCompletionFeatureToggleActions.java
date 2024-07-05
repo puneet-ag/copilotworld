@@ -5,10 +5,10 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.project.Project;
-import com.dpworld.copilotworld.model.OllamaSettings;
-import com.dpworld.copilotworld.panel.CodeCompletionService;
-import com.dpworld.copilotworld.panel.AvatarServiceSettings;
-import com.dpworld.copilotworld.panel.GeneralSettings;
+import com.dpworld.copilotworld.ollama.OllamaSettings;
+import com.dpworld.copilotworld.completion.CodeCompletionService;
+import com.dpworld.copilotworld.avatar.AvatarServiceSettings;
+import com.dpworld.copilotworld.configurations.GeneralSettings;
 import com.dpworld.copilotworld.panel.ServiceType;
 
 

@@ -1,0 +1,41 @@
+package com.dpworld.copilotworld.actions;
+
+import com.dpworld.copilotworld.conversation.ConversationsState;
+import com.dpworld.copilotworld.conversation.chat.ChatToolWindowContentManager;
+import com.dpworld.copilotworld.util.EditorActionsUtil;
+import com.dpworld.copilotworld.panel.Icons;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
+import com.intellij.openapi.actionSystem.AnAction;
+import com.intellij.openapi.actionSystem.AnActionEvent;
+import org.jetbrains.annotations.NotNull;
+
+public class AskAction extends AnAction {
+
+  public AskAction() {
+    super("New Chat", "Chat with Avatar", Icons.Sparkle);
+    EditorActionsUtil.registerAction(this);
+  }
+
+  @Override
+  public void update(@NotNull AnActionEvent event) {
+    event.getPresentation().setEnabled(event.getProject() != null);
+  }
+
+  @Override
+  public void actionPerformed(@NotNull AnActionEvent event) {
+    var project = event.getProject();
+    if (project != null) {
+      ConversationsState.getInstance().setCurrentConversation(null);
+      var tabPanel =
+          project.getService(ChatToolWindowContentManager.class).createNewTabPanel();
+      if (tabPanel != null) {
+        tabPanel.displayLandingView();
+      }
+    }
+  }
+
+  @Override
+  public @NotNull ActionUpdateThread getActionUpdateThread() {
+    return ActionUpdateThread.BGT;
+  }
+}

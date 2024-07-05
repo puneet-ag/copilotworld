@@ -5,7 +5,7 @@ import com.intellij.icons.AllIcons.Diff;
 import com.intellij.openapi.editor.ex.EditorEx;
 import com.intellij.openapi.ui.JBMenuItem;
 import org.jetbrains.annotations.NotNull;
-import com.dpworld.copilotworld.panel.AvatarBundle;
+import com.dpworld.copilotworld.avatar.AvatarBundle;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

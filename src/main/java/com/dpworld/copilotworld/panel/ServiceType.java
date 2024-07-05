@@ -1,5 +1,7 @@
 package com.dpworld.copilotworld.panel;
 
+import com.dpworld.copilotworld.avatar.AvatarBundle;
+
 import java.util.HashMap;
 import java.util.Map;
 

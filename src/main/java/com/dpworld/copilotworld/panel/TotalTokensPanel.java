@@ -1,6 +1,7 @@
 package com.dpworld.copilotworld.panel;
 
 import com.dpworld.copilotworld.activity.Conversation;
+import com.dpworld.copilotworld.avatar.AvatarKeys;
 import com.intellij.icons.AllIcons.General;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.editor.EditorFactory;

@@ -1,5 +1,6 @@
 package com.dpworld.copilotworld.panel
 
+import com.dpworld.copilotworld.avatar.AvatarBundle
 import com.dpworld.copilotworld.model.InfillPromptTemplate
 import com.intellij.icons.AllIcons.General
 import com.intellij.ide.HelpTooltip

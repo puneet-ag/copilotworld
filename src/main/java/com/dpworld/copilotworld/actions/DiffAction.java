@@ -12,10 +12,10 @@ import com.intellij.openapi.editor.ex.EditorEx;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.util.Pair;
 import org.jetbrains.annotations.NotNull;
-import com.dpworld.copilotworld.panel.OverlayUtil;
-import com.dpworld.copilotworld.panel.AvatarBundle;
-import com.dpworld.copilotworld.panel.EditorUtil;
-import com.dpworld.copilotworld.panel.IntellijFileUtil;
+import com.dpworld.copilotworld.util.OverlayUtil;
+import com.dpworld.copilotworld.avatar.AvatarBundle;
+import com.dpworld.copilotworld.util.EditorUtil;
+import com.dpworld.copilotworld.util.IntellijFileUtil;
 
 import javax.swing.*;
 import java.awt.*;

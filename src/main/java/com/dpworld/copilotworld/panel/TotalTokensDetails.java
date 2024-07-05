@@ -1,6 +1,8 @@
 package com.dpworld.copilotworld.panel;
 
 
+import com.dpworld.copilotworld.configuration.ConfigurationSettings;
+
 public class TotalTokensDetails {
 
   private final int systemPromptTokens;

@@ -1,5 +1,5 @@
 package com.dpworld.copilotworld.panel;
 
-class TotalUsageExceededException extends RuntimeException {
+public class TotalUsageExceededException extends RuntimeException {
 
 }

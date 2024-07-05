@@ -1,6 +1,9 @@
 package com.dpworld.copilotworld.panel;
 
 import com.dpworld.copilotworld.actions.*;
+import com.dpworld.copilotworld.avatar.AvatarBundle;
+import com.dpworld.copilotworld.util.EditorUtil;
+import com.dpworld.copilotworld.util.IntellijFileUtil;
 import com.intellij.icons.AllIcons.General;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.actionSystem.*;

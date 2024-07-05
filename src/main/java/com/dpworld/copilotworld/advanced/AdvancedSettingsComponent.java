@@ -6,8 +6,8 @@ import com.intellij.ui.components.JBPasswordField;
 import com.intellij.ui.components.JBTextField;
 import com.intellij.util.ui.FormBuilder;
 import com.intellij.util.ui.JBUI;
-import com.dpworld.copilotworld.panel.AvatarBundle;
-import com.dpworld.copilotworld.panel.UIUtil;
+import com.dpworld.copilotworld.avatar.AvatarBundle;
+import com.dpworld.copilotworld.util.UIUtil;
 
 
 import javax.swing.*;

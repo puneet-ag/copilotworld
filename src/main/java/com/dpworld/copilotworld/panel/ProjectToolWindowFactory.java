@@ -1,5 +1,7 @@
 package com.dpworld.copilotworld.panel;
 
+import com.dpworld.copilotworld.conversation.ConversationsToolWindow;
+import com.dpworld.copilotworld.conversation.chat.ChatToolWindowPanel;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.ToolWindow;

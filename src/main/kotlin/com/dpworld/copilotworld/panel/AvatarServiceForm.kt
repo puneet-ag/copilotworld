@@ -1,5 +1,10 @@
 package com.dpworld.copilotworld.panel
 
+import com.dpworld.copilotworld.avatar.AvatarAvailableModels
+import com.dpworld.copilotworld.avatar.AvatarBundle
+import com.dpworld.copilotworld.avatar.AvatarModel
+import com.dpworld.copilotworld.avatar.AvatarServiceSettings
+import com.dpworld.copilotworld.util.UIUtil
 import com.intellij.openapi.components.service
 import com.intellij.openapi.ui.ComboBox
 import com.intellij.ui.components.JBCheckBox

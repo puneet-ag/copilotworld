@@ -1,5 +1,8 @@
 package com.dpworld.copilotworld.panel
 
+import com.dpworld.copilotworld.avatar.AvatarBundle
+import com.dpworld.copilotworld.configurations.GeneralSettings
+import com.dpworld.copilotworld.ollama.OllamaSettingsConfigurable
 import com.intellij.ide.DataManager
 import com.intellij.openapi.components.service
 import com.intellij.openapi.options.ex.Settings

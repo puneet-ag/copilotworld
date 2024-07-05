@@ -1,6 +1,8 @@
 package com.dpworld.copilotworld.panel;
 
 import com.dpworld.copilotworld.activity.Message;
+import com.dpworld.copilotworld.configurations.GeneralSettings;
+import com.dpworld.copilotworld.conversation.chat.ChatMessageResponseBody;
 import com.intellij.icons.AllIcons.General;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.project.Project;

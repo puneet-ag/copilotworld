@@ -5,8 +5,8 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.editor.Editor;
 
 import org.jetbrains.annotations.NotNull;
-import com.dpworld.copilotworld.panel.OverlayUtil;
-import com.dpworld.copilotworld.panel.AvatarBundle;
+import com.dpworld.copilotworld.util.OverlayUtil;
+import com.dpworld.copilotworld.avatar.AvatarBundle;
 
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;

@@ -1,6 +1,9 @@
 package com.dpworld.copilotworld.panel
 
-import com.dpworld.copilotworld.panel.ApplicationUtil.findCurrentProject
+import com.dpworld.copilotworld.configurations.GeneralSettings
+import com.dpworld.copilotworld.conversation.ConversationsState
+import com.dpworld.copilotworld.conversation.chat.ChatToolWindowContentManager
+import com.dpworld.copilotworld.util.ApplicationUtil.findCurrentProject
 import com.intellij.openapi.components.service
 import com.intellij.openapi.options.Configurable
 import javax.swing.JComponent

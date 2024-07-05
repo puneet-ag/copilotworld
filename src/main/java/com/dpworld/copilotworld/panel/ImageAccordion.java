@@ -1,5 +1,6 @@
 package com.dpworld.copilotworld.panel;
 
+import com.dpworld.copilotworld.avatar.AvatarBundle;
 import com.intellij.icons.AllIcons.General;
 import com.intellij.ui.components.JBLabel;
 import com.intellij.util.ui.JBUI;

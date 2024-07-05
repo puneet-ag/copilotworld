@@ -3,6 +3,7 @@ package com.dpworld.copilotworld.panel;
 
 import com.dpworld.copilotworld.activity.Conversation;
 import com.dpworld.copilotworld.activity.Message;
+import com.dpworld.copilotworld.conversation.ConversationType;
 import org.jetbrains.annotations.Nullable;
 
 public class CallParameters {

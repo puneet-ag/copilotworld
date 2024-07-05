@@ -1,8 +1,14 @@
 package com.dpworld.copilotworld.panel
 
+import com.dpworld.copilotworld.avatar.AvatarKeys
+import com.dpworld.copilotworld.avatar.AvatarServiceSettings
+import com.dpworld.copilotworld.completion.CodeCompletionParserFactory
+import com.dpworld.copilotworld.completion.CodeCompletionService
 import com.dpworld.copilotworld.completion.CompletionEventListener
-import com.dpworld.copilotworld.model.OllamaSettings
-import com.dpworld.copilotworld.panel.OverlayUtil.showNotification
+import com.dpworld.copilotworld.configuration.ConfigurationSettings
+import com.dpworld.copilotworld.configurations.GeneralSettings
+import com.dpworld.copilotworld.ollama.OllamaSettings
+import com.dpworld.copilotworld.util.OverlayUtil.showNotification
 import com.intellij.codeInsight.inline.completion.*
 import com.intellij.codeInsight.inline.completion.elements.InlineCompletionGrayTextElement
 import com.intellij.notification.NotificationType

@@ -1,5 +1,11 @@
 package com.dpworld.copilotworld.panel
 
+import com.dpworld.copilotworld.avatar.AvatarBundle
+import com.dpworld.copilotworld.avatar.AvatarKeys
+import com.dpworld.copilotworld.configuration.ConfigurationSettings
+import com.dpworld.copilotworld.configurations.GeneralSettings
+import com.dpworld.copilotworld.util.EditorActionsUtil
+import com.dpworld.copilotworld.util.OverlayUtil
 import com.intellij.notification.NotificationAction
 import com.intellij.notification.NotificationType
 import com.intellij.openapi.application.ApplicationManager
