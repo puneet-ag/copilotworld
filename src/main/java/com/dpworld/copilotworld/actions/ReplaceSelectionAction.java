@@ -7,7 +7,7 @@ import com.intellij.openapi.editor.Editor;
 import org.jetbrains.annotations.NotNull;
 import com.dpworld.copilotworld.util.OverlayUtil;
 import com.dpworld.copilotworld.avatar.AvatarBundle;
-import com.dpworld.copilotworld.util.EditorUtil;
+import com.dpworld.copilotworld.util.CodeEditorHelper;
 
 import static java.util.Objects.requireNonNull;
 
@@ -25,8 +25,8 @@ public class ReplaceSelectionAction extends TrackableAction {
   @Override
   public void handleAction(@NotNull AnActionEvent event) {
     var project = requireNonNull(event.getProject());
-    if (EditorUtil.isMainEditorTextSelected(project)) {
-      EditorUtil.replaceMainEditorSelection(project, editor.getDocument().getText());
+    if (CodeEditorHelper.isSelectedTextInMainEditor(project)) {
+      CodeEditorHelper.replaceSelectionInMainEditor(project, editor.getDocument().getText());
     } else {
       OverlayUtil.showSelectedEditorSelectionWarning(event);
     }

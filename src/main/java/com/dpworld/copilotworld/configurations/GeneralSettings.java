@@ -3,7 +3,7 @@ package com.dpworld.copilotworld.configurations;
 import com.dpworld.copilotworld.activity.Conversation;
 import com.dpworld.copilotworld.panel.ProviderChangeNotifier;
 import com.dpworld.copilotworld.panel.ServiceType;
-import com.dpworld.copilotworld.util.ApplicationUtil;
+import com.dpworld.copilotworld.util.ApplicationManagerUtil;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.State;
@@ -44,7 +44,7 @@ public class GeneralSettings implements PersistentStateComponent<GeneralSettings
   }
 
   public void sync(Conversation conversation) {
-    var project = ApplicationUtil.findCurrentProject();
+    var project = ApplicationManagerUtil.getCurrentProject();
     var provider = ServiceType.fromClientCode(conversation.getClientCode());
     switch (provider) {
       case OLLAMA:

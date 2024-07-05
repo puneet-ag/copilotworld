@@ -20,7 +20,7 @@ import java.util.*;
 import static java.lang.String.format;
 import static java.util.Objects.requireNonNull;
 import static java.util.stream.Collectors.joining;
-import static com.dpworld.copilotworld.util.IntellijFileUtil.getResourceContent;
+import static com.dpworld.copilotworld.util.FileUtilIntellij.getResourceContent;
 
 public class CompletionRequestProvider {
 

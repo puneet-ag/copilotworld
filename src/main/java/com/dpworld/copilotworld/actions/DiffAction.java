@@ -14,8 +14,8 @@ import com.intellij.openapi.util.Pair;
 import org.jetbrains.annotations.NotNull;
 import com.dpworld.copilotworld.util.OverlayUtil;
 import com.dpworld.copilotworld.avatar.AvatarBundle;
-import com.dpworld.copilotworld.util.EditorUtil;
-import com.dpworld.copilotworld.util.IntellijFileUtil;
+import com.dpworld.copilotworld.util.CodeEditorHelper;
+import com.dpworld.copilotworld.util.FileUtilIntellij;
 
 import javax.swing.*;
 import java.awt.*;
@@ -38,16 +38,16 @@ public class DiffAction extends AbstractAction {
   public void actionPerformed(ActionEvent event) {
     var project = requireNonNull(editor.getProject());
     var selectedTextEditor = FileEditorManager.getInstance(project).getSelectedTextEditor();
-    if (!EditorUtil.hasSelection(selectedTextEditor)) {
+    if (!CodeEditorHelper.editorHasSelection(selectedTextEditor)) {
       OverlayUtil.showSelectedEditorSelectionWarning(project, locationOnScreen);
       return;
     }
 
-    var resultEditorFile = IntellijFileUtil.getEditorFile(selectedTextEditor);
+    var resultEditorFile = FileUtilIntellij.getFileFromEditor(selectedTextEditor);
     var diffContentFactory = DiffContentFactory.getInstance();
     var request = new SimpleDiffRequest(
         AvatarBundle.get("editor.diff.title"),
-        diffContentFactory.create(project, IntellijFileUtil.getEditorFile(editor)),
+        diffContentFactory.create(project, FileUtilIntellij.getFileFromEditor(editor)),
         diffContentFactory.create(project, resultEditorFile),
         AvatarBundle.get("editor.diff.local.content.title"),
         resultEditorFile.getName());

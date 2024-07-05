@@ -1,51 +1,41 @@
 package com.dpworld.copilotworld.util;
 
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.wm.IdeFocusManager;
 import com.intellij.openapi.wm.IdeFrame;
 
-public class ApplicationUtil {
+public class ApplicationManagerUtil {
 
-    
-    private ApplicationUtil() {
+    private ApplicationManagerUtil() {
     }
-
+    private static final ApplicationManagerUtil INSTANCE = new ApplicationManagerUtil();
     
-    private static final ApplicationUtil INSTANCE = new ApplicationUtil();
-
-    
-    public static ApplicationUtil getInstance() {
+    public static ApplicationManagerUtil getInstance() {
         return INSTANCE;
     }
 
-    public static boolean isUnitTestingMode() {
-        return ApplicationManager.getApplication() != null
-                && ApplicationManager.getApplication().isUnitTestMode();
-    }
-
-    public static Project findCurrentProject() {
+    public static Project getCurrentProject() {
         IdeFrame frame = IdeFocusManager.getGlobalInstance().getLastFocusedFrame();
         Project project = frame != null ? frame.getProject() : null;
-        if (isValidProject(project)) {
+        if (isProjectValid(project)) {
             return project;
         }
-        return findProjectFromOpenProjects();
+        return findProjectFromAllOpenProjects();
     }
 
-    private static Project findProjectFromOpenProjects() {
+    private static Project findProjectFromAllOpenProjects() {
         ProjectManager projectManager = ProjectManager.getInstance();
         Project[] openProjects = projectManager.getOpenProjects();
         for (Project project : openProjects) {
-            if (isValidProject(project)) {
+            if (isProjectValid(project)) {
                 return project;
             }
         }
         return null;
     }
 
-    private static boolean isValidProject(Project project) {
+    private static boolean isProjectValid(Project project) {
         return project != null && !project.isDisposed() && !project.isDefault();
     }
 }

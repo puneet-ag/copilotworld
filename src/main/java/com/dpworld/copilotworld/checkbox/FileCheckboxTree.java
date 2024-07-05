@@ -7,7 +7,7 @@ import com.intellij.ui.CheckedTreeNode;
 import com.intellij.ui.ColoredTreeCellRenderer;
 
 import org.jetbrains.annotations.NotNull;
-import com.dpworld.copilotworld.util.IntellijFileUtil;
+import com.dpworld.copilotworld.util.FileUtilIntellij;
 import com.dpworld.copilotworld.panel.ReferencedFile;
 
 import java.util.List;
@@ -26,6 +26,6 @@ public abstract class FileCheckboxTree extends CheckboxTree {
     var fileType = FileTypeManager.getInstance().getFileTypeByFile(virtualFile);
     textRenderer.setIcon(fileType.getIcon());
     textRenderer.append(virtualFile.getName());
-    textRenderer.append(" - " + IntellijFileUtil.convertFileSize(virtualFile.getLength()));
+    textRenderer.append(" - " + FileUtilIntellij.formatFileSize(virtualFile.getLength()));
   }
 }

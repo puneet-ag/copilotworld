@@ -2,8 +2,8 @@ package com.dpworld.copilotworld.panel;
 
 import com.dpworld.copilotworld.actions.*;
 import com.dpworld.copilotworld.avatar.AvatarBundle;
-import com.dpworld.copilotworld.util.EditorUtil;
-import com.dpworld.copilotworld.util.IntellijFileUtil;
+import com.dpworld.copilotworld.util.CodeEditorHelper;
+import com.dpworld.copilotworld.util.FileUtilIntellij;
 import com.intellij.icons.AllIcons.General;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.actionSystem.*;
@@ -43,9 +43,9 @@ public class ResponseEditorPanel extends JPanel implements Disposable {
     setBorder(JBUI.Borders.empty(8, 0));
     setOpaque(false);
 
-    editor = EditorUtil.createEditor(
+    editor = CodeEditorHelper.initializeEditor(
         project,
-        IntellijFileUtil.findLanguageExtensionMapping(markdownLanguage).getValue(),
+        FileUtilIntellij.getLanguageExtensionMapping(markdownLanguage).getValue(),
         StringUtil.convertLineSeparators(code));
 
     var group = new DefaultActionGroup();
@@ -61,7 +61,7 @@ public class ResponseEditorPanel extends JPanel implements Disposable {
         (EditorEx) editor,
         readOnly,
         new ContextMenuPopupHandler.Simple(group),
-        IntellijFileUtil.findLanguageExtensionMapping(markdownLanguage).getValue());
+        FileUtilIntellij.getLanguageExtensionMapping(markdownLanguage).getValue());
     add(editor.getComponent(), BorderLayout.CENTER);
 
     Disposer.register(disposableParent, this);

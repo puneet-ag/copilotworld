@@ -12,8 +12,8 @@ import com.dpworld.copilotworld.conversation.ConversationService;
 import com.dpworld.copilotworld.conversation.ConversationType;
 import com.dpworld.copilotworld.listener.ToolWindowCompletionResponseEventListener;
 import com.dpworld.copilotworld.panel.*;
-import com.dpworld.copilotworld.util.EditorUtil;
-import com.dpworld.copilotworld.util.IntellijFileUtil;
+import com.dpworld.copilotworld.util.CodeEditorHelper;
+import com.dpworld.copilotworld.util.FileUtilIntellij;
 import com.dpworld.copilotworld.util.OverlayUtil;
 import com.dpworld.copilotworld.util.UIUtil;
 import com.intellij.openapi.Disposable;
@@ -55,7 +55,7 @@ public class ChatToolWindowTabPanel implements Disposable {
     totalTokensPanel = new TotalTokensPanel(
         project,
         conversation,
-        EditorUtil.getSelectedEditorSelectedText(project),
+        CodeEditorHelper.fetchSelectedText(project),
         this);
     userPromptTextArea = new UserPromptTextArea(this::handleSubmit, totalTokensPanel);
     rootPanel = createRootPanel();
@@ -143,7 +143,7 @@ public class ChatToolWindowTabPanel implements Disposable {
     if (attachedFilePath != null && !attachedFilePath.isEmpty()) {
       try {
         callParameters.setImageData(Files.readAllBytes(Path.of(attachedFilePath)));
-        callParameters.setImageMediaType(IntellijFileUtil.getImageMediaType(attachedFilePath));
+        callParameters.setImageMediaType(FileUtilIntellij.getImageMIMEType(attachedFilePath));
       } catch (IOException e) {
         throw new RuntimeException(e);
       }
@@ -232,12 +232,12 @@ public class ChatToolWindowTabPanel implements Disposable {
 
   private void handleSubmit(String text) {
     var message = new Message(text);
-    var editor = EditorUtil.getSelectedEditor(project);
+    var editor = CodeEditorHelper.fetchSelectedEditor(project);
     if (editor != null) {
       var selectionModel = editor.getSelectionModel();
       var selectedText = selectionModel.getSelectedText();
       if (selectedText != null && !selectedText.isEmpty()) {
-        var fileExtension = IntellijFileUtil.getFileExtension(editor.getVirtualFile().getName());
+        var fileExtension = FileUtilIntellij.extractFileExtension(editor.getVirtualFile().getName());
         message = new Message(text + format("%n```%s%n%s%n```", fileExtension, selectedText));
         selectionModel.removeSelection();
       }
@@ -277,7 +277,7 @@ public class ChatToolWindowTabPanel implements Disposable {
 
   private JComponent getLandingView() {
     return new ChatToolWindowLandingPanel((action, locationOnScreen) -> {
-      var editor = EditorUtil.getSelectedEditor(project);
+      var editor = CodeEditorHelper.fetchSelectedEditor(project);
       if (editor == null || !editor.getSelectionModel().hasSelection()) {
         OverlayUtil.showWarningBalloon(
             editor == null ? "Unable to locate a selected editor"
@@ -285,7 +285,7 @@ public class ChatToolWindowTabPanel implements Disposable {
             locationOnScreen);
       }
 
-      var fileExtension = IntellijFileUtil.getFileExtension(editor.getVirtualFile().getName());
+      var fileExtension = FileUtilIntellij.extractFileExtension(editor.getVirtualFile().getName());
       var message = new Message(action.getPrompt().replace(
           "{{selectedCode}}",
           format("%n```%s%n%s%n```", fileExtension, editor.getSelectionModel().getSelectedText())));

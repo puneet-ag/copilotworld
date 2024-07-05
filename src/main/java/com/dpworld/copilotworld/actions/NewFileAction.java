@@ -13,7 +13,7 @@ import com.intellij.psi.PsiManager;
 import com.intellij.ui.components.JBTextField;
 import com.intellij.util.ui.FormBuilder;
 import org.jetbrains.annotations.NotNull;
-import com.dpworld.copilotworld.util.IntellijFileUtil;
+import com.dpworld.copilotworld.util.FileUtilIntellij;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -45,7 +45,7 @@ public class NewFileAction extends AbstractAction {
     fileNameTextField.setColumns(30);
 
     if (showDialog(project, textFieldWithBrowseButton, fileNameTextField) == OK_EXIT_CODE) {
-      var file = IntellijFileUtil.createFile(
+      var file = FileUtilIntellij.createNewFile(
           textFieldWithBrowseButton.getText(),
           fileNameTextField.getText(),
           editor.getDocument().getText());

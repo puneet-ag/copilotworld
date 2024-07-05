@@ -3,7 +3,7 @@ package com.dpworld.copilotworld.panel
 import com.dpworld.copilotworld.configurations.GeneralSettings
 import com.dpworld.copilotworld.conversation.ConversationsState
 import com.dpworld.copilotworld.conversation.chat.ChatToolWindowContentManager
-import com.dpworld.copilotworld.util.ApplicationUtil.findCurrentProject
+import com.dpworld.copilotworld.util.ApplicationManagerUtil.getCurrentProject
 import com.intellij.openapi.components.service
 import com.intellij.openapi.options.Configurable
 import javax.swing.JComponent
@@ -41,7 +41,7 @@ class ServiceConfigurable : Configurable {
 
     private fun resetActiveTab() {
         service<ConversationsState>().currentConversation = null
-        val project = findCurrentProject()
+        val project = getCurrentProject()
             ?: throw RuntimeException("Could not find current project.")
         project.getService(ChatToolWindowContentManager::class.java).resetAll()
     }

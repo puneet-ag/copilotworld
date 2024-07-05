@@ -8,7 +8,7 @@ import com.dpworld.copilotworld.panel.EncodingManager;
 import com.dpworld.copilotworld.panel.IncludeFilesInContextNotifier;
 import com.dpworld.copilotworld.configurations.IncludedFilesSettings;
 import com.dpworld.copilotworld.panel.ReferencedFile;
-import com.dpworld.copilotworld.util.IntellijFileUtil;
+import com.dpworld.copilotworld.util.FileUtilIntellij;
 import com.dpworld.copilotworld.util.UIUtil;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -165,7 +165,7 @@ public class IncludeFilesInContextAction extends AnAction {
           "<html><strong>%d</strong> %s totaling <strong>%s</strong> tokens</html>",
           fileCount,
           fileCount == 1 ? "file" : "files",
-          IntellijFileUtil.convertLongValue(totalTokens)));
+          FileUtilIntellij.formatLongValue(totalTokens)));
     }
 
     private int calculateTotalTokens(List<ReferencedFile> referencedFiles) {

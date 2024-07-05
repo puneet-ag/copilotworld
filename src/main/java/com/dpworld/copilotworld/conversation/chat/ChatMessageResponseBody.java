@@ -5,8 +5,8 @@ import com.dpworld.copilotworld.configurations.GeneralSettingsConfigurable;
 import com.dpworld.copilotworld.panel.ResponseEditorPanel;
 import com.dpworld.copilotworld.panel.StreamParser;
 import com.dpworld.copilotworld.panel.StreamResponseType;
-import com.dpworld.copilotworld.util.EditorUtil;
-import com.dpworld.copilotworld.util.MarkdownUtil;
+import com.dpworld.copilotworld.util.CodeEditorHelper;
+import com.dpworld.copilotworld.util.MarkdownProcessor;
 import com.dpworld.copilotworld.util.UIUtil;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.fileEditor.FileEditorManager;
@@ -71,7 +71,7 @@ public class ChatMessageResponseBody extends JPanel {
   }
 
   public ChatMessageResponseBody withResponse(String response) {
-    for (var message : MarkdownUtil.splitCodeBlocks(response)) {
+    for (var message : MarkdownProcessor.extractCodeBlocks(response)) {
       processResponse(message, message.startsWith("```"), false);
     }
 
@@ -190,7 +190,7 @@ public class ChatMessageResponseBody extends JPanel {
         if (currentlyProcessedEditorPanel == null) {
           prepareProcessingCode(code, codeBlock.getInfo().unescape());
         }
-        EditorUtil.updateEditorDocument(currentlyProcessedEditorPanel.getEditor(), code);
+        CodeEditorHelper.modifyEditorDocument(currentlyProcessedEditorPanel.getEditor(), code);
       }
     }
   }
@@ -199,7 +199,7 @@ public class ChatMessageResponseBody extends JPanel {
     if (currentlyProcessedTextPane == null) {
       prepareProcessingText(caretVisible);
     }
-    currentlyProcessedTextPane.setText(MarkdownUtil.convertMdToHtml(markdownText));
+    currentlyProcessedTextPane.setText(MarkdownProcessor.markdownToHtml(markdownText));
   }
 
   private void prepareProcessingText(boolean caretVisible) {

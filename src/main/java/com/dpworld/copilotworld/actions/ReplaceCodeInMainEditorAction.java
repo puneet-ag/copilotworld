@@ -1,7 +1,7 @@
 package com.dpworld.copilotworld.actions;
 
 import com.dpworld.copilotworld.util.EditorActionsUtil;
-import com.dpworld.copilotworld.util.EditorUtil;
+import com.dpworld.copilotworld.util.CodeEditorHelper;
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
@@ -21,8 +21,8 @@ public class ReplaceCodeInMainEditorAction extends AnAction {
   @Override
   public void update(@NotNull AnActionEvent event) {
     event.getPresentation().setEnabled(
-        EditorUtil.isMainEditorTextSelected(requireNonNull(event.getProject()))
-            && EditorUtil.hasSelection(event.getData(PlatformDataKeys.EDITOR)));
+        CodeEditorHelper.isSelectedTextInMainEditor(requireNonNull(event.getProject()))
+            && CodeEditorHelper.editorHasSelection(event.getData(PlatformDataKeys.EDITOR)));
   }
 
   @Override
@@ -30,7 +30,7 @@ public class ReplaceCodeInMainEditorAction extends AnAction {
     var project = event.getProject();
     var toolWindowEditor = event.getData(PlatformDataKeys.EDITOR);
     if (project != null && toolWindowEditor != null) {
-      EditorUtil.replaceMainEditorSelection(
+      CodeEditorHelper.replaceSelectionInMainEditor(
           project,
           requireNonNull(toolWindowEditor.getSelectionModel().getSelectedText()));
     }

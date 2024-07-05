@@ -18,10 +18,10 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class IntellijFileUtil {
-    private static final Logger LOG = Logger.getInstance(IntellijFileUtil.class);
+public class FileUtilIntellij {
+    private static final Logger LOG = Logger.getInstance(FileUtilIntellij.class);
 
-    public static File createFile(Object directoryPath, String fileName, String fileContent) {
+    public static File createNewFile(Object directoryPath, String fileName, String fileContent) {
         Objects.requireNonNull(fileContent, "fileContent null");
         Objects.requireNonNull(fileName, "fileName null or blank");
 
@@ -37,7 +37,7 @@ public class IntellijFileUtil {
         }
 
         try {
-            tryCreateDirectory(path);
+            ensureDirectoryExists(path);
             Files.writeString(path.resolve(fileName), fileContent, StandardOpenOption.CREATE);
             return path.resolve(fileName).toFile();
         } catch (IOException e) {
@@ -46,11 +46,11 @@ public class IntellijFileUtil {
     }
 
 
-    public static VirtualFile getEditorFile(Editor editor) {
+    public static VirtualFile getFileFromEditor(Editor editor) {
         return FileDocumentManager.getInstance().getFile(editor.getDocument());
     }
 
-    private static void tryCreateDirectory(Path directoryPath) {
+    private static void ensureDirectoryExists(Path directoryPath) {
         if (!Files.exists(directoryPath)) {
             try {
                 Files.createDirectories(directoryPath);
@@ -60,7 +60,7 @@ public class IntellijFileUtil {
         }
     }
 
-    public static String getFileExtension(String filename) {
+    public static String extractFileExtension(String filename) {
         Pattern pattern = Pattern.compile("[^.]+$");
         Matcher matcher = pattern.matcher(filename);
         if (matcher.find()) {
@@ -69,7 +69,7 @@ public class IntellijFileUtil {
         return "";
     }
 
-    public static Map.Entry<String, String> findLanguageExtensionMapping(String language) {
+    public static Map.Entry<String, String> getLanguageExtensionMapping(String language) {
         Map.Entry<String, String> defaultValue = Map.of("Text", ".txt").entrySet().iterator().next();
         ObjectMapper mapper = new ObjectMapper();
         List<FileExtensionLanguageDetails> extensionToLanguageMappings;
@@ -84,35 +84,19 @@ public class IntellijFileUtil {
             return defaultValue;
         }
 
-        Optional<Map.Entry<String, String>> firstExtension = findFirstExtension(languageToExtensionMappings, language);
+        Optional<Map.Entry<String, String>> firstExtension = findFirstExtensionMapping(languageToExtensionMappings, language);
         if (firstExtension.isEmpty()) {
             return extensionToLanguageMappings.stream()
                     .filter(details -> details.extension().equalsIgnoreCase(language))
                     .findFirst()
-                    .flatMap(details -> findFirstExtension(languageToExtensionMappings, details.value()))
+                    .flatMap(details -> findFirstExtensionMapping(languageToExtensionMappings, details.value()))
                     .orElse(defaultValue);
         }
         return firstExtension.get();
     }
 
-    public static boolean isUtf8File(String filePath) {
-        try {
-            Path path = Paths.get(filePath);
-            int c;
-            try (BufferedReader reader = Files.newBufferedReader(path)) {
-                c = reader.read();
-                if (c >= 0) {
-                    reader.transferTo(Writer.nullWriter());
-                }
-            }
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
-    public static String getImageMediaType(String fileName) {
-        String fileExtension = getFileExtension(fileName);
+    public static String getImageMIMEType(String fileName) {
+        String fileExtension = extractFileExtension(fileName);
         switch (fileExtension) {
             case "png":
                 return "image/png";
@@ -125,14 +109,14 @@ public class IntellijFileUtil {
     }
 
     public static String getResourceContent(String name) {
-        try (InputStream stream = Objects.requireNonNull(IntellijFileUtil.class.getResourceAsStream(name))) {
+        try (InputStream stream = Objects.requireNonNull(FileUtilIntellij.class.getResourceAsStream(name))) {
             return new String(stream.readAllBytes(), StandardCharsets.UTF_8);
         } catch (IOException e) {
             throw new RuntimeException("Unable to read resource", e);
         }
     }
 
-    public static String convertFileSize(long fileSizeInBytes) {
+    public static String formatFileSize(long fileSizeInBytes) {
         String[] units = {"B", "KB", "MB", "GB"};
         int unitIndex = 0;
         double fileSize = fileSizeInBytes;
@@ -145,7 +129,7 @@ public class IntellijFileUtil {
         return new DecimalFormat("#.##").format(fileSize) + " " + units[unitIndex];
     }
 
-    public static String convertLongValue(long value) {
+    public static String formatLongValue(long value) {
         if (value >= 1000000) {
             return (value / 1000000) + "M";
         }
@@ -155,7 +139,7 @@ public class IntellijFileUtil {
         return Long.toString(value);
     }
 
-    public static Optional<Map.Entry<String, String>> findFirstExtension(List<LanguageFileExtensionDetails> languageFileExtensionMappings, String language) {
+    public static Optional<Map.Entry<String, String>> findFirstExtensionMapping(List<LanguageFileExtensionDetails> languageFileExtensionMappings, String language) {
         return languageFileExtensionMappings.stream()
                 .filter(details -> language.equalsIgnoreCase(details.name())
                         && details.extensions() != null

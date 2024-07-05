@@ -3,7 +3,7 @@ package com.dpworld.copilotworld.actions;
 import com.dpworld.copilotworld.activity.Message;
 import com.dpworld.copilotworld.conversation.chat.ChatToolWindowContentManager;
 import com.dpworld.copilotworld.util.EditorActionsUtil;
-import com.dpworld.copilotworld.util.IntellijFileUtil;
+import com.dpworld.copilotworld.util.FileUtilIntellij;
 import com.dpworld.copilotworld.util.UIUtil;
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.editor.Editor;
@@ -32,7 +32,7 @@ public class CustomPromptAction extends BaseEditorAction {
   @Override
   protected void actionPerformed(Project project, Editor editor, String selectedText) {
     if (selectedText != null && !selectedText.isEmpty()) {
-      var fileExtension = IntellijFileUtil.getFileExtension(editor.getVirtualFile().getName());
+      var fileExtension = FileUtilIntellij.extractFileExtension(editor.getVirtualFile().getName());
       var dialog = new CustomPromptDialog(previousUserPrompt);
       if (dialog.showAndGet()) {
         previousUserPrompt = dialog.getUserPrompt();
