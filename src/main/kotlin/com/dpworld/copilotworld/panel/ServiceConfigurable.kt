@@ -1,9 +1,6 @@
 package com.dpworld.copilotworld.panel
 
-import com.dpworld.copilotworld.panel.converted.ApplicationUtil.findCurrentProject
-import com.dpworld.copilotworld.panel.converted.ChatToolWindowContentManager
-import com.dpworld.copilotworld.panel.converted.ConversationsState
-import com.dpworld.copilotworld.panel.converted.GeneralSettings
+import com.dpworld.copilotworld.panel.ApplicationUtil.findCurrentProject
 import com.intellij.openapi.components.service
 import com.intellij.openapi.options.Configurable
 import javax.swing.JComponent
@@ -13,7 +10,7 @@ class ServiceConfigurable : Configurable {
     private lateinit var component: ServiceConfigurableComponent
 
     override fun getDisplayName(): String {
-        return "Vision: Services"
+        return "Avatar: Services"
     }
 
     override fun createComponent(): JComponent {

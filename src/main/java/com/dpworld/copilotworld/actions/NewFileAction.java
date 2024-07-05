@@ -13,7 +13,7 @@ import com.intellij.psi.PsiManager;
 import com.intellij.ui.components.JBTextField;
 import com.intellij.util.ui.FormBuilder;
 import org.jetbrains.annotations.NotNull;
-import com.dpworld.copilotworld.panel.converted.IntellijFileUtil;
+import com.dpworld.copilotworld.panel.IntellijFileUtil;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

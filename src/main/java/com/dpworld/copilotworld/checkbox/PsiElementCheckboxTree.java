@@ -8,7 +8,7 @@ import com.intellij.psi.PsiFile;
 import com.intellij.psi.impl.file.PsiDirectoryImpl;
 import com.intellij.ui.CheckedTreeNode;
 import org.jetbrains.annotations.NotNull;
-import com.dpworld.copilotworld.panel.converted.ReferencedFile;
+import com.dpworld.copilotworld.panel.ReferencedFile;
 
 import java.io.File;
 import java.util.Arrays;

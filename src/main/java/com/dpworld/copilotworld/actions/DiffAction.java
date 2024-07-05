@@ -12,10 +12,10 @@ import com.intellij.openapi.editor.ex.EditorEx;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.util.Pair;
 import org.jetbrains.annotations.NotNull;
-import com.dpworld.copilotworld.panel.converted.OverlayUtil;
-import com.dpworld.copilotworld.panel.converted.VisionBundle;
-import com.dpworld.copilotworld.panel.converted.EditorUtil;
-import com.dpworld.copilotworld.panel.converted.IntellijFileUtil;
+import com.dpworld.copilotworld.panel.OverlayUtil;
+import com.dpworld.copilotworld.panel.AvatarBundle;
+import com.dpworld.copilotworld.panel.EditorUtil;
+import com.dpworld.copilotworld.panel.IntellijFileUtil;
 
 import javax.swing.*;
 import java.awt.*;
@@ -46,10 +46,10 @@ public class DiffAction extends AbstractAction {
     var resultEditorFile = IntellijFileUtil.getEditorFile(selectedTextEditor);
     var diffContentFactory = DiffContentFactory.getInstance();
     var request = new SimpleDiffRequest(
-        VisionBundle.get("editor.diff.title"),
+        AvatarBundle.get("editor.diff.title"),
         diffContentFactory.create(project, IntellijFileUtil.getEditorFile(editor)),
         diffContentFactory.create(project, resultEditorFile),
-        VisionBundle.get("editor.diff.local.content.title"),
+        AvatarBundle.get("editor.diff.local.content.title"),
         resultEditorFile.getName());
     request.putUserData(
         DiffUserDataKeys.SCROLL_TO_LINE,

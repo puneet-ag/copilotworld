@@ -5,7 +5,7 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.CheckedTreeNode;
 import com.intellij.util.PlatformIcons;
 import org.jetbrains.annotations.NotNull;
-import com.dpworld.copilotworld.panel.converted.ReferencedFile;
+import com.dpworld.copilotworld.panel.ReferencedFile;
 
 import java.io.File;
 import java.util.Arrays;

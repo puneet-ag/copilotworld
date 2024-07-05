@@ -5,7 +5,7 @@ import com.intellij.icons.AllIcons.Diff;
 import com.intellij.openapi.editor.ex.EditorEx;
 import com.intellij.openapi.ui.JBMenuItem;
 import org.jetbrains.annotations.NotNull;
-import com.dpworld.copilotworld.panel.converted.VisionBundle;
+import com.dpworld.copilotworld.panel.AvatarBundle;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -32,8 +32,8 @@ public class EditAction extends AbstractAction {
 
     var menuItem = (JBMenuItem) event.getSource();
     menuItem.setText(viewer
-        ? VisionBundle.get("toolwindow.chat.editor.action.edit.title")
-        : VisionBundle.get("toolwindow.chat.editor.action.disableEditing.title"));
+        ? AvatarBundle.get("toolwindow.chat.editor.action.edit.title")
+        : AvatarBundle.get("toolwindow.chat.editor.action.disableEditing.title"));
     menuItem.setIcon(viewer ? Actions.EditSource : Diff.Lock);
   }
 }

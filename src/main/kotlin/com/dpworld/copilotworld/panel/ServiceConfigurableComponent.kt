@@ -1,9 +1,5 @@
 package com.dpworld.copilotworld.panel
 
-import com.dpworld.copilotworld.panel.converted.VisionBundle
-import com.dpworld.copilotworld.panel.converted.GeneralSettings
-import com.dpworld.copilotworld.panel.converted.OllamaSettingsConfigurable
-import com.dpworld.copilotworld.panel.converted.ServiceType
 import com.intellij.ide.DataManager
 import com.intellij.openapi.components.service
 import com.intellij.openapi.options.ex.Settings
@@ -16,7 +12,7 @@ import javax.swing.JPanel
 
 class ServiceConfigurableComponent {
 
-    var form: VisionServiceForm = VisionServiceForm()
+    var form: AvatarServiceForm = AvatarServiceForm()
 
     private var serviceComboBox: ComboBox<ServiceType> =
         ComboBox(EnumComboBoxModel(ServiceType::class.java)).apply {
@@ -33,11 +29,11 @@ class ServiceConfigurableComponent {
 
     fun getPanel(): JPanel = FormBuilder.createFormBuilder()
         .addLabeledComponent(
-            VisionBundle.get("settingsConfigurable.service.label"),
+            AvatarBundle.get("settingsConfigurable.service.label"),
             serviceComboBox
         )
         .addVerticalGap(8)
-        .addComponent(JBLabel("All available providers that can be used with Vision:"))
+        .addComponent(JBLabel("All available providers that can be used with Avatar:"))
         .addVerticalGap(8)
         .addComponent(FormBuilder.createFormBuilder()
             .setFormLeftIndent(20).apply {

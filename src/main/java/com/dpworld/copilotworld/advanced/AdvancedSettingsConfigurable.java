@@ -13,7 +13,7 @@ public class AdvancedSettingsConfigurable implements Configurable {
   @Nls(capitalization = Nls.Capitalization.Title)
   @Override
   public String getDisplayName() {
-    return "Vision";
+    return "Avatar";
   }
 
   @Nullable

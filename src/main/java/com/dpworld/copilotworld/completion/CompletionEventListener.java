@@ -1,6 +1,6 @@
 package com.dpworld.copilotworld.completion;
 
-import com.dpworld.copilotworld.panel.converted.ErrorDetails;
+import com.dpworld.copilotworld.panel.ErrorDetails;
 import okhttp3.sse.EventSource;
 
 public interface CompletionEventListener<T> {

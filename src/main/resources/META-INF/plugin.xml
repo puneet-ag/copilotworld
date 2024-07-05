@@ -1,6 +1,6 @@
 <idea-plugin>
-    <id>com.dpworld.chatgpt</id>
-    <name>VISION</name>
+    <id>com.dpworld.copilotworld</id>
+    <name>AVATAR</name>
     <vendor email="test@gmail.com" url="">Puneet Agarwal</vendor>
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.lang</depends>
@@ -8,70 +8,64 @@
 
     <projectListeners>
         <listener topic="com.intellij.codeInsight.lookup.LookupManagerListener"
-                  class="com.dpworld.copilotworld.panel.converted.MethodNameLookupListener"/>
+                  class="com.dpworld.copilotworld.panel.MethodNameLookupListener"/>
         <listener topic="com.intellij.openapi.wm.ex.ToolWindowManagerListener"
-                  class="com.dpworld.copilotworld.panel.converted.ChatToolWindowListener"/>
+                  class="com.dpworld.copilotworld.panel.ChatToolWindowListener"/>
     </projectListeners>
 
     <extensions defaultExtensionNs="com.intellij">
-        <postStartupActivity implementation="com.dpworld.copilotworld.panel.VisionProjectActivity"/>
-        <postStartupActivity implementation="com.dpworld.copilotworld.panel.converted.VisionUpdateActivity"/>
-        <applicationConfigurable id="settings.vision" parentId="tools" displayName="Vision"
-                                 instance="com.dpworld.copilotworld.panel.converted.GeneralSettingsConfigurable"/>
-<!--        <applicationConfigurable id="settings.vision.services" parentId="settings.vision" displayName="Providers"-->
-<!--                                 instance="com.dpworld.copilotworld.panel.ServiceConfigurable"/>-->
-        <applicationConfigurable id="settings.vision.services.ollama" parentId="settings.vision" displayName="Model Server"
-                                 instance="com.dpworld.copilotworld.panel.converted.OllamaSettingsConfigurable"/>
-<!--        <applicationConfigurable id="settings.vision.configuration" parentId="settings.vision" displayName="Configuration"-->
-<!--                                 instance="com.dpworld.copilotworld.panel.converted.ConfigurationConfigurable"/>-->
-<!--        <applicationConfigurable id="settings.vision.advanced" parentId="settings.vision" displayName="Advanced Settings"-->
-<!--                                 instance="com.dpworld.copilotworld.advanced.AdvancedSettingsConfigurable"/>-->
+        <postStartupActivity implementation="com.dpworld.copilotworld.panel.AvatarProjectActivity"/>
+        <postStartupActivity implementation="com.dpworld.copilotworld.panel.AvatarUpdateActivity"/>
+        <applicationConfigurable id="settings.avatar" parentId="tools" displayName="Avatar"
+                                 instance="com.dpworld.copilotworld.panel.GeneralSettingsConfigurable"/>
+        <applicationConfigurable id="settings.avatar.services.ollama" parentId="settings.avatar" displayName="Model Server"
+                                 instance="com.dpworld.copilotworld.panel.OllamaSettingsConfigurable"/>
 
-        <applicationService serviceImplementation="com.dpworld.copilotworld.panel.converted.GeneralSettings"/>
+        <applicationService serviceImplementation="com.dpworld.copilotworld.panel.GeneralSettings"/>
         <applicationService serviceImplementation="com.dpworld.copilotworld.model.OllamaSettings"/>
-        <applicationService serviceImplementation="com.dpworld.copilotworld.panel.converted.ConfigurationSettings"/>
+        <applicationService serviceImplementation="com.dpworld.copilotworld.panel.ConfigurationSettings"/>
         <applicationService serviceImplementation="com.dpworld.copilotworld.advanced.AdvancedSettings"/>
-        <applicationService serviceImplementation="com.dpworld.copilotworld.panel.converted.ConversationsState"/>
-        <applicationService serviceImplementation="com.dpworld.copilotworld.panel.converted.IncludedFilesSettings"/>
+        <applicationService serviceImplementation="com.dpworld.copilotworld.panel.ConversationsState"/>
+        <applicationService serviceImplementation="com.dpworld.copilotworld.panel.IncludedFilesSettings"/>
 
         <inline.completion.provider
-                id="VisionInlineCompletionProvider"
-                implementation="com.dpworld.copilotworld.panel.VisionInlineCompletionProvider"/>
-        <toolWindow id="Vision" icon="com.dpworld.copilotworld.panel.converted.Icons.DefaultSmall" anchor="right"
-                    factoryClass="com.dpworld.copilotworld.panel.converted.ProjectToolWindowFactory"/>
-        <notificationGroup id="Vision Notification Group" displayType="BALLOON" key="notification.group.name"/>
-        <notificationGroup id="Vision Notification Group Sticky" displayType="STICKY_BALLOON" key="notification.group.sticky.name"/>
+                id="AvatarInlineCompletionProvider"
+                implementation="com.dpworld.copilotworld.panel.AvatarInlineCompletionProvider"/>
+        <toolWindow id="Avatar" icon="com.dpworld.copilotworld.panel.Icons.DefaultSmall" anchor="right"
+                    factoryClass="com.dpworld.copilotworld.panel.ProjectToolWindowFactory"/>
+        <notificationGroup id="Avatar Notification Group" displayType="BALLOON" key="notification.group.name"/>
+        <notificationGroup id="Avatar Notification Group Sticky" displayType="STICKY_BALLOON" key="notification.group.sticky.name"/>
         <statusBarWidgetFactory order="first" id="com.dpworld.copilotworld.panel.converted.statusbar.widget"
-                                implementation="com.dpworld.copilotworld.panel.converted.VisionStatusBarWidgetFactory"/>
+                                implementation="com.dpworld.copilotworld.panel.AvatarStatusBarWidgetFactory"/>
     </extensions>
 
-    <resource-bundle>messages.vision</resource-bundle>
+    <resource-bundle>messages.avatar</resource-bundle>
 
     <actions>
-        <group id="VisionEditorPopup">
+        <group id="AvatarEditorPopup">
             <group id="action.editor.group.EditorActionGroup"
-                   text="Vision"
+                   text="Avatar"
                    class="com.intellij.openapi.actionSystem.DefaultActionGroup"
                    popup="true"
-                   icon="com.dpworld.copilotworld.panel.converted.Icons.DefaultSmall">
+                   icon="com.dpworld.copilotworld.panel.Icons.DefaultSmall">
             </group>
             <add-to-group group-id="EditorPopupMenu1" anchor="first"/>
             <separator/>
         </group>
-        <action id="Vision.TriggerEditorPopup"
-                class="com.dpworld.copilotworld.panel.converted.ShowEditorActionGroupAction"
-                text="Show Vision Actions">
+        <action id="Avatar.TriggerEditorPopup"
+                class="com.dpworld.copilotworld.panel.ShowEditorActionGroupAction"
+                text="Show Avatar Actions">
             <keyboard-shortcut first-keystroke="ctrl shift alt m" keymap="$default"/>
         </action>
-        <group id="Vision.ProjectViewPopupMenuRootGroup">
-            <group id="Vision.ProjectViewPopupMenuGroup"
-                   text="Vision"
+        <group id="Avatar.ProjectViewPopupMenuRootGroup">
+            <group id="Avatar.ProjectViewPopupMenuGroup"
+                   text="Avatar"
                    class="com.intellij.openapi.actionSystem.DefaultActionGroup"
                    popup="true"
-                   icon="com.dpworld.copilotworld.panel.converted.Icons.DefaultSmall">
+                   icon="com.dpworld.copilotworld.panel.Icons.DefaultSmall">
                 <action
-                        id="Vision.IncludeFilesInContextAction"
-                        class="com.dpworld.copilotworld.panel.converted.IncludeFilesInContextAction" />
+                        id="Avatar.IncludeFilesInContextAction"
+                        class="com.dpworld.copilotworld.panel.IncludeFilesInContextAction" />
             </group>
             <add-to-group
                     group-id="ProjectViewPopupMenu"
@@ -81,9 +75,9 @@
         </group>
 
         <action
-                id="vision.openSettings"
+                id="avatar.openSettings"
                 text="Open Settings"
-                class="com.dpworld.copilotworld.panel.converted.OpenSettingsAction">
+                class="com.dpworld.copilotworld.panel.OpenSettingsAction">
             <override-text place="MainMenu" text="Open Settings"/>
             <override-text place="popup" use-text-of-place="MainMenu"/>
         </action>
@@ -103,37 +97,14 @@
             <override-text place="MainMenu"/>
             <override-text place="popup" use-text-of-place="MainMenu"/>
         </action>
-<!--        <action-->
-<!--                id="statusbar.startServer"-->
-<!--                class="panel.converted.StartServerAction">-->
-<!--            <keyboard-shortcut first-keystroke="ctrl shift alt s" keymap="$default"/>-->
 
-<!--            <override-text place="MainMenu"/>-->
-<!--            <override-text place="popup" use-text-of-place="MainMenu"/>-->
-<!--        </action>-->
-<!--        <action-->
-<!--                id="statusbar.stopServer"-->
-<!--                class="panel.converted.StopServerAction">-->
-<!--            <keyboard-shortcut first-keystroke="ctrl shift alt s" keymap="$default"/>-->
-
-<!--            <override-text place="MainMenu"/>-->
-<!--            <override-text place="popup" use-text-of-place="MainMenu"/>-->
-<!--        </action>-->
-
-        <group id="vision.statusBarPopup">
-            <reference id="vision.openSettings" />
+        <group id="avatar.statusBarPopup">
+            <reference id="avatar.openSettings" />
             <separator/>
-<!--            <reference id="statusbar.stopServer" />-->
-<!--            <reference id="statusbar.startServer" />-->
+
             <reference id="statusbar.disableCompletions" />
             <reference id="statusbar.enableCompletions" />
         </group>
 
-<!--        <group id="Vision.GenerateGitCommitMessageGroup">-->
-<!--            <add-to-group group-id="Vcs.MessageActionGroup" anchor="first"/>-->
-<!--            <action-->
-<!--                    id="Vision.GenerateGitCommitMessage"-->
-<!--                    class="ee.carlrobert.vision.actions.GenerateGitCommitMessageAction" />-->
-<!--        </group>-->
     </actions>
 </idea-plugin>

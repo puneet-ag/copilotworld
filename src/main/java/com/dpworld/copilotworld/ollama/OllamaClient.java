@@ -5,7 +5,7 @@ import static com.dpworld.copilotworld.ollama.completion.DeserializationUtil.OBJ
 import static com.dpworld.copilotworld.ollama.completion.InterceptorUtil.REWRITE_X_NDJSON_CONTENT_INTERCEPTOR;
 
 import com.dpworld.copilotworld.ollama.completion.response.*;
-import com.dpworld.copilotworld.panel.converted.ErrorDetails;
+import com.dpworld.copilotworld.panel.ErrorDetails;
 import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import java.io.IOException;

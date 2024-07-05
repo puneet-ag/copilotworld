@@ -1,6 +1,6 @@
 package com.dpworld.copilotworld.completion;
 
-import com.dpworld.copilotworld.panel.converted.ErrorDetails;
+import com.dpworld.copilotworld.panel.ErrorDetails;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import okhttp3.Response;
 import okhttp3.internal.http2.StreamResetException;

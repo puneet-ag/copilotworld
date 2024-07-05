@@ -2,9 +2,6 @@ package com.dpworld.copilotworld.panel
 
 import com.dpworld.copilotworld.model.OllamaSettings
 import com.dpworld.copilotworld.ollama.OllamaClient
-import com.dpworld.copilotworld.panel.converted.VisionBundle
-import com.dpworld.copilotworld.panel.converted.OverlayUtil
-import com.dpworld.copilotworld.panel.converted.UIUtil
 import com.intellij.notification.NotificationType
 import com.intellij.openapi.application.invokeLater
 import com.intellij.openapi.components.service
@@ -13,7 +10,6 @@ import com.intellij.openapi.observable.util.whenTextChangedFromUi
 import com.intellij.openapi.ui.ComboBox
 import com.intellij.openapi.ui.MessageType
 import com.intellij.ui.TitledSeparator
-import com.intellij.ui.components.JBPasswordField
 import com.intellij.ui.components.JBTextField
 import com.intellij.util.ui.FormBuilder
 import kotlinx.coroutines.Dispatchers
@@ -29,7 +25,7 @@ import javax.swing.JPanel
 class OllamaSettingsForm {
 
     private val refreshModelsButton =
-        JButton(VisionBundle.get("settingsConfigurable.service.ollama.models.refresh"))
+        JButton(AvatarBundle.get("settingsConfigurable.service.ollama.models.refresh"))
     private val hostField: JBTextField
     private val modelComboBox: ComboBox<String>
     private val codeCompletionConfigurationForm: CodeCompletionConfigurationForm
@@ -56,31 +52,30 @@ class OllamaSettingsForm {
                 modelComboBox.isEnabled = false
             }
         }
-        
+
 
         refreshModels(settings.model)
     }
 
     fun getForm(): JPanel = FormBuilder.createFormBuilder()
-        .addComponent(TitledSeparator(VisionBundle.get("shared.configuration")))
+        .addComponent(TitledSeparator(AvatarBundle.get("shared.configuration")))
         .addComponent(
             FormBuilder.createFormBuilder()
                 .setFormLeftIndent(16)
                 .addLabeledComponent(
-                    VisionBundle.get("settingsConfigurable.shared.baseHost.label"),
+                    AvatarBundle.get("settingsConfigurable.shared.baseHost.label"),
                     hostField
                 )
                 .addLabeledComponent(
-                    VisionBundle.get("settingsConfigurable.shared.model.label"),
+                    AvatarBundle.get("settingsConfigurable.shared.model.label"),
                     JPanel(BorderLayout(8, 0)).apply {
                         add(modelComboBox, BorderLayout.CENTER)
-                        
+
                     }
                 )
                 .setFormLeftIndent(32)
                 .panel
         )
-        .addComponent(TitledSeparator(VisionBundle.get("shared.codeCompletions")))
         .addComponent(UIUtil.withEmptyLeftBorder(codeCompletionConfigurationForm.getForm()))
         .addComponentFillVertically(JPanel(), 0)
         .panel
@@ -98,8 +93,6 @@ class OllamaSettingsForm {
         service<OllamaSettings>().state.run {
             hostField.text = host
             modelComboBox.item = model ?: ""
-            codeCompletionConfigurationForm.isCodeCompletionsEnabled = isCodeCompletionsEnabled
-            codeCompletionConfigurationForm.fimTemplate = fimTemplate
         }
     }
 
@@ -107,16 +100,12 @@ class OllamaSettingsForm {
         service<OllamaSettings>().state.run {
             host = hostField.text
             model = modelComboBox.item
-            isCodeCompletionsEnabled = codeCompletionConfigurationForm.isCodeCompletionsEnabled
-            fimTemplate = codeCompletionConfigurationForm.fimTemplate!!
         }
     }
 
     fun isModified() = service<OllamaSettings>().state.run {
         hostField.text != host
                 || (modelComboBox.item != model && modelComboBox.isEnabled)
-                || codeCompletionConfigurationForm.isCodeCompletionsEnabled != isCodeCompletionsEnabled
-                || codeCompletionConfigurationForm.fimTemplate != fimTemplate
     }
 
     fun refreshModels(currentModel: String?) {
@@ -141,7 +130,7 @@ class OllamaSettingsForm {
                             } else {
                                 OverlayUtil.showBalloon(
                                     format(
-                                        VisionBundle.get("validation.error.model.notExists"),
+                                        AvatarBundle.get("validation.error.model.notExists"),
                                         currentModel
                                     ),
                                     MessageType.ERROR,

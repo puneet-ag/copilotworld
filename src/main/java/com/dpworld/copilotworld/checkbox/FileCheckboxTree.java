@@ -7,8 +7,8 @@ import com.intellij.ui.CheckedTreeNode;
 import com.intellij.ui.ColoredTreeCellRenderer;
 
 import org.jetbrains.annotations.NotNull;
-import com.dpworld.copilotworld.panel.converted.IntellijFileUtil;
-import com.dpworld.copilotworld.panel.converted.ReferencedFile;
+import com.dpworld.copilotworld.panel.IntellijFileUtil;
+import com.dpworld.copilotworld.panel.ReferencedFile;
 
 import java.util.List;
 

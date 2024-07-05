@@ -5,9 +5,9 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.editor.Editor;
 
 import org.jetbrains.annotations.NotNull;
-import com.dpworld.copilotworld.panel.converted.OverlayUtil;
-import com.dpworld.copilotworld.panel.converted.VisionBundle;
-import com.dpworld.copilotworld.panel.converted.EditorUtil;
+import com.dpworld.copilotworld.panel.OverlayUtil;
+import com.dpworld.copilotworld.panel.AvatarBundle;
+import com.dpworld.copilotworld.panel.EditorUtil;
 
 import static java.util.Objects.requireNonNull;
 
@@ -16,8 +16,8 @@ public class ReplaceSelectionAction extends TrackableAction {
   public ReplaceSelectionAction(@NotNull Editor editor) {
     super(
         editor,
-        VisionBundle.get("toolwindow.chat.editor.action.replaceSelection.title"),
-        VisionBundle.get("toolwindow.chat.editor.action.replaceSelection.description"),
+        AvatarBundle.get("toolwindow.chat.editor.action.replaceSelection.title"),
+        AvatarBundle.get("toolwindow.chat.editor.action.replaceSelection.description"),
         Actions.Replace,
         ActionType.REPLACE_IN_MAIN_EDITOR);
   }
