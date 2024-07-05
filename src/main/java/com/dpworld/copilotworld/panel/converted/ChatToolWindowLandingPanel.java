@@ -53,7 +53,7 @@ public class ChatToolWindowLandingPanel extends ResponsePanel {
         return "<html>" +
                 "<p style=\"margin-top: 4px; margin-bottom: 4px;\">" +
                 "Hi <strong>" + GeneralSettings.getCurrentState().getDisplayName() + "</strong>, I'm Vision! " +
-                "Here to assist with coding. Feel free to ask me anything, though I recommend verifying critical details." +
+                "I’m your AI powered assistant. Is there anything I can help you with ?" +
                 "</p>" +
                 "</html>";
     }
@@ -61,6 +61,7 @@ public class ChatToolWindowLandingPanel extends ResponsePanel {
     private String getCautionMessage() {
         return "<html>" +
                 "<p style=\"margin-top: 4px; margin-bottom: 4px;\">" +
+                "Caution: I can make mistakes. Make sure to verify any generated code or suggestions." +
                 "</p>" +
                 "</html>";
     }

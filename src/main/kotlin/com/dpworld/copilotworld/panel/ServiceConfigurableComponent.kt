@@ -49,7 +49,7 @@ class ServiceConfigurableComponent {
 
     private fun addLinks(formBuilder: FormBuilder) {
         mapOf(
-            "Ollama (Local)" to OllamaSettingsConfigurable::class.java,
+            "Local" to OllamaSettingsConfigurable::class.java,
         ).entries.forEach { (name, configurableClass) ->
             formBuilder.addComponent(ActionLink(name) {
                 val context = service<DataManager>().getDataContext(it.source as ActionLink)
