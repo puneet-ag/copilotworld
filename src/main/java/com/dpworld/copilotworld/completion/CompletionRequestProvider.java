@@ -25,13 +25,13 @@ import static com.dpworld.copilotworld.util.FileUtilIntellij.getResourceContent;
 public class CompletionRequestProvider {
 
   public static final String COMPLETION_SYSTEM_PROMPT = getResourceContent(
-      "/prompts/default-completion-system-prompt.txt");
+          "/prompts/default.txt");
 
   public static final String GENERATE_COMMIT_MESSAGE_SYSTEM_PROMPT = getResourceContent(
-      "/prompts/generate-commit-message-system-prompt.txt");
+          "/prompts/commit.txt");
 
   public static final String FIX_COMPILE_ERRORS_SYSTEM_PROMPT = getResourceContent(
-      "/prompts/fix-compile-errors.txt");
+          "/prompts/compile.txt");
 
   private final EncodingManager encodingManager = EncodingManager.getInstance();
   private final Conversation conversation;

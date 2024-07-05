@@ -23,26 +23,5 @@ public class AvatarUpdateActivity implements ProjectActivity {
         return null;
     }
 
-    private static class CheckForUpdatesTask extends Task.Backgroundable {
-
-        protected CheckForUpdatesTask(Project project) {
-            super(project, "test", true);
-        }
-
-        @Override
-        public void run(ProgressIndicator indicator) {
-        }
-
-        private void installAvatarUpdate(Project project) {
-            UpdateSettings settingsCopy = new UpdateSettings();
-            var settingsState = settingsCopy.getState();
-            settingsState.copyFrom(UpdateSettings.getInstance().getState());
-            settingsState.setCheckNeeded(true);
-            settingsState.setPluginsCheckNeeded(true);
-            settingsState.setShowWhatsNewEditor(true);
-            settingsState.setThirdPartyPluginsAllowed(true);
-            UpdateChecker.updateAndShowResult(project, settingsCopy);
-        }
-    }
 }
 

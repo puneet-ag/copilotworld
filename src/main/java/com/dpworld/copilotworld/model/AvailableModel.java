@@ -1,4 +1,4 @@
-package com.dpworld.copilotworld.panel;
+package com.dpworld.copilotworld.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

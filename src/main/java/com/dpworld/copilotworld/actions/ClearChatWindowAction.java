@@ -30,7 +30,7 @@ public class ClearChatWindowAction extends AnAction {
   public void actionPerformed(@NotNull AnActionEvent event) {
     try {
       onActionPerformed.run();
-    } finally {
+    } catch (Exception e) {
     }
   }
 

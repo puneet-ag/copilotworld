@@ -75,9 +75,9 @@ public class FileUtilIntellij {
         List<FileExtensionLanguageDetails> extensionToLanguageMappings;
         List<LanguageFileExtensionDetails> languageToExtensionMappings;
         try {
-            extensionToLanguageMappings = mapper.readValue(getResourceContent("/fileExtensionLanguageMappings.json"),
+            extensionToLanguageMappings = mapper.readValue(getResourceContent("/extensionToLanguage.json"),
                     new TypeReference<List<FileExtensionLanguageDetails>>() {});
-            languageToExtensionMappings = mapper.readValue(getResourceContent("/languageFileExtensionMappings.json"),
+            languageToExtensionMappings = mapper.readValue(getResourceContent("/languageToExtension.json"),
                     new TypeReference<List<LanguageFileExtensionDetails>>() {});
         } catch (JsonProcessingException e) {
             LOG.error("Unable to extract file extension", e);

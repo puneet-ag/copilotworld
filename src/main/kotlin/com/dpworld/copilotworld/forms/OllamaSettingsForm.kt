@@ -1,8 +1,10 @@
-package com.dpworld.copilotworld.panel
+package com.dpworld.copilotworld.forms
 
 import com.dpworld.copilotworld.avatar.AvatarBundle
 import com.dpworld.copilotworld.llmServer.LLMSettings
 import com.dpworld.copilotworld.llmServer.LLMClient
+import com.dpworld.copilotworld.panel.URLTextField
+
 import com.dpworld.copilotworld.util.OverlayUtil
 import com.dpworld.copilotworld.util.UIUtil
 import com.intellij.notification.NotificationType

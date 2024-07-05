@@ -1,6 +1,6 @@
 package com.dpworld.copilotworld.avatar;
 
-import com.dpworld.copilotworld.panel.AvailableModel;
+import com.dpworld.copilotworld.model.AvailableModel;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;

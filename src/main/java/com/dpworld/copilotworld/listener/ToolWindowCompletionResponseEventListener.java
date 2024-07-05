@@ -127,7 +127,7 @@ public abstract class ToolWindowCompletionResponseEventListener implements
     });
   }
 
-  @Override
+
   public void handleSerpResults(List<YouSerpResult> results, Message message) {
     serpResultsMapping.put(message.getId(), results);
   }

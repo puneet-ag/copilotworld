@@ -32,8 +32,6 @@ public abstract class TrackableAction extends AnAction {
     } catch (Exception ex) {
 
       throw ex;
-    } finally {
-
     }
   }
 }

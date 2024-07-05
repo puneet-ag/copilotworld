@@ -3,7 +3,6 @@ package com.dpworld.copilotworld.panel
 import com.dpworld.copilotworld.avatar.AvatarBundle
 import com.dpworld.copilotworld.avatar.AvatarKeys
 import com.dpworld.copilotworld.configuration.ConfigurationSettings
-import com.dpworld.copilotworld.configurations.GeneralSettings
 import com.dpworld.copilotworld.util.EditorActionsUtil
 import com.dpworld.copilotworld.util.OverlayUtil
 import com.intellij.notification.NotificationAction
@@ -21,11 +20,6 @@ class AvatarProjectActivity : ProjectActivity {
 
     override suspend fun execute(project: Project) {
         EditorActionsUtil.refreshActions()
-
-        val settings = service<GeneralSettings>().state
-        if (settings.selectedService == ServiceType.AVATAR) {
-            //project.service<AvatarService>().syncUserDetailsAsync()
-        }
 
         if (!ApplicationManager.getApplication().isUnitTestMode
             && ConfigurationSettings.getCurrentState().isCheckForNewScreenshots

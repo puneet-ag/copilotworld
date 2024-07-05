@@ -23,7 +23,7 @@ public class CreateNewConversationAction extends AnAction {
       if (project != null) {
         onCreate.run();
       }
-    } finally {
+    } catch (Exception e) {
 
     }
   }

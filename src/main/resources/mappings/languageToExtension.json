@@ -1,0 +1,9 @@
+[
+  {
+    "name": "Java",
+    "type": "programming",
+    "extensions": [
+      ".java"
+    ]
+  }
+]

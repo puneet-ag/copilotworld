@@ -1,4 +1,4 @@
-package com.dpworld.copilotworld.panel
+package com.dpworld.copilotworld.forms
 
 import com.dpworld.copilotworld.avatar.AvatarAvailableModels
 import com.dpworld.copilotworld.avatar.AvatarBundle

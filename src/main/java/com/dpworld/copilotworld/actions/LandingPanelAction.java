@@ -1,20 +1,16 @@
 package com.dpworld.copilotworld.actions;
 
 public enum LandingPanelAction {
-    FIND_BUGS(
-            "Find Bugs",
-            "Find bugs in this code",
-            "Find bugs and output code with bugs fixed in the selected code: {{selectedCode}}"
-    ),
+
     WRITE_TESTS(
-            "Write Tests",
-            "Write unit tests for this code",
-            "Write unit tests for the selected code: {{selectedCode}}"
+            "Generate Test Cases",
+            "Generate unit test cases for this code",
+            "Generate unit test cases for the selected code: {{selectedCode}}"
     ),
-    EXPLAIN(
-            "Explain",
-            "Explain the selected code",
-            "Explain the selected code: {{selectedCode}}"
+    CODE_INSIGHT(
+            "Code Insight",
+            "Insights on the selected code",
+            "Insights on the selected code: {{selectedCode}}"
     );
 
     private final String label;

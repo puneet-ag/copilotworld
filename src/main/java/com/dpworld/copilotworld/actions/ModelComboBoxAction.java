@@ -6,7 +6,7 @@ import com.dpworld.copilotworld.avatar.AvatarModel;
 import com.dpworld.copilotworld.avatar.AvatarServiceSettings;
 import com.dpworld.copilotworld.configurations.GeneralSettings;
 import com.dpworld.copilotworld.panel.Icons;
-import com.dpworld.copilotworld.panel.OllamaSettingsForm;
+import com.dpworld.copilotworld.forms.OllamaSettingsForm;
 import com.dpworld.copilotworld.panel.ServiceType;
 import com.intellij.openapi.actionSystem.*;
 import com.intellij.openapi.actionSystem.ex.ComboBoxAction;
@@ -100,30 +100,6 @@ public class ModelComboBoxAction extends ComboBoxAction {
       default:
         break;
     }
-  }
-
-  private AnAction createModelAction(
-      ServiceType serviceType,
-      String label,
-      Icon icon,
-      Presentation comboBoxPresentation) {
-    return new DumbAwareAction(label, "", icon) {
-      @Override
-      public void update(@NotNull AnActionEvent event) {
-        var presentation = event.getPresentation();
-        presentation.setEnabled(!presentation.getText().equals(comboBoxPresentation.getText()));
-      }
-
-      @Override
-      public void actionPerformed(@NotNull AnActionEvent e) {
-        handleModelChange(serviceType, label, icon, comboBoxPresentation);
-      }
-
-      @Override
-      public @NotNull ActionUpdateThread getActionUpdateThread() {
-        return ActionUpdateThread.BGT;
-      }
-    };
   }
 
   private void handleModelChange(
