@@ -12,13 +12,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-public class VirtualFileCheckboxTree extends FileCheckboxTree {
+public class VirtualDocumentCheckboxTree extends DocumentCheckboxTree {
 
-  public VirtualFileCheckboxTree(@NotNull VirtualFile[] rootFiles) {
+  public VirtualDocumentCheckboxTree(@NotNull VirtualFile[] rootFiles) {
     super(createFileTypesRenderer(), createRootNode(rootFiles));
   }
 
-  public List<ReferencedFile> getReferencedFiles() {
+  public List<ReferencedFile> fetchReferencedFiles() {
     var checkedNodes = getCheckedNodes(VirtualFile.class, Objects::nonNull);
     if (checkedNodes.length > 1000) {
       throw new RuntimeException("Too many files selected");
@@ -48,8 +48,8 @@ public class VirtualFileCheckboxTree extends FileCheckboxTree {
     return node;
   }
 
-  private static @NotNull FileCheckboxTreeCellRenderer createFileTypesRenderer() {
-    return new FileCheckboxTreeCellRenderer() {
+  private static @NotNull DocumentCheckboxTreeCellRenderer createFileTypesRenderer() {
+    return new DocumentCheckboxTreeCellRenderer() {
       @Override
       void updatePresentation(Object userObject) {
         if (userObject instanceof VirtualFile virtualFile) {
@@ -57,7 +57,7 @@ public class VirtualFileCheckboxTree extends FileCheckboxTree {
             getTextRenderer().append(virtualFile.getName());
             getTextRenderer().setIcon(PlatformIcons.FOLDER_ICON);
           } else {
-            updateFilePresentation(getTextRenderer(), virtualFile);
+            renderDocumentDetails(getTextRenderer(), virtualFile);
           }
         } else if (userObject == null) {
           getTextRenderer().setIcon(AllIcons.Nodes.Folder);

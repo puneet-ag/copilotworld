@@ -254,22 +254,6 @@ public class ConfigurationComponent {
     return form;
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   private ComponentValidator createTemperatureInputValidator(
       Disposable parentDisposable,
       JBTextField component) {

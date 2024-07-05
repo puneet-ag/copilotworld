@@ -2,8 +2,8 @@ package com.dpworld.copilotworld.actions;
 
 import com.dpworld.copilotworld.avatar.AvatarBundle;
 import com.dpworld.copilotworld.avatar.AvatarKeys;
-import com.dpworld.copilotworld.checkbox.FileCheckboxTree;
-import com.dpworld.copilotworld.checkbox.VirtualFileCheckboxTree;
+import com.dpworld.copilotworld.checkbox.DocumentCheckboxTree;
+import com.dpworld.copilotworld.checkbox.VirtualDocumentCheckboxTree;
 import com.dpworld.copilotworld.panel.EncodingManager;
 import com.dpworld.copilotworld.panel.IncludeFilesInContextNotifier;
 import com.dpworld.copilotworld.configuration.IncludedFilesSettings;
@@ -68,7 +68,7 @@ public class IncludeFilesInContextAction extends AnAction {
       throw new RuntimeException("Could not obtain file tree");
     }
 
-    var totalTokensLabel = new TotalTokensLabel(checkboxTree.getReferencedFiles());
+    var totalTokensLabel = new TotalTokensLabel(checkboxTree.fetchReferencedFiles());
     checkboxTree.addCheckboxTreeListener(new CheckboxTreeListener() {
       @Override
       public void nodeStateChanged(@NotNull CheckedTreeNode node) {
@@ -87,19 +87,19 @@ public class IncludeFilesInContextAction extends AnAction {
         totalTokensLabel,
         checkboxTree);
     if (show == OK_EXIT_CODE) {
-      project.putUserData(AvatarKeys.SELECTED_FILES, checkboxTree.getReferencedFiles());
+      project.putUserData(AvatarKeys.SELECTED_FILES, checkboxTree.fetchReferencedFiles());
       project.getMessageBus()
           .syncPublisher(IncludeFilesInContextNotifier.FILES_INCLUDED_IN_CONTEXT_TOPIC)
-          .filesIncluded(checkboxTree.getReferencedFiles());
+          .filesIncluded(checkboxTree.fetchReferencedFiles());
       includedFilesSettings.setPromptTemplate(promptTemplateTextArea.getText());
       includedFilesSettings.setRepeatableContext(repeatableContextTextArea.getText());
     }
   }
 
-  private @Nullable FileCheckboxTree getCheckboxTree(DataContext dataContext) {
+  private @Nullable DocumentCheckboxTree getCheckboxTree(DataContext dataContext) {
     var selectedVirtualFiles = VIRTUAL_FILE_ARRAY.getData(dataContext);
     if (selectedVirtualFiles != null) {
-      return new VirtualFileCheckboxTree(selectedVirtualFiles);
+      return new VirtualDocumentCheckboxTree(selectedVirtualFiles);
     }
 
     return null;

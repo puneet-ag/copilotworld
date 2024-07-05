@@ -5,7 +5,7 @@ import com.intellij.ui.CheckedTreeNode;
 
 import javax.swing.*;
 
-public abstract class FileCheckboxTreeCellRenderer extends CheckboxTree.CheckboxTreeCellRenderer {
+public abstract class DocumentCheckboxTreeCellRenderer extends CheckboxTree.CheckboxTreeCellRenderer {
 
   abstract void updatePresentation(Object userObject);
 

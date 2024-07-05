@@ -7,9 +7,7 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import org.jetbrains.annotations.NotNull;
 
 public class CreateNewConversationAction extends AnAction {
-
   private final Runnable onCreate;
-
   public CreateNewConversationAction(Runnable onCreate) {
     super("Create New Chat", "Create new chat", AllIcons.General.Add);
     this.onCreate = onCreate;
