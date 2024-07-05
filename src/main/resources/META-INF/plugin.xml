@@ -18,14 +18,14 @@
         <postStartupActivity implementation="com.dpworld.copilotworld.panel.converted.VisionUpdateActivity"/>
         <applicationConfigurable id="settings.vision" parentId="tools" displayName="Vision"
                                  instance="com.dpworld.copilotworld.panel.converted.GeneralSettingsConfigurable"/>
-        <applicationConfigurable id="settings.vision.services" parentId="settings.vision" displayName="Providers"
-                                 instance="com.dpworld.copilotworld.panel.ServiceConfigurable"/>
-        <applicationConfigurable id="settings.vision.services.ollama" parentId="settings.vision.services" displayName="Ollama (Local)"
+<!--        <applicationConfigurable id="settings.vision.services" parentId="settings.vision" displayName="Providers"-->
+<!--                                 instance="com.dpworld.copilotworld.panel.ServiceConfigurable"/>-->
+        <applicationConfigurable id="settings.vision.services.ollama" parentId="settings.vision" displayName="Model Server"
                                  instance="com.dpworld.copilotworld.panel.converted.OllamaSettingsConfigurable"/>
         <applicationConfigurable id="settings.vision.configuration" parentId="settings.vision" displayName="Configuration"
                                  instance="com.dpworld.copilotworld.panel.converted.ConfigurationConfigurable"/>
-        <applicationConfigurable id="settings.vision.advanced" parentId="settings.vision" displayName="Advanced Settings"
-                                 instance="com.dpworld.copilotworld.advanced.AdvancedSettingsConfigurable"/>
+<!--        <applicationConfigurable id="settings.vision.advanced" parentId="settings.vision" displayName="Advanced Settings"-->
+<!--                                 instance="com.dpworld.copilotworld.advanced.AdvancedSettingsConfigurable"/>-->
 
         <applicationService serviceImplementation="com.dpworld.copilotworld.panel.converted.GeneralSettings"/>
         <applicationService serviceImplementation="com.dpworld.copilotworld.model.OllamaSettings"/>
