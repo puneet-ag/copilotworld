@@ -38,28 +38,19 @@ public final class EncodingManager {
 
 
   public int countMessageTokens(String role, String content) {
-    var tokensPerMessage = 4; // every message follows <|start|>{role/name}\n{content}<|end|>\n
+    var tokensPerMessage = 4; 
     return countTokens(role + content) + tokensPerMessage;
   }
 
   public int countTokens(String text) {
     try {
-      // #444: Cl100kParser.split() throws AssertionError "Input is not UTF-8: "
+      
       return encoding.countTokens(text);
     } catch (Exception | Error ex) {
       LOG.warn("Could not count tokens for: " + text, ex);
       return 0;
     }
   }
-
-  /**
-   * Truncates the given text to the given number of tokens.
-   *
-   * @param text      The text to truncate.
-   * @param maxTokens The maximum number of tokens to keep.
-   * @param fromStart Whether to truncate from the start or the end of the text.
-   * @return The truncated text.
-   */
   public String truncateText(String text, int maxTokens, boolean fromStart) {
     var tokens = encoding.encode(text);
     int tokensToRetrieve = Math.min(maxTokens, tokens.size());

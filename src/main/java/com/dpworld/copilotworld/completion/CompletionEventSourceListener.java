@@ -57,7 +57,7 @@ public abstract class CompletionEventSourceListener<T> extends EventSourceListen
       String type,
       @NotNull String data) {
     try {
-      // Redundant end signal so just ignore
+      
       if ("[DONE]".equals(data)) {
         return;
       }

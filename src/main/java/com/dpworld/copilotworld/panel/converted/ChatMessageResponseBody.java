@@ -139,7 +139,7 @@ public class ChatMessageResponseBody extends JPanel {
     removeAll();
 
     streamParser.clear();
-    // TODO: First message might be code block
+    
     prepareProcessingText(true);
     currentlyProcessedTextPane.setText(
         "<html><p style=\"margin-top: 4px; margin-bottom: 8px;\">&#8205;</p></html>");

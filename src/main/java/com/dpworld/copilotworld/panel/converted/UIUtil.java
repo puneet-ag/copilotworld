@@ -137,13 +137,7 @@ public class UIUtil {
     return finalPanel;
   }
 
-  /**
-   * Creates RadioButton group to toggle between different layouts.
-   *
-   * @param layouts       Map from layout name to RadioButton + Layout to be shown
-   * @param initialLayout Key of {@code layouts} entry to be initially shown
-   * @return Panel with the RadioButton group
-   */
+  
   public static JPanel createRadioButtonGroupLayouts(
       Map<String, RadioButtonWithLayout> layouts,
       String initialLayout) {
@@ -151,7 +145,7 @@ public class UIUtil {
       @Override
       public void show(Container parent, String name) {
         super.show(parent, name);
-        // Set height to selected components height instead of consistent height
+        
         Arrays.stream(parent.getComponents())
             .filter(component -> name.equals(component.getName()))
             .findFirst()

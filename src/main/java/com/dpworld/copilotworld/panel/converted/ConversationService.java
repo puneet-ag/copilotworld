@@ -165,7 +165,7 @@ public final class ConversationService {
       for (int i = 0; i < sortedConversations.size(); i++) {
         var conversation = sortedConversations.get(i);
         if (conversation != null && conversation.getId().equals(currentConversation.getId())) {
-          // higher index indicates older conversation
+          
           var previousIndex = isPrevious ? i + 1 : i - 1;
           if (isPrevious ? previousIndex < sortedConversations.size() : previousIndex != -1) {
             return Optional.of(sortedConversations.get(previousIndex));

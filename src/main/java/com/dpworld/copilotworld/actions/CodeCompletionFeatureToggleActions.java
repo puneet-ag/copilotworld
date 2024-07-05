@@ -33,7 +33,7 @@ public abstract class CodeCompletionFeatureToggleActions extends AnAction {
                 ServiceManager.getService(OllamaSettings.class).getState().setCodeCompletionsEnabled(enableFeatureAction);
                 break;
             default:
-                // no-op for these services
+                
                 break;
         }
     }

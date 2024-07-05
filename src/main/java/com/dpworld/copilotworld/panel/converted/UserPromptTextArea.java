@@ -138,7 +138,6 @@ public class UserPromptTextArea extends JPanel {
 
   private void handleSubmit() {
     if (submitEnabled && !textArea.getText().isEmpty()) {
-      // Replacing each newline with two newlines to ensure proper Markdown formatting
       var text = textArea.getText().replace("\n", "\n\n");
       onSubmit.accept(text.trim());
       textArea.setText("");
@@ -171,10 +170,10 @@ public class UserPromptTextArea extends JPanel {
             handleSubmit();
           }
         }));
-//    if (isImageActionSupported()) {
-//      iconsPanel.add(new IconActionButton(new AttachImageAction()));
-//    }
-//    iconsPanel.add(stopButton);
+
+
+
+
     add(iconsPanel, BorderLayout.EAST);
   }
 

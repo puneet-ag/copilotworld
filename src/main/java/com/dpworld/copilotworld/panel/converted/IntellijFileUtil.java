@@ -43,24 +43,6 @@ public class IntellijFileUtil {
         }
     }
 
-//    public static void copyFileWithProgress(String fileName, URL url, long[] bytesRead, long fileSize, ProgressIndicator indicator) throws IOException {
-//        tryCreateDirectory(LlamaSettings.getLlamaModelsPath());
-//
-//        try (ReadableByteChannel readableByteChannel = Channels.newChannel(url.openStream());
-//             FileOutputStream fileOutputStream = new FileOutputStream(LlamaSettings.getLlamaModelsPath().resolve(fileName).toFile())) {
-//            ByteBuffer buffer = ByteBuffer.allocateDirect(1024 * 10);
-//            while (readableByteChannel.read(buffer) != -1) {
-//                if (indicator.isCanceled()) {
-//                    readableByteChannel.close();
-//                    break;
-//                }
-//                buffer.flip();
-//                bytesRead[0] += fileOutputStream.getChannel().write(buffer);
-//                buffer.clear();
-//                indicator.setFraction((double) bytesRead[0] / fileSize);
-//            }
-//        }
-//    }
 
     public static VirtualFile getEditorFile(Editor editor) {
         return FileDocumentManager.getInstance().getFile(editor.getDocument());

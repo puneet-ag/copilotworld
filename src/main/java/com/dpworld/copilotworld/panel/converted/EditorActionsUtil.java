@@ -43,7 +43,7 @@ public class EditorActionsUtil {
 
       var configuredActions = ConfigurationSettings.getCurrentState().getTableData();
       configuredActions.forEach((label, prompt) -> {
-        // using label as action description to prevent com.intellij.diagnostic.PluginException
+        
         var action = new BaseEditorAction(label, label) {
           @Override
           protected void actionPerformed(Project project, Editor editor, String selectedText) {

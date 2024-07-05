@@ -5,9 +5,7 @@ import org.jetbrains.annotations.Nls
 import java.awt.event.FocusAdapter
 import java.awt.event.FocusEvent
 
-/**
- * [JBTextField] that automatically removes all trailing "/" after loosing focus.
- */
+
 class URLTextField : JBTextField {
     constructor() : super()
     constructor(columns: Int) : super(columns)

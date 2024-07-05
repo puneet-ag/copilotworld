@@ -20,23 +20,23 @@ public class CodeCompletionRequestFactory {
 
 
 
-//    public static Request buildCustomRequest(InfillRequestDetails details) {
-//        CustomServiceSettings.CodeCompletionSettings settings = ServiceManager
-//                .getService(CustomServiceSettings.class)
-//                .getState()
-//                .getCodeCompletionSettings();
-//
-//        String credential = CredentialsStore.getCredential(CredentialsStore.CredentialKey.CUSTOM_SERVICE_API_KEY);
-//
-//        return buildCustomRequest(
-//                details,
-//                settings.getUrl(),
-//                settings.getHeaders(),
-//                settings.getBody(),
-//                settings.getInfillTemplate(),
-//                credential
-//        );
-//    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public static Request buildCustomRequest(
             InfillRequestDetails details,
@@ -75,18 +75,18 @@ public class CodeCompletionRequestFactory {
         }
     }
 
-//    public static LlamaCompletionRequest buildLlamaRequest(InfillRequestDetails details) {
-//        LlamaSettingsState settings = LlamaSettings.getCurrentState();
-//        InfillPromptTemplate promptTemplate = getLlamaInfillPromptTemplate(settings);
-//        String prompt = promptTemplate.buildPrompt(details.getPrefix(), details.getSuffix());
-//
-//        return new LlamaCompletionRequest.Builder(prompt)
-//                .setN_predict(getMaxTokens(details.getPrefix(), details.getSuffix()))
-//                .setStream(true)
-//                .setTemperature(0.4)
-//                .setStop(promptTemplate.getStopTokens())
-//                .build();
-//    }
+
+
+
+
+
+
+
+
+
+
+
+
 
     public static OllamaCompletionRequest buildOllamaRequest(InfillRequestDetails details) {
         OllamaSettingsState settings = ServiceManager.getService(OllamaSettings.class).getState();
@@ -106,15 +106,15 @@ public class CodeCompletionRequestFactory {
                 .build();
     }
 
-//    private static InfillPromptTemplate getLlamaInfillPromptTemplate(LlamaSettingsState settings) {
-//        if (!settings.isRunLocalServer()) {
-//            return settings.getRemoteModelInfillPromptTemplate();
-//        }
-//        if (settings.isUseCustomModel()) {
-//            return settings.getLocalModelInfillPromptTemplate();
-//        }
-//        return LlamaModel.findByHuggingFaceModel(settings.getHuggingFaceModel()).getInfillPromptTemplate();
-//    }
+
+
+
+
+
+
+
+
+
 
     private static Object transformValue(Object value, InfillPromptTemplate template, InfillRequestDetails details) {
         if (!(value instanceof String)) return value;
@@ -127,7 +127,7 @@ public class CodeCompletionRequestFactory {
         } else if (("$" + Placeholder.SUFFIX).equals(strValue)) {
             return details.getSuffix();
         } else {
-            // Handle default case if necessary
+            
             return value;
         }
     }

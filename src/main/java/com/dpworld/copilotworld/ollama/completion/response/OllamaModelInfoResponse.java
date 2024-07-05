@@ -3,11 +3,6 @@ package com.dpworld.copilotworld.ollama.completion.response;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-
-/**
- * see <a
- * href="https://github.com/ollama/ollama/blob/main/docs/api.md#show-model-information">ollama/api</a>.
- */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class OllamaModelInfoResponse {

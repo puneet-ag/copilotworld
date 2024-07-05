@@ -90,7 +90,6 @@ public class ConfigurationComponent {
 
     systemPromptTextArea = new JTextArea(3, 60);
     if (configuration.getSystemPrompt().isBlank()) {
-      // for backward compatibility
       systemPromptTextArea.setText(CompletionRequestProvider.COMPLETION_SYSTEM_PROMPT);
     } else {
       systemPromptTextArea.setText(configuration.getSystemPrompt());
@@ -137,9 +136,9 @@ public class ConfigurationComponent {
         .addComponent(new TitledSeparator(
             VisionBundle.get("configurationConfigurable.section.assistant.title")))
         .addComponent(createAssistantConfigurationForm())
-        //.addComponent(new TitledSeparator(
-        //    VisionBundle.get("configurationConfigurable.section.commitMessage.title")))
-        //.addComponent(createCommitMessageConfigurationForm())
+        
+        
+        
         .addComponentFillVertically(new JPanel(), 0)
         .getPanel();
   }
@@ -208,7 +207,7 @@ public class ConfigurationComponent {
         .createPanel();
   }
 
-  // Formatted keys are not referenced in the messages bundle file
+  
   private void addAssistantFormLabeledComponent(
       FormBuilder formBuilder,
       String labelKey,
@@ -253,21 +252,21 @@ public class ConfigurationComponent {
     return form;
   }
 
-//  private JPanel createCommitMessageConfigurationForm() {
-//    return FormBuilder.createFormBuilder()
-//        .setFormLeftIndent(16)
-//        .addLabeledComponent(
-//            new JBLabel(VisionBundle.get(
-//                "configurationConfigurable.section.commitMessage.systemPromptField.label"))
-//                .withBorder(JBUI.Borders.emptyLeft(2)),
-//            UI.PanelFactory.panel(commitMessagePromptTextArea)
-//                .resizeX(false)
-//                .withComment(CommitMessageTemplate.Companion.getHtmlDescription())
-//                .createPanel(),
-//            true
-//        )
-//        .getPanel();
-//  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   private ComponentValidator createTemperatureInputValidator(
       Disposable parentDisposable,

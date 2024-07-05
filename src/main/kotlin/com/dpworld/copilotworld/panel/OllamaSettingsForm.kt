@@ -56,7 +56,7 @@ class OllamaSettingsForm {
                 modelComboBox.isEnabled = false
             }
         }
-        //refreshModelsButton.addActionListener { refreshModels(getModel() ?: settings.model) }
+        
 
         refreshModels(settings.model)
     }
@@ -74,13 +74,10 @@ class OllamaSettingsForm {
                     VisionBundle.get("settingsConfigurable.shared.model.label"),
                     JPanel(BorderLayout(8, 0)).apply {
                         add(modelComboBox, BorderLayout.CENTER)
-                        //add(refreshModelsButton, BorderLayout.EAST)
+                        
                     }
                 )
-                //.addComponent(TitledSeparator(VisionBundle.get("settingsConfigurable.shared.authentication.title")))
                 .setFormLeftIndent(32)
-
-                //.addComponentToRightColumn(UIUtil.createComment("settingsConfigurable.shared.apiKey.comment"))
                 .panel
         )
         .addComponent(TitledSeparator(VisionBundle.get("shared.codeCompletions")))

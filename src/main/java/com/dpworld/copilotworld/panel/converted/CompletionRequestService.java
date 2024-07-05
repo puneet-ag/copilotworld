@@ -63,7 +63,7 @@ public final class CompletionRequestService {
         break;
 
       default:
-        //LOG.debug("Unknown service: {}", selectedService);
+        
         break;
     }
   }

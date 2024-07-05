@@ -8,14 +8,14 @@ import com.intellij.openapi.wm.IdeFrame;
 
 public class ApplicationUtil {
 
-    // Private constructor to prevent instantiation
+    
     private ApplicationUtil() {
     }
 
-    // Static instance for the singleton pattern
+    
     private static final ApplicationUtil INSTANCE = new ApplicationUtil();
 
-    // Static method to access the singleton instance
+    
     public static ApplicationUtil getInstance() {
         return INSTANCE;
     }

@@ -5,9 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.dpworld.copilotworld.completion.CompletionRequest;
 import com.dpworld.copilotworld.ollama.completion.response.OllamaResponseFormat;
 
-/*
- * See <a href="https://github.com/ollama/ollama/blob/main/docs/api.md#generate-a-completion">ollama/api</a>
- */
+
 @JsonInclude(Include.NON_NULL)
 public class OllamaCompletionRequest implements CompletionRequest {
 

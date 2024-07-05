@@ -10,13 +10,9 @@ public class OllamaPullResponse {
 
   private String status;
   private String digest;
-  /**
-   * Total amount of bytes.
-   */
+  
   private Long total;
-  /**
-   * Downloaded amount of bytes.
-   */
+  
   private Long completed;
 
   public String getStatus() {

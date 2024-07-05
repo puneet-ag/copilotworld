@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 public class ModelComboBoxAction extends ComboBoxAction {
 
   private final Runnable onModelChange;
@@ -39,7 +38,7 @@ public class ModelComboBoxAction extends ComboBoxAction {
     presentation.setText("Reload Models");
     ComboBoxButton button = createComboBoxButton(presentation);
     button.setBorder(null);
-    //button.addActionListener(e -> refreshModels());
+    
     return button;
   }
 
@@ -62,12 +61,6 @@ public class ModelComboBoxAction extends ComboBoxAction {
     actionGroup.addSeparator("Vision");
     actionGroup.addAll(getVisionModelActions(project, presentation));
     actionGroup.addSeparator("Available Models");
-    //actionGroup.addSeparator("Custom OpenAI");
-
-    //actionGroup.addSeparator();
-
-    //actionGroup.addSeparator();
-
     actionGroup.addSeparator();
 
     actionGroup.addSeparator("Ollama");
@@ -104,18 +97,6 @@ public class ModelComboBoxAction extends ComboBoxAction {
         break;
     }
   }
-
-
-
-//  private String getSelectedHuggingFace() {
-//    var huggingFaceModel = LlamaSettings.getCurrentState().getHuggingFaceModel();
-//    var llamaModel = LlamaModel.findByHuggingFaceModel(huggingFaceModel);
-//    return format(
-//        "%s %dB (Q%d)",
-//        llamaModel.getLabel(),
-//        huggingFaceModel.getParameterSize(),
-//        huggingFaceModel.getQuantization());
-//  }
 
   private AnAction createModelAction(
       ServiceType serviceType,
@@ -211,32 +192,4 @@ public class ModelComboBoxAction extends ComboBoxAction {
     };
   }
 
-//  private AnAction createOpenAIModelAction(
-//      OpenAIChatCompletionModel model,
-//      Presentation comboBoxPresentation) {
-//    createModelAction(OPENAI, model.getDescription(), Icons.OpenAI,
-//        comboBoxPresentation);
-//    return new DumbAwareAction(model.getDescription(), "", Icons.OpenAI) {
-//      @Override
-//      public void update(@NotNull AnActionEvent event) {
-//        var presentation = event.getPresentation();
-//        presentation.setEnabled(!presentation.getText().equals(comboBoxPresentation.getText()));
-//      }
-//
-//      @Override
-//      public void actionPerformed(@NotNull AnActionEvent e) {
-//        OpenAISettings.getCurrentState().setModel(model.getCode());
-//        handleModelChange(
-//            OPENAI,
-//            model.getDescription(),
-//            Icons.OpenAI,
-//            comboBoxPresentation);
-//      }
-//
-//      @Override
-//      public @NotNull ActionUpdateThread getActionUpdateThread() {
-//        return ActionUpdateThread.BGT;
-//      }
-//    };
-//  }
 }

@@ -19,7 +19,7 @@ class VisionProjectActivity : ProjectActivity {
 
         val settings = service<GeneralSettings>().state
         if (settings.selectedService == ServiceType.VISION) {
-            //project.service<VisionService>().syncUserDetailsAsync()
+            
         }
 
         if (!ApplicationManager.getApplication().isUnitTestMode

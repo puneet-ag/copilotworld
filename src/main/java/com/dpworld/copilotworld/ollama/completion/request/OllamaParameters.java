@@ -6,9 +6,7 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import java.util.List;
 
-/*
- * See <a href="https://github.com/ollama/ollama/blob/main/docs/modelfile.md#parameter">ollama/api</a>
- */
+
 @JsonInclude(Include.NON_NULL)
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class OllamaParameters {
@@ -133,7 +131,7 @@ public class OllamaParameters {
     private Double topP;
 
     public Builder() {
-      // Default values
+      
     }
 
     public Builder mirostat(Integer mirostat) {

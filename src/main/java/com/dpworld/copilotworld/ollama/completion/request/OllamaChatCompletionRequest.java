@@ -5,9 +5,7 @@ import com.dpworld.copilotworld.ollama.completion.response.OllamaResponseFormat;
 
 import java.util.List;
 
-/*
- * See <a href="https://github.com/ollama/ollama/blob/main/docs/api.md#generate-a-chat-completion">ollama/api</a>
- */
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class OllamaChatCompletionRequest {
 

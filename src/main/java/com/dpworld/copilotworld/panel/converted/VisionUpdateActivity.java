@@ -26,49 +26,17 @@ public class VisionUpdateActivity implements ProjectActivity {
         if (ApplicationManager.getApplication().isUnitTestMode()) {
             return null;
         }
-
-        //schedulePluginUpdateChecks(project);
         return null;
     }
-
-//    private void schedulePluginUpdateChecks(Project project) {
-//        Runnable command = () -> {
-//            if (ConfigurationSettings.getCurrentState().isCheckForPluginUpdates()) {
-//                new CheckForUpdatesTask(project).queue();
-//            }
-//        };
-//        AppExecutorUtil.getAppScheduledExecutorService()
-//                .scheduleWithFixedDelay(command, 0, 4L, TimeUnit.HOURS);
-//    }
 
     private static class CheckForUpdatesTask extends Task.Backgroundable {
 
         protected CheckForUpdatesTask(Project project) {
             super(project, "test", true);
-            //super(project, VisionBundle.get("checkForUpdatesTask.title"), true);
         }
 
         @Override
         public void run(ProgressIndicator indicator) {
-//            boolean isLatestVersion =
-//                    !InstalledPluginsState.getInstance().hasNewerVersion();
-//            if (getProject().isDisposed() || isLatestVersion) {
-//                return;
-//            }
-
-//            OverlayUtil.getDefaultNotification(
-//                            VisionBundle.get("checkForUpdatesTask.notification.message"),
-//                            NotificationType.IDE_UPDATE
-//                    )
-//                    .addAction(NotificationAction.createSimpleExpiring(
-//                            VisionBundle.get("checkForUpdatesTask.notification.installButton"),
-//                            () -> ApplicationManager.getApplication().executeOnPooledThread(() -> installVisionUpdate(getProject()))
-//                    ))
-//                    .addAction(NotificationAction.createSimpleExpiring(
-//                            VisionBundle.get("shared.notification.doNotShowAgain"),
-//                            () -> ConfigurationSettings.getCurrentState().setCheckForPluginUpdates(false)
-//                    ))
-//                    .notify(getProject());
         }
 
         private void installVisionUpdate(Project project) {

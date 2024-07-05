@@ -1,6 +1,5 @@
 package com.dpworld.copilotworld.panel.converted;
 
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,12 +8,6 @@ public class VisionAvailableModels {
 
     public static List<VisionModel> getToolWindowModels() {
         List<VisionModel> anonymousModels = new ArrayList<>(BASE_CHAT_MODELS);
-//        anonymousModels.add(new VisionModel(
-//                "Llama 3 (8B) - FREE",
-//                "llama-3-8b",
-//                Icons.Default
-//        ));
-
         return anonymousModels;
     }
 

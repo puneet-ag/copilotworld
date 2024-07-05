@@ -38,7 +38,7 @@ public final class FileWatcher implements Disposable {
             watchThread.start();
             return watchThread;
         } catch (Exception e) {
-            return null; // WatchService creation or registration failed
+            return null; 
         }
     }
 

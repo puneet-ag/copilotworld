@@ -20,7 +20,7 @@ public class VisionService {
         serviceScope.shutdown();
     }
 
-    // Simulating UserDetails class structure
+    
     static class UserDetails {
         private String fullName;
         private String pricingPlan;

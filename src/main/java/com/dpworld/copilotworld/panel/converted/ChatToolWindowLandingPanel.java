@@ -27,13 +27,13 @@ public class ChatToolWindowLandingPanel extends ResponsePanel {
         JPanel listPanel = new JPanel();
         listPanel.setLayout(new BoxLayout(listPanel, BoxLayout.PAGE_AXIS));
         listPanel.setBorder(JBUI.Borders.emptyLeft(4));
-//        listPanel.add(Box.createVerticalStrut(4));
-//        listPanel.add(createEditorActionLink(LandingPanelAction.EXPLAIN, onAction));
-//        listPanel.add(Box.createVerticalStrut(4));
-//        listPanel.add(createEditorActionLink(LandingPanelAction.WRITE_TESTS, onAction));
-//        listPanel.add(Box.createVerticalStrut(4));
-//        listPanel.add(createEditorActionLink(LandingPanelAction.FIND_BUGS, onAction));
-//        listPanel.add(Box.createVerticalStrut(4));
+
+
+
+
+
+
+
         return listPanel;
     }
 
@@ -66,7 +66,7 @@ public class ChatToolWindowLandingPanel extends ResponsePanel {
                 "</html>";
     }
 
-    // Callback interface to replace Kotlin's lambda function
+    
     public interface OnActionCallback {
         void onAction(LandingPanelAction action, Point point);
     }

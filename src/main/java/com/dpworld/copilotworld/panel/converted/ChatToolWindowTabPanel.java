@@ -256,7 +256,7 @@ public class ChatToolWindowTabPanel implements Disposable {
     return JBUI.Panels.simplePanel()
         .withBorder(Borders.emptyBottom(8))
         .andTransparent()
-        //.addToLeft(totalTokensPanel)
+        
         .addToLeft(new ModelComboBoxAction(project, onModelChange, selectedService)
             .createCustomComponent(ActionPlaces.UNKNOWN));
   }
