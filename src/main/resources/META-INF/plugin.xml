@@ -17,16 +17,16 @@
         <postStartupActivity implementation="com.dpworld.copilotworld.panel.AvatarProjectActivity"/>
         <postStartupActivity implementation="com.dpworld.copilotworld.avatar.AvatarUpdateActivity"/>
         <applicationConfigurable id="settings.avatar" parentId="tools" displayName="Avatar"
-                                 instance="com.dpworld.copilotworld.configurations.GeneralSettingsConfigurable"/>
+                                 instance="com.dpworld.copilotworld.configuration.GeneralSettingsConfigurable"/>
         <applicationConfigurable id="settings.avatar.services.ollama" parentId="settings.avatar" displayName="Model Server"
                                  instance="com.dpworld.copilotworld.llmServer.LLMConfigurableSettings"/>
 
-        <applicationService serviceImplementation="com.dpworld.copilotworld.configurations.GeneralSettings"/>
+        <applicationService serviceImplementation="com.dpworld.copilotworld.configuration.GeneralSettings"/>
         <applicationService serviceImplementation="com.dpworld.copilotworld.llmServer.LLMSettings"/>
         <applicationService serviceImplementation="com.dpworld.copilotworld.configuration.ConfigurationSettings"/>
         <applicationService serviceImplementation="com.dpworld.copilotworld.advanced.AdvancedSettings"/>
         <applicationService serviceImplementation="com.dpworld.copilotworld.conversation.ConversationsState"/>
-        <applicationService serviceImplementation="com.dpworld.copilotworld.configurations.IncludedFilesSettings"/>
+        <applicationService serviceImplementation="com.dpworld.copilotworld.configuration.IncludedFilesSettings"/>
 
         <inline.completion.provider
                 id="AvatarInlineCompletionProvider"

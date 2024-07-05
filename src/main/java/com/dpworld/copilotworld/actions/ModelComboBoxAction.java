@@ -4,7 +4,7 @@ import com.dpworld.copilotworld.avatar.AvatarAvailableModels;
 import com.dpworld.copilotworld.avatar.AvatarKeys;
 import com.dpworld.copilotworld.avatar.AvatarModel;
 import com.dpworld.copilotworld.avatar.AvatarServiceSettings;
-import com.dpworld.copilotworld.configurations.GeneralSettings;
+import com.dpworld.copilotworld.configuration.GeneralSettings;
 import com.dpworld.copilotworld.panel.Icons;
 import com.dpworld.copilotworld.forms.OllamaSettingsForm;
 import com.dpworld.copilotworld.panel.ServiceType;

@@ -5,7 +5,7 @@ import com.dpworld.copilotworld.llmServer.completion.request.LLMChatMessageCompl
 import com.dpworld.copilotworld.llmServer.completion.request.LLMChatCompletionRequest;
 import com.dpworld.copilotworld.panel.CallParameters;
 import com.dpworld.copilotworld.configuration.ConfigurationSettings;
-import com.dpworld.copilotworld.configurations.GeneralSettings;
+import com.dpworld.copilotworld.configuration.GeneralSettings;
 import com.dpworld.copilotworld.panel.ServiceType;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.Service;

@@ -6,7 +6,7 @@ import com.dpworld.copilotworld.completion.CodeCompletionParserFactory
 import com.dpworld.copilotworld.completion.CodeCompletionService
 import com.dpworld.copilotworld.completion.CompletionEventListener
 import com.dpworld.copilotworld.configuration.ConfigurationSettings
-import com.dpworld.copilotworld.configurations.GeneralSettings
+import com.dpworld.copilotworld.configuration.GeneralSettings
 import com.dpworld.copilotworld.llmServer.LLMSettings
 import com.dpworld.copilotworld.util.OverlayUtil.showNotification
 import com.intellij.codeInsight.inline.completion.*

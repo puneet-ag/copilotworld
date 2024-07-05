@@ -7,7 +7,7 @@ import com.dpworld.copilotworld.avatar.AvatarKeys;
 import com.dpworld.copilotworld.completion.CompletionRequestHandler;
 import com.dpworld.copilotworld.completion.CompletionRequestProvider;
 import com.dpworld.copilotworld.completion.CompletionRequestService;
-import com.dpworld.copilotworld.configurations.GeneralSettings;
+import com.dpworld.copilotworld.configuration.GeneralSettings;
 import com.dpworld.copilotworld.conversation.ConversationService;
 import com.dpworld.copilotworld.conversation.ConversationType;
 import com.dpworld.copilotworld.listener.ToolWindowCompletionResponseEventListener;

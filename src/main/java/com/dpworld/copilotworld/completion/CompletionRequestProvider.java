@@ -2,7 +2,7 @@ package com.dpworld.copilotworld.completion;
 
 import com.dpworld.copilotworld.activity.Conversation;
 import com.dpworld.copilotworld.configuration.ConfigurationSettings;
-import com.dpworld.copilotworld.configurations.IncludedFilesSettings;
+import com.dpworld.copilotworld.configuration.IncludedFilesSettings;
 import com.dpworld.copilotworld.conversation.ConversationType;
 import com.dpworld.copilotworld.panel.*;
 import com.intellij.openapi.application.ApplicationManager;

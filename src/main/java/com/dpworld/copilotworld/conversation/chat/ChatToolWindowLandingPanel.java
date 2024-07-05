@@ -1,7 +1,7 @@
 package com.dpworld.copilotworld.conversation.chat;
 
 import com.dpworld.copilotworld.actions.LandingPanelAction;
-import com.dpworld.copilotworld.configurations.GeneralSettings;
+import com.dpworld.copilotworld.configuration.GeneralSettings;
 import com.dpworld.copilotworld.panel.Icons;
 import com.dpworld.copilotworld.panel.ResponsePanel;
 import com.dpworld.copilotworld.util.UIUtil;

@@ -1,7 +1,7 @@
 package com.dpworld.copilotworld.conversation.chat;
 
 import com.dpworld.copilotworld.activity.YouSerpResult;
-import com.dpworld.copilotworld.configurations.GeneralSettingsConfigurable;
+import com.dpworld.copilotworld.configuration.GeneralSettingsConfigurable;
 import com.dpworld.copilotworld.panel.ResponseEditorPanel;
 import com.dpworld.copilotworld.panel.StreamParser;
 import com.dpworld.copilotworld.panel.StreamResponseType;

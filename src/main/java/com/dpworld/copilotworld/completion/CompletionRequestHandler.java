@@ -1,7 +1,7 @@
 package com.dpworld.copilotworld.completion;
 
 import com.dpworld.copilotworld.activity.YouSerpResult;
-import com.dpworld.copilotworld.configurations.GeneralSettings;
+import com.dpworld.copilotworld.configuration.GeneralSettings;
 import com.dpworld.copilotworld.listener.YouCompletionEventListener;
 import com.dpworld.copilotworld.panel.*;
 import okhttp3.sse.EventSource;

@@ -4,7 +4,7 @@ import com.dpworld.copilotworld.actions.ClearChatWindowAction;
 import com.dpworld.copilotworld.actions.CreateNewConversationAction;
 import com.dpworld.copilotworld.avatar.AvatarKeys;
 import com.dpworld.copilotworld.avatar.AvatarUserDetailsNotifier;
-import com.dpworld.copilotworld.configurations.GeneralSettings;
+import com.dpworld.copilotworld.configuration.GeneralSettings;
 import com.dpworld.copilotworld.conversation.ConversationService;
 import com.dpworld.copilotworld.conversation.ConversationsState;
 import com.dpworld.copilotworld.panel.*;

@@ -1,7 +1,7 @@
 package com.dpworld.copilotworld.panel
 
 import com.dpworld.copilotworld.avatar.AvatarBundle
-import com.dpworld.copilotworld.configurations.GeneralSettings
+import com.dpworld.copilotworld.configuration.GeneralSettings
 import com.dpworld.copilotworld.forms.AvatarServiceForm
 
 import com.dpworld.copilotworld.llmServer.LLMConfigurableSettings

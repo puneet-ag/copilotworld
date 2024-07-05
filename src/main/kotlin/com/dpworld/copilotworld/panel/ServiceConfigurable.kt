@@ -1,6 +1,6 @@
 package com.dpworld.copilotworld.panel
 
-import com.dpworld.copilotworld.configurations.GeneralSettings
+import com.dpworld.copilotworld.configuration.GeneralSettings
 import com.dpworld.copilotworld.conversation.ConversationsState
 import com.dpworld.copilotworld.conversation.chat.ChatToolWindowContentManager
 import com.dpworld.copilotworld.util.ApplicationManagerUtil.getCurrentProject

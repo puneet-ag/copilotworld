@@ -8,7 +8,7 @@ import com.intellij.openapi.project.Project;
 import com.dpworld.copilotworld.llmServer.LLMSettings;
 import com.dpworld.copilotworld.completion.CodeCompletionService;
 import com.dpworld.copilotworld.avatar.AvatarServiceSettings;
-import com.dpworld.copilotworld.configurations.GeneralSettings;
+import com.dpworld.copilotworld.configuration.GeneralSettings;
 import com.dpworld.copilotworld.panel.ServiceType;
 
 

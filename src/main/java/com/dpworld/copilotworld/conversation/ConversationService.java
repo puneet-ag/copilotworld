@@ -3,7 +3,7 @@ package com.dpworld.copilotworld.conversation;
 import com.dpworld.copilotworld.activity.Conversation;
 import com.dpworld.copilotworld.activity.Message;
 import com.dpworld.copilotworld.panel.CallParameters;
-import com.dpworld.copilotworld.configurations.GeneralSettings;
+import com.dpworld.copilotworld.configuration.GeneralSettings;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.Service;

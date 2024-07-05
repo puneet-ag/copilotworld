@@ -1,4 +1,4 @@
-package com.dpworld.copilotworld.configurations;
+package com.dpworld.copilotworld.configuration;
 
 import com.dpworld.copilotworld.avatar.AvatarBundle;
 import com.intellij.openapi.options.Configurable;

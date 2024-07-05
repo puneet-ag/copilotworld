@@ -2,7 +2,7 @@ package com.dpworld.copilotworld.conversation;
 
 import com.dpworld.copilotworld.actions.DeleteConversationAction;
 import com.dpworld.copilotworld.activity.Conversation;
-import com.dpworld.copilotworld.configurations.GeneralSettings;
+import com.dpworld.copilotworld.configuration.GeneralSettings;
 import com.dpworld.copilotworld.conversation.chat.ChatToolWindowContentManager;
 import com.dpworld.copilotworld.panel.*;
 import com.intellij.openapi.project.Project;

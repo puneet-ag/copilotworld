@@ -6,7 +6,7 @@ import com.dpworld.copilotworld.checkbox.FileCheckboxTree;
 import com.dpworld.copilotworld.checkbox.VirtualFileCheckboxTree;
 import com.dpworld.copilotworld.panel.EncodingManager;
 import com.dpworld.copilotworld.panel.IncludeFilesInContextNotifier;
-import com.dpworld.copilotworld.configurations.IncludedFilesSettings;
+import com.dpworld.copilotworld.configuration.IncludedFilesSettings;
 import com.dpworld.copilotworld.panel.ReferencedFile;
 import com.dpworld.copilotworld.util.FileUtilIntellij;
 import com.dpworld.copilotworld.util.UIUtil;
@@ -40,8 +40,8 @@ import java.util.List;
 import static com.intellij.openapi.actionSystem.CommonDataKeys.VIRTUAL_FILE_ARRAY;
 import static com.intellij.openapi.ui.DialogWrapper.OK_EXIT_CODE;
 import static java.lang.String.format;
-import static com.dpworld.copilotworld.configurations.IncludedFilesSettingsState.DEFAULT_PROMPT_TEMPLATE;
-import static com.dpworld.copilotworld.configurations.IncludedFilesSettingsState.DEFAULT_REPEATABLE_CONTEXT;
+import static com.dpworld.copilotworld.configuration.IncludedFilesSettingsState.DEFAULT_PROMPT_TEMPLATE;
+import static com.dpworld.copilotworld.configuration.IncludedFilesSettingsState.DEFAULT_REPEATABLE_CONTEXT;
 
 
 public class IncludeFilesInContextAction extends AnAction {

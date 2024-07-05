@@ -1,4 +1,4 @@
-package com.dpworld.copilotworld.configurations;
+package com.dpworld.copilotworld.configuration;
 
 public class IncludedFilesSettingsState {
 

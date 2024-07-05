@@ -1,7 +1,7 @@
 package com.dpworld.copilotworld.completion;
 
 import com.dpworld.copilotworld.avatar.AvatarServiceSettings;
-import com.dpworld.copilotworld.configurations.GeneralSettings;
+import com.dpworld.copilotworld.configuration.GeneralSettings;
 import com.dpworld.copilotworld.panel.InfillRequestDetails;
 import com.dpworld.copilotworld.panel.ServiceType;
 import com.intellij.openapi.components.Service;

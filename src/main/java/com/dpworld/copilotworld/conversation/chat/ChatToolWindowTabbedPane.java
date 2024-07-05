@@ -3,7 +3,7 @@ package com.dpworld.copilotworld.conversation.chat;
 import com.dpworld.copilotworld.activity.Conversation;
 import com.dpworld.copilotworld.conversation.ConversationService;
 import com.dpworld.copilotworld.conversation.ConversationsState;
-import com.dpworld.copilotworld.configurations.GeneralSettings;
+import com.dpworld.copilotworld.configuration.GeneralSettings;
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.project.Project;

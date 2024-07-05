@@ -1,4 +1,4 @@
-package com.dpworld.copilotworld.configurations;
+package com.dpworld.copilotworld.configuration;
 
 import com.dpworld.copilotworld.activity.Conversation;
 import com.dpworld.copilotworld.panel.ProviderChangeNotifier;

@@ -1,6 +1,6 @@
 package com.dpworld.copilotworld.llmServer;
 
-import com.dpworld.copilotworld.configurations.GeneralSettings;
+import com.dpworld.copilotworld.configuration.GeneralSettings;
 import com.dpworld.copilotworld.forms.OllamaSettingsForm;
 import com.dpworld.copilotworld.panel.ServiceType;
 import com.intellij.openapi.components.ServiceManager;
