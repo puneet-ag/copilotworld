@@ -5,13 +5,13 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 
 @JsonInclude(Include.NON_NULL)
-public class OllamaEmbeddingRequest {
+public class LLMRequestEmbedding {
 
   private final String model;
   private final String prompt;
-  private final OllamaParameters options;
+  private final LLMParameters options;
 
-  public OllamaEmbeddingRequest(Builder builder) {
+  public LLMRequestEmbedding(Builder builder) {
     this.prompt = builder.prompt;
     this.model = builder.model;
     this.options = builder.options;
@@ -25,7 +25,7 @@ public class OllamaEmbeddingRequest {
     return prompt;
   }
 
-  public OllamaParameters getOptions() {
+  public LLMParameters getOptions() {
     return options;
   }
 
@@ -33,20 +33,20 @@ public class OllamaEmbeddingRequest {
 
     private final String model;
     private final String prompt;
-    private OllamaParameters options = null;
+    private LLMParameters options = null;
 
     public Builder(String model, String prompt) {
       this.model = model;
       this.prompt = prompt;
     }
 
-    public OllamaEmbeddingRequest.Builder setOptions(OllamaParameters options) {
+    public LLMRequestEmbedding.Builder setOptions(LLMParameters options) {
       this.options = options;
-      return OllamaEmbeddingRequest.Builder.this;
+      return LLMRequestEmbedding.Builder.this;
     }
 
-    public OllamaEmbeddingRequest build() {
-      return new OllamaEmbeddingRequest(this);
+    public LLMRequestEmbedding build() {
+      return new LLMRequestEmbedding(this);
     }
   }
 }

@@ -6,11 +6,11 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class OllamaChatCompletionResponse {
+public class LLMChatCompletionResponse {
 
   private String model;
   private String createdAt;
-  private OllamaChatCompletionMessageResponse message;
+  private LLMChatCompletionMessageResponse message;
   private Boolean done;
   private Integer promptEvalCount;
   private Integer evalCount;
@@ -19,19 +19,19 @@ public class OllamaChatCompletionResponse {
   private Long totalDuration;
   private Long loadDuration;
 
-  public OllamaChatCompletionResponse() {
+  public LLMChatCompletionResponse() {
   }
 
-  public OllamaChatCompletionResponse(@NotNull String model,
-      @NotNull String createdAt,
-      @NotNull OllamaChatCompletionMessageResponse message,
-      @NotNull Boolean done,
-      @Nullable Integer promptEvalCount,
-      @Nullable Integer evalCount,
-      @Nullable Long promptEvalDuration,
-      @Nullable Long evalDuration,
-      @Nullable Long totalDuration,
-      @Nullable Long loadDuration) {
+  public LLMChatCompletionResponse(@NotNull String model,
+                                   @NotNull String createdAt,
+                                   @NotNull LLMChatCompletionMessageResponse message,
+                                   @NotNull Boolean done,
+                                   @Nullable Integer promptEvalCount,
+                                   @Nullable Integer evalCount,
+                                   @Nullable Long promptEvalDuration,
+                                   @Nullable Long evalDuration,
+                                   @Nullable Long totalDuration,
+                                   @Nullable Long loadDuration) {
     this.model = model;
     this.createdAt = createdAt;
     this.message = message;
@@ -63,11 +63,11 @@ public class OllamaChatCompletionResponse {
   }
 
   @NotNull
-  public OllamaChatCompletionMessageResponse getMessage() {
+  public LLMChatCompletionMessageResponse getMessage() {
     return message;
   }
 
-  public void setMessage(@NotNull OllamaChatCompletionMessageResponse message) {
+  public void setMessage(@NotNull LLMChatCompletionMessageResponse message) {
     this.message = message;
   }
 

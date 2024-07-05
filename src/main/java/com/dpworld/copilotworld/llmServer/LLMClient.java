@@ -20,10 +20,10 @@ import okhttp3.RequestBody;
 import okhttp3.sse.EventSource;
 import okhttp3.sse.EventSources;
 import com.dpworld.copilotworld.llmServer.completion.DeserializationUtil;
-import com.dpworld.copilotworld.llmServer.completion.request.OllamaChatCompletionRequest;
-import com.dpworld.copilotworld.llmServer.completion.request.OllamaCompletionRequest;
-import com.dpworld.copilotworld.llmServer.completion.request.OllamaEmbeddingRequest;
-import com.dpworld.copilotworld.llmServer.completion.request.OllamaPullRequest;
+import com.dpworld.copilotworld.llmServer.completion.request.LLMChatCompletionRequest;
+import com.dpworld.copilotworld.llmServer.completion.request.LLMRequestCompletion;
+import com.dpworld.copilotworld.llmServer.completion.request.LLMRequestEmbedding;
+import com.dpworld.copilotworld.llmServer.completion.request.LLMPullRequest;
 
 public class LLMClient {
 
@@ -49,7 +49,7 @@ public class LLMClient {
   }
 
   public EventSource getCompletionAsync(
-      OllamaCompletionRequest request,
+      LLMRequestCompletion request,
       CompletionEventListener<String> eventListener) {
     return EventSources.createFactory(httpClient)
         .newEventSource(
@@ -58,7 +58,7 @@ public class LLMClient {
   }
 
   public EventSource getChatCompletionAsync(
-      OllamaChatCompletionRequest request,
+      LLMChatCompletionRequest request,
       CompletionEventListener<String> eventListener) {
     return EventSources.createFactory(httpClient)
         .newEventSource(
@@ -66,38 +66,38 @@ public class LLMClient {
             getChatCompletionEventSourceListener(eventListener));
   }
 
-  public OllamaCompletionResponse getCompletion(OllamaCompletionRequest request) {
+  public LLMCompletionResponse getCompletion(LLMRequestCompletion request) {
     try (var response = httpClient.newCall(buildPostRequest(request, "/api/generate")).execute()) {
-      return DeserializationUtil.mapResponse(response, OllamaCompletionResponse.class);
+      return DeserializationUtil.mapResponse(response, LLMCompletionResponse.class);
     } catch (IOException e) {
       throw new RuntimeException(
           "Could not get ollama completion for the given request:\n" + request, e);
     }
   }
 
-  public OllamaChatCompletionResponse getChatCompletion(OllamaChatCompletionRequest request) {
+  public LLMChatCompletionResponse getChatCompletion(LLMChatCompletionRequest request) {
     try (var response = httpClient.newCall(buildPostRequest(request, "/api/chat")).execute()) {
-      return DeserializationUtil.mapResponse(response, OllamaChatCompletionResponse.class);
+      return DeserializationUtil.mapResponse(response, LLMChatCompletionResponse.class);
     } catch (IOException e) {
       throw new RuntimeException(
           "Could not get ollama chat completion for the given request:\n" + request, e);
     }
   }
 
-  public OllamaEmbeddingResponse getEmbedding(OllamaEmbeddingRequest request) {
+  public LLMEmbeddingResponse getEmbedding(LLMRequestEmbedding request) {
     try (var response = httpClient
         .newCall(buildPostRequest(request, "/api/embeddings"))
         .execute()) {
-      return DeserializationUtil.mapResponse(response, OllamaEmbeddingResponse.class);
+      return DeserializationUtil.mapResponse(response, LLMEmbeddingResponse.class);
     } catch (IOException e) {
       throw new RuntimeException(
           "Could not get ollama embedding for the given request:\n" + request, e);
     }
   }
 
-  public OllamaPullResponse pullModel(OllamaPullRequest request) {
+  public LLMPullResponse pullModel(LLMPullRequest request) {
     try (var response = httpClient.newCall(buildPostRequest(request, "/api/pull")).execute()) {
-      return DeserializationUtil.mapResponse(response, OllamaPullResponse.class);
+      return DeserializationUtil.mapResponse(response, LLMPullResponse.class);
     } catch (IOException e) {
       throw new RuntimeException(
           "Could not pull ollama model for the given request:\n" + request, e);
@@ -105,8 +105,8 @@ public class LLMClient {
   }
 
   public EventSource pullModelAsync(
-      OllamaPullRequest request,
-      CompletionEventListener<OllamaPullResponse> eventListener) {
+      LLMPullRequest request,
+      CompletionEventListener<LLMPullResponse> eventListener) {
     return EventSources.createFactory(httpClient)
         .newEventSource(
             buildPostRequest(request, "/api/pull", true),
@@ -126,22 +126,22 @@ public class LLMClient {
     }
   }
 
-  public OllamaTagsResponse getModelTags() {
+  public LLMTagsResponse getModelTags() {
     try (var response = httpClient
         .newCall(defaultRequest("/api/tags").get().build())
         .execute()) {
-      return DeserializationUtil.mapResponse(response, OllamaTagsResponse.class);
+      return DeserializationUtil.mapResponse(response, LLMTagsResponse.class);
     } catch (IOException e) {
       throw new RuntimeException(
           "Could not get ollama model tags:\n", e);
     }
   }
 
-  public OllamaModelInfoResponse getModelInfo(String model) {
+  public LLMModelInfoResponse getModelInfo(String model) {
     try (var response = httpClient
         .newCall(buildPostRequest(Map.of("name", model), "/api/show"))
         .execute()) {
-      return DeserializationUtil.mapResponse(response, OllamaModelInfoResponse.class);
+      return DeserializationUtil.mapResponse(response, LLMModelInfoResponse.class);
     } catch (IOException e) {
       throw new RuntimeException(
           "Could not get ollama model info for the given model name:\n" + model, e);
@@ -186,7 +186,7 @@ public class LLMClient {
       @Override
       protected String getMessage(String data) {
         try {
-          return OBJECT_MAPPER.readValue(data, OllamaChatCompletionResponse.class).getMessage()
+          return OBJECT_MAPPER.readValue(data, LLMChatCompletionResponse.class).getMessage()
               .getContent();
         } catch (JacksonException e) {
           return "";
@@ -206,7 +206,7 @@ public class LLMClient {
       @Override
       protected String getMessage(String data) {
         try {
-          return OBJECT_MAPPER.readValue(data, OllamaCompletionResponse.class).getResponse();
+          return OBJECT_MAPPER.readValue(data, LLMCompletionResponse.class).getResponse();
         } catch (JacksonException e) {
           return "";
         }
@@ -219,13 +219,13 @@ public class LLMClient {
     };
   }
 
-  private CompletionEventSourceListener<OllamaPullResponse> getPullModelEventSourceListener(
-      CompletionEventListener<OllamaPullResponse> eventListener) {
+  private CompletionEventSourceListener<LLMPullResponse> getPullModelEventSourceListener(
+      CompletionEventListener<LLMPullResponse> eventListener) {
     return new CompletionEventSourceListener<>(eventListener) {
       @Override
-      protected OllamaPullResponse getMessage(String data) {
+      protected LLMPullResponse getMessage(String data) {
         try {
-          return OBJECT_MAPPER.readValue(data, OllamaPullResponse.class);
+          return OBJECT_MAPPER.readValue(data, LLMPullResponse.class);
         } catch (JacksonException e) {
           return null;
         }

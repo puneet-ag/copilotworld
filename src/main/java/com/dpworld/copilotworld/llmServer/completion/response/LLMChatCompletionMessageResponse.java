@@ -4,17 +4,17 @@ import java.util.List;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class OllamaChatCompletionMessageResponse {
+public class LLMChatCompletionMessageResponse {
 
   private String role;
   private String content;
   private List<String> images;
 
-  public OllamaChatCompletionMessageResponse() {
+  public LLMChatCompletionMessageResponse() {
   }
 
-  public OllamaChatCompletionMessageResponse(@NotNull String role, @NotNull String content,
-      @Nullable List<String> images) {
+  public LLMChatCompletionMessageResponse(@NotNull String role, @NotNull String content,
+                                          @Nullable List<String> images) {
     this.role = role;
     this.content = content;
     this.images = images;

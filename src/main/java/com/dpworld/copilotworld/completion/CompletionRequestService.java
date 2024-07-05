@@ -1,8 +1,8 @@
 package com.dpworld.copilotworld.completion;
 
 import com.dpworld.copilotworld.llmServer.LLMSettings;
-import com.dpworld.copilotworld.llmServer.completion.request.OllamaChatCompletionMessage;
-import com.dpworld.copilotworld.llmServer.completion.request.OllamaChatCompletionRequest;
+import com.dpworld.copilotworld.llmServer.completion.request.LLMChatMessageCompletion;
+import com.dpworld.copilotworld.llmServer.completion.request.LLMChatCompletionRequest;
 import com.dpworld.copilotworld.panel.CallParameters;
 import com.dpworld.copilotworld.configuration.ConfigurationSettings;
 import com.dpworld.copilotworld.configurations.GeneralSettings;
@@ -55,11 +55,11 @@ public final class CompletionRequestService {
                 .getService(LLMSettings.class)
                 .getState()
                 .getModel();
-        var request = new OllamaChatCompletionRequest.Builder(
+        var request = new LLMChatCompletionRequest.Builder(
                 model,
                 List.of(
-                        new OllamaChatCompletionMessage("system", systemPrompt, null),
-                        new OllamaChatCompletionMessage("user", gitDiff, null)
+                        new LLMChatMessageCompletion("system", systemPrompt, null),
+                        new LLMChatMessageCompletion("user", gitDiff, null)
                 )
         ).build();
         CompletionClientProvider.getOllamaClient().getChatCompletionAsync(request, eventListener);

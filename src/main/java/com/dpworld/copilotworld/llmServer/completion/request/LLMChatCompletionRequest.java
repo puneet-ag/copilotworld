@@ -1,22 +1,22 @@
 package com.dpworld.copilotworld.llmServer.completion.request;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.dpworld.copilotworld.llmServer.completion.response.OllamaResponseFormat;
+import com.dpworld.copilotworld.llmServer.completion.response.LLMResponseFormat;
 
 import java.util.List;
 
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class OllamaChatCompletionRequest {
+public class LLMChatCompletionRequest {
 
   private final String model;
-  private final List<OllamaChatCompletionMessage> messages;
-  private final OllamaResponseFormat format;
-  private final OllamaParameters options;
+  private final List<LLMChatMessageCompletion> messages;
+  private final LLMResponseFormat format;
+  private final LLMParameters options;
   private final Boolean stream;
   private final String keepAlive;
 
-  public OllamaChatCompletionRequest(Builder builder) {
+  public LLMChatCompletionRequest(Builder builder) {
     this.model = builder.model;
     this.messages = builder.messages;
     this.format = builder.format;
@@ -29,15 +29,15 @@ public class OllamaChatCompletionRequest {
     return model;
   }
 
-  public List<OllamaChatCompletionMessage> getMessages() {
+  public List<LLMChatMessageCompletion> getMessages() {
     return messages;
   }
 
-  public OllamaResponseFormat getFormat() {
+  public LLMResponseFormat getFormat() {
     return format;
   }
 
-  public OllamaParameters getOptions() {
+  public LLMParameters getOptions() {
     return options;
   }
 
@@ -52,24 +52,24 @@ public class OllamaChatCompletionRequest {
   public static class Builder {
 
     private final String model;
-    private final List<OllamaChatCompletionMessage> messages;
+    private final List<LLMChatMessageCompletion> messages;
 
-    private OllamaResponseFormat format = null;
-    private OllamaParameters options = null;
+    private LLMResponseFormat format = null;
+    private LLMParameters options = null;
     private Boolean stream = null;
     private String keepAlive = null;
 
-    public Builder(String model, List<OllamaChatCompletionMessage> messages) {
+    public Builder(String model, List<LLMChatMessageCompletion> messages) {
       this.model = model;
       this.messages = messages;
     }
 
-    public Builder setFormat(OllamaResponseFormat format) {
+    public Builder setFormat(LLMResponseFormat format) {
       this.format = format;
       return this;
     }
 
-    public Builder setOptions(OllamaParameters options) {
+    public Builder setOptions(LLMParameters options) {
       this.options = options;
       return this;
     }
@@ -84,8 +84,8 @@ public class OllamaChatCompletionRequest {
       return this;
     }
 
-    public OllamaChatCompletionRequest build() {
-      return new OllamaChatCompletionRequest(this);
+    public LLMChatCompletionRequest build() {
+      return new LLMChatCompletionRequest(this);
     }
   }
 }

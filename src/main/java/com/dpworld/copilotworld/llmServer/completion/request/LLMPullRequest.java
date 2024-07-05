@@ -5,12 +5,12 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 
 @JsonInclude(Include.NON_NULL)
-public class OllamaPullRequest {
+public class LLMPullRequest {
 
   private final String name;
   private final boolean stream;
 
-  public OllamaPullRequest(String name, boolean stream) {
+  public LLMPullRequest(String name, boolean stream) {
     this.name = name;
     this.stream = stream;
   }

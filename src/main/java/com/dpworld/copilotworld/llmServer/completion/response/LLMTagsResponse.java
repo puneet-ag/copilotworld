@@ -7,15 +7,15 @@ import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class OllamaTagsResponse {
+public class LLMTagsResponse {
 
-  private List<OllamaModel> models;
+  private List<LLMResponseModel> models;
 
-  public List<OllamaModel> getModels() {
+  public List<LLMResponseModel> getModels() {
     return models;
   }
 
-  public void setModels(List<OllamaModel> models) {
+  public void setModels(List<LLMResponseModel> models) {
     this.models = models;
   }
 }

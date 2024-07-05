@@ -9,7 +9,7 @@ import java.util.List;
 
 @JsonInclude(Include.NON_NULL)
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class OllamaParameters {
+public class LLMParameters {
 
   private final Integer mirostat;
   private final Double mirostatEta;
@@ -28,7 +28,7 @@ public class OllamaParameters {
   private final Integer topK;
   private final Double topP;
 
-  public OllamaParameters(Builder builder) {
+  public LLMParameters(Builder builder) {
     this.mirostat = builder.mirostat;
     this.mirostatEta = builder.mirostatEta;
     this.mirostatTau = builder.mirostatTau;
@@ -214,8 +214,8 @@ public class OllamaParameters {
       return this;
     }
 
-    public OllamaParameters build() {
-      return new OllamaParameters(this);
+    public LLMParameters build() {
+      return new LLMParameters(this);
     }
   }
 }

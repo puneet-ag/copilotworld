@@ -11,8 +11,8 @@ import com.dpworld.copilotworld.llmServer.LLMStateSettings;
 import okhttp3.MediaType;
 import okhttp3.Request;
 import okhttp3.RequestBody;
-import com.dpworld.copilotworld.llmServer.completion.request.OllamaCompletionRequest;
-import com.dpworld.copilotworld.llmServer.completion.request.OllamaParameters;
+import com.dpworld.copilotworld.llmServer.completion.request.LLMRequestCompletion;
+import com.dpworld.copilotworld.llmServer.completion.request.LLMParameters;
 
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
@@ -90,15 +90,15 @@ public class CodeCompletionRequestFactory {
 
 
 
-    public static OllamaCompletionRequest buildOllamaRequest(InfillRequestDetails details) {
+    public static LLMRequestCompletion buildOllamaRequest(InfillRequestDetails details) {
         LLMStateSettings settings = ServiceManager.getService(LLMSettings.class).getState();
 
-        return new OllamaCompletionRequest.Builder(
+        return new LLMRequestCompletion.Builder(
                 settings.getModel(),
                 settings.getFimTemplate().buildPrompt(details.getPrefix(), details.getSuffix())
         )
                 .setOptions(
-                        new OllamaParameters.Builder()
+                        new LLMParameters.Builder()
                                 .stop(settings.getFimTemplate().getStopTokens())
                                 .numPredict(getMaxTokens(details.getPrefix(), details.getSuffix()))
                                 .temperature(0.4)

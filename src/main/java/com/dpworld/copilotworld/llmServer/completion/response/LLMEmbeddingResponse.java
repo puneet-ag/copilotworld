@@ -1,6 +1,6 @@
 package com.dpworld.copilotworld.llmServer.completion.response;
 
-public class OllamaEmbeddingResponse {
+public class LLMEmbeddingResponse {
 
   private double[] embedding;
 

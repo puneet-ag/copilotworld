@@ -8,9 +8,9 @@ import com.dpworld.copilotworld.panel.*;
 import com.intellij.openapi.application.ApplicationManager;
 
 import com.dpworld.copilotworld.llmServer.LLMSettings;
-import com.dpworld.copilotworld.llmServer.completion.request.OllamaChatCompletionMessage;
-import com.dpworld.copilotworld.llmServer.completion.request.OllamaChatCompletionRequest;
-import com.dpworld.copilotworld.llmServer.completion.request.OllamaParameters;
+import com.dpworld.copilotworld.llmServer.completion.request.LLMChatMessageCompletion;
+import com.dpworld.copilotworld.llmServer.completion.request.LLMChatCompletionRequest;
+import com.dpworld.copilotworld.llmServer.completion.request.LLMParameters;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -57,31 +57,31 @@ public class CompletionRequestProvider {
         .replace("{QUESTION}", userPrompt);
   }
 
-  public OllamaChatCompletionRequest buildOllamaChatCompletionRequest(
+  public LLMChatCompletionRequest buildOllamaChatCompletionRequest(
       CallParameters callParameters
   ) {
     var configuration = ConfigurationSettings.getCurrentState();
     var settings = ApplicationManager.getApplication().getService(LLMSettings.class).getState();
-    return new OllamaChatCompletionRequest
+    return new LLMChatCompletionRequest
         .Builder(settings.getModel(), buildOllamaMessages(callParameters))
         .setStream(true)
-        .setOptions(new OllamaParameters.Builder()
+        .setOptions(new LLMParameters.Builder()
             .numPredict(configuration.getMaxTokens())
             .temperature(configuration.getTemperature())
             .build())
         .build();
   }
 
-  private List<OllamaChatCompletionMessage> buildOllamaMessages(CallParameters callParameters) {
+  private List<LLMChatMessageCompletion> buildOllamaMessages(CallParameters callParameters) {
     var message = callParameters.getMessage();
-    var messages = new ArrayList<OllamaChatCompletionMessage>();
+    var messages = new ArrayList<LLMChatMessageCompletion>();
     if (callParameters.getConversationType() == ConversationType.DEFAULT) {
       String systemPrompt = ConfigurationSettings.getCurrentState().getSystemPrompt();
-      messages.add(new OllamaChatCompletionMessage("system", systemPrompt, null));
+      messages.add(new LLMChatMessageCompletion("system", systemPrompt, null));
     }
     if (callParameters.getConversationType() == ConversationType.FIX_COMPILE_ERRORS) {
       messages.add(
-          new OllamaChatCompletionMessage("system", FIX_COMPILE_ERRORS_SYSTEM_PROMPT, null)
+          new LLMChatMessageCompletion("system", FIX_COMPILE_ERRORS_SYSTEM_PROMPT, null)
       );
     }
 
@@ -96,7 +96,7 @@ public class CompletionRequestProvider {
           var imageBytes = Files.readAllBytes(imageFilePath);
           var imageBase64 = Base64.getEncoder().encodeToString(imageBytes);
           messages.add(
-              new OllamaChatCompletionMessage(
+              new LLMChatMessageCompletion(
                   "user", prevMessage.getPrompt(), List.of(imageBase64)
               )
           );
@@ -105,21 +105,21 @@ public class CompletionRequestProvider {
         }
       } else {
         messages.add(
-            new OllamaChatCompletionMessage("user", prevMessage.getPrompt(), null)
+            new LLMChatMessageCompletion("user", prevMessage.getPrompt(), null)
         );
       }
       messages.add(
-          new OllamaChatCompletionMessage("assistant", prevMessage.getResponse(), null)
+          new LLMChatMessageCompletion("assistant", prevMessage.getResponse(), null)
       );
     }
 
     if (callParameters.getImageMediaType() != null && callParameters.getImageData().length > 0) {
       var imageBase64 = Base64.getEncoder().encodeToString(callParameters.getImageData());
       messages.add(
-          new OllamaChatCompletionMessage("user", message.getPrompt(), List.of(imageBase64))
+          new LLMChatMessageCompletion("user", message.getPrompt(), List.of(imageBase64))
       );
     } else {
-      messages.add(new OllamaChatCompletionMessage("user", message.getPrompt(), null));
+      messages.add(new LLMChatMessageCompletion("user", message.getPrompt(), null));
     }
     return messages;
   }

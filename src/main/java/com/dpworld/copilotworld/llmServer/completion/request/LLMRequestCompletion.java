@@ -3,24 +3,24 @@ package com.dpworld.copilotworld.llmServer.completion.request;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.dpworld.copilotworld.completion.CompletionRequest;
-import com.dpworld.copilotworld.llmServer.completion.response.OllamaResponseFormat;
+import com.dpworld.copilotworld.llmServer.completion.response.LLMResponseFormat;
 
 
 @JsonInclude(Include.NON_NULL)
-public class OllamaCompletionRequest implements CompletionRequest {
+public class LLMRequestCompletion implements CompletionRequest {
 
   private final String model;
   private final String prompt;
 
-  private final OllamaResponseFormat format;
-  private final OllamaParameters options;
+  private final LLMResponseFormat format;
+  private final LLMParameters options;
   private final String system;
   private final String template;
   private final String context;
   private final Boolean stream;
   private final Boolean raw;
 
-  public OllamaCompletionRequest(Builder builder) {
+  public LLMRequestCompletion(Builder builder) {
     this.prompt = builder.prompt;
     this.model = builder.model;
     this.format = builder.format;
@@ -40,11 +40,11 @@ public class OllamaCompletionRequest implements CompletionRequest {
     return prompt;
   }
 
-  public OllamaResponseFormat getFormat() {
+  public LLMResponseFormat getFormat() {
     return format;
   }
 
-  public OllamaParameters getOptions() {
+  public LLMParameters getOptions() {
     return options;
   }
 
@@ -73,8 +73,8 @@ public class OllamaCompletionRequest implements CompletionRequest {
     private final String model;
     private final String prompt;
 
-    private OllamaResponseFormat format = null;
-    private OllamaParameters options = null;
+    private LLMResponseFormat format = null;
+    private LLMParameters options = null;
     private String system = null;
     private String template = null;
     private String context = null;
@@ -86,12 +86,12 @@ public class OllamaCompletionRequest implements CompletionRequest {
       this.prompt = prompt;
     }
 
-    public Builder setFormat(OllamaResponseFormat format) {
+    public Builder setFormat(LLMResponseFormat format) {
       this.format = format;
       return Builder.this;
     }
 
-    public Builder setOptions(OllamaParameters options) {
+    public Builder setOptions(LLMParameters options) {
       this.options = options;
       return Builder.this;
     }
@@ -121,8 +121,8 @@ public class OllamaCompletionRequest implements CompletionRequest {
       return Builder.this;
     }
 
-    public OllamaCompletionRequest build() {
-      return new OllamaCompletionRequest(this);
+    public LLMRequestCompletion build() {
+      return new LLMRequestCompletion(this);
     }
   }
 }

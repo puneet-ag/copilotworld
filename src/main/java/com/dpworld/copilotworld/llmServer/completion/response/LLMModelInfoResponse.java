@@ -5,12 +5,12 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class OllamaModelInfoResponse {
+public class LLMModelInfoResponse {
 
   private String modelfile;
   private String parameters;
   private String template;
-  private OllamaModel.OllamaModelDetails details;
+  private LLMResponseModel.OllamaModelDetails details;
 
   public String getModelfile() {
     return modelfile;
@@ -36,11 +36,11 @@ public class OllamaModelInfoResponse {
     this.template = template;
   }
 
-  public OllamaModel.OllamaModelDetails getDetails() {
+  public LLMResponseModel.OllamaModelDetails getDetails() {
     return details;
   }
 
-  public void setDetails(OllamaModel.OllamaModelDetails details) {
+  public void setDetails(LLMResponseModel.OllamaModelDetails details) {
     this.details = details;
   }
 }

@@ -6,14 +6,14 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class OllamaChatCompletionMessage {
+public class LLMChatMessageCompletion {
 
   private final String role;
   private final String content;
   private final List<String> images;
 
-  public OllamaChatCompletionMessage(@NotNull String role, @NotNull String content,
-      @Nullable List<String> images) {
+  public LLMChatMessageCompletion(@NotNull String role, @NotNull String content,
+                                  @Nullable List<String> images) {
     this.role = role;
     this.content = content;
     this.images = images;
