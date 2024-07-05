@@ -22,8 +22,8 @@
 <!--                                 instance="com.dpworld.copilotworld.panel.ServiceConfigurable"/>-->
         <applicationConfigurable id="settings.vision.services.ollama" parentId="settings.vision" displayName="Model Server"
                                  instance="com.dpworld.copilotworld.panel.converted.OllamaSettingsConfigurable"/>
-        <applicationConfigurable id="settings.vision.configuration" parentId="settings.vision" displayName="Configuration"
-                                 instance="com.dpworld.copilotworld.panel.converted.ConfigurationConfigurable"/>
+<!--        <applicationConfigurable id="settings.vision.configuration" parentId="settings.vision" displayName="Configuration"-->
+<!--                                 instance="com.dpworld.copilotworld.panel.converted.ConfigurationConfigurable"/>-->
 <!--        <applicationConfigurable id="settings.vision.advanced" parentId="settings.vision" displayName="Advanced Settings"-->
 <!--                                 instance="com.dpworld.copilotworld.advanced.AdvancedSettingsConfigurable"/>-->
 

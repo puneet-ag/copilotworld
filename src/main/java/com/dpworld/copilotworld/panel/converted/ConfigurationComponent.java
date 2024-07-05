@@ -137,8 +137,8 @@ public class ConfigurationComponent {
         .addComponent(new TitledSeparator(
             VisionBundle.get("configurationConfigurable.section.assistant.title")))
         .addComponent(createAssistantConfigurationForm())
-        .addComponent(new TitledSeparator(
-            VisionBundle.get("configurationConfigurable.section.commitMessage.title")))
+        //.addComponent(new TitledSeparator(
+        //    VisionBundle.get("configurationConfigurable.section.commitMessage.title")))
         //.addComponent(createCommitMessageConfigurationForm())
         .addComponentFillVertically(new JPanel(), 0)
         .getPanel();

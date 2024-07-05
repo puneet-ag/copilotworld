@@ -20,12 +20,8 @@ import static java.lang.String.format;
 public class EditorActionsUtil {
 
   public static final Map<String, String> DEFAULT_ACTIONS = new LinkedHashMap<>(Map.of(
-      "Find Bugs", "Find bugs and output code with bugs "
-          + "fixed in the following code: {{selectedCode}}",
-      "Write Tests", "Write Tests for the selected code {{selectedCode}}",
-      "Explain", "Explain the selected code {{selectedCode}}",
-      "Refactor", "Refactor the selected code {{selectedCode}}",
-      "Optimize", "Optimize the selected code {{selectedCode}}"));
+      "Generate Test Cases", "Generate Test Cases for the selected code {{selectedCode}}",
+      "Code Insight", "Insights on the selected code {{selectedCode}}"));
 
   public static final String[][] DEFAULT_ACTIONS_ARRAY = toArray(DEFAULT_ACTIONS);
 
@@ -48,7 +44,6 @@ public class EditorActionsUtil {
       var configuredActions = ConfigurationSettings.getCurrentState().getTableData();
       configuredActions.forEach((label, prompt) -> {
         // using label as action description to prevent com.intellij.diagnostic.PluginException
-        // https://github.com/carlrobertoh/Vision/issues/95
         var action = new BaseEditorAction(label, label) {
           @Override
           protected void actionPerformed(Project project, Editor editor, String selectedText) {

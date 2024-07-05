@@ -171,10 +171,10 @@ public class UserPromptTextArea extends JPanel {
             handleSubmit();
           }
         }));
-    if (isImageActionSupported()) {
-      iconsPanel.add(new IconActionButton(new AttachImageAction()));
-    }
-    iconsPanel.add(stopButton);
+//    if (isImageActionSupported()) {
+//      iconsPanel.add(new IconActionButton(new AttachImageAction()));
+//    }
+//    iconsPanel.add(stopButton);
     add(iconsPanel, BorderLayout.EAST);
   }
 
