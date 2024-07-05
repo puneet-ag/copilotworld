@@ -1,10 +1,10 @@
 package com.dpworld.copilotworld.completion;
 
 import com.dpworld.copilotworld.advanced.AdvancedSettings;
-import com.dpworld.copilotworld.ollama.OllamaClient;
+import com.dpworld.copilotworld.llmServer.LLMClient;
 import com.intellij.openapi.application.ApplicationManager;
 
-import com.dpworld.copilotworld.ollama.OllamaSettings;
+import com.dpworld.copilotworld.llmServer.LLMSettings;
 import okhttp3.Credentials;
 import okhttp3.OkHttpClient;
 
@@ -16,12 +16,12 @@ import java.util.concurrent.TimeUnit;
 public class CompletionClientProvider {
 
 
-  public static OllamaClient getOllamaClient() {
+  public static LLMClient getOllamaClient() {
     var host = ApplicationManager.getApplication()
-        .getService(OllamaSettings.class)
+        .getService(LLMSettings.class)
         .getState()
         .getHost();
-    var builder = new OllamaClient.Builder()
+    var builder = new LLMClient.Builder()
         .setHost(host);
 
     return builder.build(getDefaultClientBuilder());

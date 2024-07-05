@@ -19,10 +19,10 @@
         <applicationConfigurable id="settings.avatar" parentId="tools" displayName="Avatar"
                                  instance="com.dpworld.copilotworld.configurations.GeneralSettingsConfigurable"/>
         <applicationConfigurable id="settings.avatar.services.ollama" parentId="settings.avatar" displayName="Model Server"
-                                 instance="com.dpworld.copilotworld.ollama.OllamaSettingsConfigurable"/>
+                                 instance="com.dpworld.copilotworld.llmServer.LLMConfigurableSettings"/>
 
         <applicationService serviceImplementation="com.dpworld.copilotworld.configurations.GeneralSettings"/>
-        <applicationService serviceImplementation="com.dpworld.copilotworld.ollama.OllamaSettings"/>
+        <applicationService serviceImplementation="com.dpworld.copilotworld.llmServer.LLMSettings"/>
         <applicationService serviceImplementation="com.dpworld.copilotworld.configuration.ConfigurationSettings"/>
         <applicationService serviceImplementation="com.dpworld.copilotworld.advanced.AdvancedSettings"/>
         <applicationService serviceImplementation="com.dpworld.copilotworld.conversation.ConversationsState"/>

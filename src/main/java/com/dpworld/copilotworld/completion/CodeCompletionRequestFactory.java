@@ -6,13 +6,13 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.intellij.openapi.components.ServiceManager;
 import com.dpworld.copilotworld.model.InfillPromptTemplate;
-import com.dpworld.copilotworld.ollama.OllamaSettings;
-import com.dpworld.copilotworld.ollama.OllamaSettingsState;
+import com.dpworld.copilotworld.llmServer.LLMSettings;
+import com.dpworld.copilotworld.llmServer.LLMStateSettings;
 import okhttp3.MediaType;
 import okhttp3.Request;
 import okhttp3.RequestBody;
-import com.dpworld.copilotworld.ollama.completion.request.OllamaCompletionRequest;
-import com.dpworld.copilotworld.ollama.completion.request.OllamaParameters;
+import com.dpworld.copilotworld.llmServer.completion.request.OllamaCompletionRequest;
+import com.dpworld.copilotworld.llmServer.completion.request.OllamaParameters;
 
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
@@ -91,7 +91,7 @@ public class CodeCompletionRequestFactory {
 
 
     public static OllamaCompletionRequest buildOllamaRequest(InfillRequestDetails details) {
-        OllamaSettingsState settings = ServiceManager.getService(OllamaSettings.class).getState();
+        LLMStateSettings settings = ServiceManager.getService(LLMSettings.class).getState();
 
         return new OllamaCompletionRequest.Builder(
                 settings.getModel(),

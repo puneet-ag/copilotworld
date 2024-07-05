@@ -1,7 +1,7 @@
-package com.dpworld.copilotworld.ollama.completion.request;
+package com.dpworld.copilotworld.llmServer.completion.request;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.dpworld.copilotworld.ollama.completion.response.OllamaResponseFormat;
+import com.dpworld.copilotworld.llmServer.completion.response.OllamaResponseFormat;
 
 import java.util.List;
 

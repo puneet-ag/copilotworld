@@ -1,4 +1,4 @@
-package com.dpworld.copilotworld.ollama.completion.response;
+package com.dpworld.copilotworld.llmServer.completion.response;
 
 import java.util.List;
 import org.jetbrains.annotations.NotNull;

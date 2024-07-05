@@ -1,4 +1,4 @@
-package com.dpworld.copilotworld.ollama;
+package com.dpworld.copilotworld.llmServer;
 
 import com.dpworld.copilotworld.model.InfillPromptTemplate;
 import com.intellij.openapi.components.BaseState;
@@ -6,7 +6,7 @@ import com.intellij.openapi.components.BaseState;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OllamaSettingsState extends BaseState {
+public class LLMStateSettings extends BaseState {
     private String host = "http://localhost:11434";
     private String model;
     private boolean codeCompletionsEnabled = false;

@@ -1,10 +1,10 @@
-package com.dpworld.copilotworld.ollama;
+package com.dpworld.copilotworld.llmServer;
 
 import static java.lang.String.format;
-import static com.dpworld.copilotworld.ollama.completion.DeserializationUtil.OBJECT_MAPPER;
-import static com.dpworld.copilotworld.ollama.completion.InterceptorUtil.REWRITE_X_NDJSON_CONTENT_INTERCEPTOR;
+import static com.dpworld.copilotworld.llmServer.completion.DeserializationUtil.OBJECT_MAPPER;
+import static com.dpworld.copilotworld.llmServer.completion.InterceptorUtil.REWRITE_X_NDJSON_CONTENT_INTERCEPTOR;
 
-import com.dpworld.copilotworld.ollama.completion.response.*;
+import com.dpworld.copilotworld.llmServer.completion.response.*;
 import com.dpworld.copilotworld.panel.ErrorDetails;
 import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -19,13 +19,13 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.sse.EventSource;
 import okhttp3.sse.EventSources;
-import com.dpworld.copilotworld.ollama.completion.DeserializationUtil;
-import com.dpworld.copilotworld.ollama.completion.request.OllamaChatCompletionRequest;
-import com.dpworld.copilotworld.ollama.completion.request.OllamaCompletionRequest;
-import com.dpworld.copilotworld.ollama.completion.request.OllamaEmbeddingRequest;
-import com.dpworld.copilotworld.ollama.completion.request.OllamaPullRequest;
+import com.dpworld.copilotworld.llmServer.completion.DeserializationUtil;
+import com.dpworld.copilotworld.llmServer.completion.request.OllamaChatCompletionRequest;
+import com.dpworld.copilotworld.llmServer.completion.request.OllamaCompletionRequest;
+import com.dpworld.copilotworld.llmServer.completion.request.OllamaEmbeddingRequest;
+import com.dpworld.copilotworld.llmServer.completion.request.OllamaPullRequest;
 
-public class OllamaClient {
+public class LLMClient {
 
   private static final String BASE_URL = "http://localhost:11434";
   private static final MediaType APPLICATION_JSON = MediaType.parse("application/json");
@@ -35,7 +35,7 @@ public class OllamaClient {
   private final Integer port;
   private final String apiKey;
 
-  protected OllamaClient(Builder builder, OkHttpClient.Builder httpClientBuilder) {
+  protected LLMClient(Builder builder, OkHttpClient.Builder httpClientBuilder) {
     this.httpClient = httpClientBuilder
         .addInterceptor(REWRITE_X_NDJSON_CONTENT_INTERCEPTOR)
         .build();
@@ -259,11 +259,11 @@ public class OllamaClient {
       return this;
     }
 
-    public OllamaClient build(OkHttpClient.Builder builder) {
-      return new OllamaClient(this, builder);
+    public LLMClient build(OkHttpClient.Builder builder) {
+      return new LLMClient(this, builder);
     }
 
-    public OllamaClient build() {
+    public LLMClient build() {
       return build(new OkHttpClient.Builder());
     }
   }

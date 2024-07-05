@@ -1,8 +1,8 @@
 package com.dpworld.copilotworld.panel
 
 import com.dpworld.copilotworld.avatar.AvatarBundle
-import com.dpworld.copilotworld.ollama.OllamaSettings
-import com.dpworld.copilotworld.ollama.OllamaClient
+import com.dpworld.copilotworld.llmServer.LLMSettings
+import com.dpworld.copilotworld.llmServer.LLMClient
 import com.dpworld.copilotworld.util.OverlayUtil
 import com.dpworld.copilotworld.util.UIUtil
 import com.intellij.notification.NotificationType
@@ -38,7 +38,7 @@ class OllamaSettingsForm {
     }
 
     init {
-        val settings = service<OllamaSettings>().state
+        val settings = service<LLMSettings>().state
         codeCompletionConfigurationForm = CodeCompletionConfigurationForm(
             settings.isCodeCompletionsEnabled,
             settings.fimTemplate
@@ -93,20 +93,20 @@ class OllamaSettingsForm {
 
 
     fun resetForm() {
-        service<OllamaSettings>().state.run {
+        service<LLMSettings>().state.run {
             hostField.text = host
             modelComboBox.item = model ?: ""
         }
     }
 
     fun applyChanges() {
-        service<OllamaSettings>().state.run {
+        service<LLMSettings>().state.run {
             host = hostField.text
             model = modelComboBox.item
         }
     }
 
-    fun isModified() = service<OllamaSettings>().state.run {
+    fun isModified() = service<LLMSettings>().state.run {
         hostField.text != host
                 || (modelComboBox.item != model && modelComboBox.isEnabled)
     }
@@ -115,14 +115,14 @@ class OllamaSettingsForm {
         disableModelComboBoxWithPlaceholder(DefaultComboBoxModel(arrayOf("Loading")))
         try {
             val models = runBlocking(Dispatchers.IO) {
-                OllamaClient.Builder()
+                LLMClient.Builder()
                     .setHost(hostField.text)
                     .build()
                     .modelTags
                     .models
                     .map { it.name }
             }
-            service<OllamaSettings>().state.availableModels = models.toMutableList()
+            service<LLMSettings>().state.availableModels = models.toMutableList()
             invokeLater {
                 modelComboBox.apply {
                     if (models.isNotEmpty()) {

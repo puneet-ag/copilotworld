@@ -8,7 +8,7 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
-import com.dpworld.copilotworld.ollama.OllamaSettings;
+import com.dpworld.copilotworld.llmServer.LLMSettings;
 import org.jetbrains.annotations.NotNull;
 
 @State(name = "Avatar_GeneralSettings_270", storages = @Storage("Avatar_GeneralSettings_270.xml"))
@@ -48,7 +48,7 @@ public class GeneralSettings implements PersistentStateComponent<GeneralSettings
     var provider = ServiceType.fromClientCode(conversation.getClientCode());
     switch (provider) {
       case OLLAMA:
-        ApplicationManager.getApplication().getService(OllamaSettings.class).getState()
+        ApplicationManager.getApplication().getService(LLMSettings.class).getState()
                 .setModel(conversation.getModel());
         break;
       default:
@@ -64,7 +64,7 @@ public class GeneralSettings implements PersistentStateComponent<GeneralSettings
 
   public String getModel() {
         return ApplicationManager.getApplication()
-            .getService(OllamaSettings.class)
+            .getService(LLMSettings.class)
             .getState()
             .getModel();
   }

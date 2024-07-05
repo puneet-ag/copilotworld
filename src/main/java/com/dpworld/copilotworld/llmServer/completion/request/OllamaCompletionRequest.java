@@ -1,9 +1,9 @@
-package com.dpworld.copilotworld.ollama.completion.request;
+package com.dpworld.copilotworld.llmServer.completion.request;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.dpworld.copilotworld.completion.CompletionRequest;
-import com.dpworld.copilotworld.ollama.completion.response.OllamaResponseFormat;
+import com.dpworld.copilotworld.llmServer.completion.response.OllamaResponseFormat;
 
 
 @JsonInclude(Include.NON_NULL)

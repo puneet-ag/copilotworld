@@ -1,4 +1,4 @@
-package com.dpworld.copilotworld.ollama.completion;
+package com.dpworld.copilotworld.llmServer.completion;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;

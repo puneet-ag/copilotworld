@@ -5,7 +5,7 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.project.Project;
-import com.dpworld.copilotworld.ollama.OllamaSettings;
+import com.dpworld.copilotworld.llmServer.LLMSettings;
 import com.dpworld.copilotworld.completion.CodeCompletionService;
 import com.dpworld.copilotworld.avatar.AvatarServiceSettings;
 import com.dpworld.copilotworld.configurations.GeneralSettings;
@@ -30,7 +30,7 @@ public abstract class CodeCompletionFeatureToggleActions extends AnAction {
                 break;
 
             case OLLAMA:
-                ServiceManager.getService(OllamaSettings.class).getState().setCodeCompletionsEnabled(enableFeatureAction);
+                ServiceManager.getService(LLMSettings.class).getState().setCodeCompletionsEnabled(enableFeatureAction);
                 break;
             default:
                 

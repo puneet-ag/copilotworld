@@ -1,4 +1,4 @@
-package com.dpworld.copilotworld.ollama.completion.request;
+package com.dpworld.copilotworld.llmServer.completion.request;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.List;

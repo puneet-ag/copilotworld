@@ -7,10 +7,10 @@ import com.dpworld.copilotworld.conversation.ConversationType;
 import com.dpworld.copilotworld.panel.*;
 import com.intellij.openapi.application.ApplicationManager;
 
-import com.dpworld.copilotworld.ollama.OllamaSettings;
-import com.dpworld.copilotworld.ollama.completion.request.OllamaChatCompletionMessage;
-import com.dpworld.copilotworld.ollama.completion.request.OllamaChatCompletionRequest;
-import com.dpworld.copilotworld.ollama.completion.request.OllamaParameters;
+import com.dpworld.copilotworld.llmServer.LLMSettings;
+import com.dpworld.copilotworld.llmServer.completion.request.OllamaChatCompletionMessage;
+import com.dpworld.copilotworld.llmServer.completion.request.OllamaChatCompletionRequest;
+import com.dpworld.copilotworld.llmServer.completion.request.OllamaParameters;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -61,7 +61,7 @@ public class CompletionRequestProvider {
       CallParameters callParameters
   ) {
     var configuration = ConfigurationSettings.getCurrentState();
-    var settings = ApplicationManager.getApplication().getService(OllamaSettings.class).getState();
+    var settings = ApplicationManager.getApplication().getService(LLMSettings.class).getState();
     return new OllamaChatCompletionRequest
         .Builder(settings.getModel(), buildOllamaMessages(callParameters))
         .setStream(true)

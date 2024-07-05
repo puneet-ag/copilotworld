@@ -1,8 +1,8 @@
 package com.dpworld.copilotworld.completion;
 
-import com.dpworld.copilotworld.ollama.OllamaSettings;
-import com.dpworld.copilotworld.ollama.completion.request.OllamaChatCompletionMessage;
-import com.dpworld.copilotworld.ollama.completion.request.OllamaChatCompletionRequest;
+import com.dpworld.copilotworld.llmServer.LLMSettings;
+import com.dpworld.copilotworld.llmServer.completion.request.OllamaChatCompletionMessage;
+import com.dpworld.copilotworld.llmServer.completion.request.OllamaChatCompletionRequest;
 import com.dpworld.copilotworld.panel.CallParameters;
 import com.dpworld.copilotworld.configuration.ConfigurationSettings;
 import com.dpworld.copilotworld.configurations.GeneralSettings;
@@ -52,7 +52,7 @@ public final class CompletionRequestService {
 
       case OLLAMA:
         var model = ApplicationManager.getApplication()
-                .getService(OllamaSettings.class)
+                .getService(LLMSettings.class)
                 .getState()
                 .getModel();
         var request = new OllamaChatCompletionRequest.Builder(

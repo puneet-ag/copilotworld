@@ -7,7 +7,7 @@ import com.dpworld.copilotworld.configurations.GeneralSettings;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.Service;
-import com.dpworld.copilotworld.ollama.OllamaSettings;
+import com.dpworld.copilotworld.llmServer.LLMSettings;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDateTime;
@@ -180,7 +180,7 @@ public final class ConversationService {
 
   private static String getModelForSelectedService() {
     Application application = ApplicationManager.getApplication();
-    return application.getService(OllamaSettings.class)
+    return application.getService(LLMSettings.class)
           .getState()
           .getModel();
     };

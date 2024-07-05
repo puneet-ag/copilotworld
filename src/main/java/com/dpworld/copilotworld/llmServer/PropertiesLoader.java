@@ -1,4 +1,4 @@
-package com.dpworld.copilotworld.ollama;
+package com.dpworld.copilotworld.llmServer;
 
 import java.io.IOException;
 import java.io.InputStream;

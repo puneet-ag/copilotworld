@@ -6,7 +6,7 @@ import com.dpworld.copilotworld.panel.InfillRequestDetails;
 import com.dpworld.copilotworld.panel.ServiceType;
 import com.intellij.openapi.components.Service;
 import com.intellij.openapi.components.ServiceManager;
-import com.dpworld.copilotworld.ollama.OllamaSettings;
+import com.dpworld.copilotworld.llmServer.LLMSettings;
 import okhttp3.sse.EventSource;
 
 @Service(Service.Level.PROJECT)
@@ -18,7 +18,7 @@ public final class CodeCompletionService {
                 return ServiceManager.getService(AvatarServiceSettings.class)
                         .getState().getCodeCompletionSettings().isCodeCompletionsEnabled();
             case OLLAMA:
-                return ServiceManager.getService(OllamaSettings.class).getState().isCodeCompletionsEnabled();
+                return ServiceManager.getService(LLMSettings.class).getState().isCodeCompletionsEnabled();
             default:
                 return false;
         }

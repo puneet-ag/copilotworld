@@ -14,7 +14,7 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.DumbAwareAction;
 import com.intellij.openapi.project.Project;
 
-import com.dpworld.copilotworld.ollama.OllamaSettings;
+import com.dpworld.copilotworld.llmServer.LLMSettings;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -70,7 +70,7 @@ public class ModelComboBoxAction extends ComboBoxAction {
     actionGroup.addSeparator("Ollama");
     refreshModels();
     ApplicationManager.getApplication()
-        .getService(OllamaSettings.class)
+        .getService(LLMSettings.class)
         .getState()
         .getAvailableModels()
         .forEach(model ->
@@ -92,7 +92,7 @@ public class ModelComboBoxAction extends ComboBoxAction {
 
       case OLLAMA:
         templatePresentation.setIcon(Icons.Ollama);
-        templatePresentation.setText(application.getService(OllamaSettings.class)
+        templatePresentation.setText(application.getService(LLMSettings.class)
             .getState()
             .getModel());
         break;
@@ -179,7 +179,7 @@ public class ModelComboBoxAction extends ComboBoxAction {
       @Override
       public void actionPerformed(@NotNull AnActionEvent e) {
         ApplicationManager.getApplication()
-            .getService(OllamaSettings.class)
+            .getService(LLMSettings.class)
             .getState()
             .setModel(model);
         handleModelChange(

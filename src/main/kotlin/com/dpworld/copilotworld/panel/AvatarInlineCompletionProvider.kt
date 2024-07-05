@@ -7,7 +7,7 @@ import com.dpworld.copilotworld.completion.CodeCompletionService
 import com.dpworld.copilotworld.completion.CompletionEventListener
 import com.dpworld.copilotworld.configuration.ConfigurationSettings
 import com.dpworld.copilotworld.configurations.GeneralSettings
-import com.dpworld.copilotworld.ollama.OllamaSettings
+import com.dpworld.copilotworld.llmServer.LLMSettings
 import com.dpworld.copilotworld.util.OverlayUtil.showNotification
 import com.intellij.codeInsight.inline.completion.*
 import com.intellij.codeInsight.inline.completion.elements.InlineCompletionGrayTextElement
@@ -99,7 +99,7 @@ class AvatarInlineCompletionProvider : InlineCompletionProvider {
         val selectedService = GeneralSettings.getSelectedService()
         val codeCompletionsEnabled = when (selectedService) {
             ServiceType.AVATAR -> service<AvatarServiceSettings>().state.codeCompletionSettings.isCodeCompletionsEnabled
-            ServiceType.OLLAMA -> service<OllamaSettings>().state.isCodeCompletionsEnabled
+            ServiceType.OLLAMA -> service<LLMSettings>().state.isCodeCompletionsEnabled
             null -> false
         }
         return event is InlineCompletionEvent.DocumentChange && codeCompletionsEnabled

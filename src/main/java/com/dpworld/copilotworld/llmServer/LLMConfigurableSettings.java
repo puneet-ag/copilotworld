@@ -1,4 +1,4 @@
-package com.dpworld.copilotworld.ollama;
+package com.dpworld.copilotworld.llmServer;
 
 import com.dpworld.copilotworld.configurations.GeneralSettings;
 import com.dpworld.copilotworld.panel.OllamaSettingsForm;
@@ -9,7 +9,7 @@ import com.intellij.openapi.options.Configurable;
 
 import javax.swing.JComponent;
 
-public class OllamaSettingsConfigurable implements Configurable {
+public class LLMConfigurableSettings implements Configurable {
 
     private OllamaSettingsForm component;
 
